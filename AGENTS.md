@@ -15,24 +15,63 @@ This repository is a static Sphinx/MyST site for interactive course notes.
 - Do not put large raw HTML, inline scripts, or example implementation logic
   directly inside chapter Markdown files.
 - A chapter may embed an interactive example in the middle of prose, but the
-  Markdown should contain only a small semantic placeholder when possible.
-- Prefer compact placeholders such as:
+  Markdown should contain only a small semantic MyST placeholder when possible.
+- Prefer MyST containers with identifying classes, not raw HTML blocks:
 
   ```md
-  ```{raw} html
-  <div
-    class="course-interactive"
-    data-example="logistic-map"
-    data-r="3.4"
-    data-x0="0.2">
-  </div>
-  ```
+  :::{container} course-interactive course-interactive-linear-ode
+  Interactive example loading...
+  :::
   ```
 
 - Put the actual JavaScript, plotting logic, Pyodide calls, and DOM construction
   in static JavaScript files.
 - If a raw HTML block grows beyond a small placeholder, move that behavior into
   a reusable directive, template, or JavaScript module.
+
+## Importing Sample Markdown Chapters
+
+Sample chapter Markdown may come from Pandoc-oriented sources and often needs
+normalization before it will compile correctly in Sphinx/MyST.
+
+- Do not leave top-level LaTeX macro definitions such as `\newcommand` in the
+  chapter body. Move shared macros into `mathjax3_config` in `docs/conf.py`.
+- Preserve the intended macro behavior when moving definitions. For example,
+  map `\dd`, `\ddf`, `\ppf`, vector macros, norm macros, and color macros into
+  MathJax `tex.macros`.
+- Convert display math written as `$$ ... $$` to MyST math fences:
+
+  ````md
+  ```{math}
+  ...
+  ```
+  ````
+
+- Preserve equation labels during conversion. For example, convert
+  `$$ ... $$ {#eq:model}` to:
+
+  ````md
+  ```{math}
+  :label: eq:model
+
+  ...
+  ```
+  ````
+
+- Give every imported chapter one real page title heading, usually matching the
+  front matter title:
+
+  ```md
+  # Numerical Methods for ODEs
+  ```
+
+- If the sample uses level-1 headings for sections, demote them one level after
+  adding the page title: `# Section` becomes `## Section`, and `## Subsection`
+  becomes `### Subsection`. This prevents Sphinx sidebars and toctrees from
+  treating each section as a separate page-level entry.
+- After conversion, run a fresh Sphinx build with `python -m sphinx -E -b html
+  docs docs/_build/html` when navigation structure, labels, or math parsing
+  changed.
 
 ## Modular Interactive Examples
 
