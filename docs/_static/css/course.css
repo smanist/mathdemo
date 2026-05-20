@@ -70,6 +70,10 @@
   min-height: 22rem;
 }
 
+.course-interactive__plot--large {
+  min-height: 38rem;
+}
+
 .course-interactive__status {
   color: var(--color-foreground-muted, #5f6c7b);
   font-size: 0.9rem;

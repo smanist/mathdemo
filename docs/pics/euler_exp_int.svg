@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Explicit Euler as a left rectangle rule</title>
+  <desc id="desc">The derivative is approximated by a constant value over one step.</desc>
+  <rect width="720" height="360" fill="#ffffff"/>
+  <g stroke="#d0d7de" stroke-width="1">
+    <line x1="80" y1="290" x2="650" y2="290"/>
+    <line x1="80" y1="60" x2="80" y2="290"/>
+  </g>
+  <path d="M90 240 C160 198 230 170 300 158 C400 140 520 165 650 225" fill="none" stroke="#111827" stroke-width="3"/>
+  <rect x="150" y="182" width="160" height="108" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+  <line x1="150" y1="182" x2="310" y2="182" stroke="#2563eb" stroke-width="4"/>
+  <g stroke="#2563eb" stroke-width="2" stroke-dasharray="5 5">
+    <line x1="150" y1="182" x2="150" y2="290"/>
+    <line x1="310" y1="182" x2="310" y2="290"/>
+  </g>
+  <g fill="#374151" font-family="Arial, sans-serif" font-size="18">
+    <text x="212" y="320">h</text>
+    <text x="142" y="312">x_n</text>
+    <text x="294" y="312">x_{n+1}</text>
+    <text x="350" y="188">left rule: f(x_n, y_n) h</text>
+    <text x="52" y="176">f</text>
+    <text x="356" y="330">x</text>
+  </g>
+</svg>

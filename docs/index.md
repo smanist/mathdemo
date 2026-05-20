@@ -9,6 +9,8 @@ Markdown, Sphinx cross-references, and LaTeX equations.
 
 chapters/placeholder
 chapters/interactive-placeholder
+chapters/signal-denoise-placeholder
+chapters/numerical-odes
 ```
 
 ## Site Conventions

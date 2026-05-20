@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Discretized IVP solution</title>
+  <desc id="desc">A smooth curve sampled by evenly spaced points along the x axis.</desc>
+  <rect width="720" height="360" fill="#ffffff"/>
+  <g stroke="#d0d7de" stroke-width="1">
+    <line x1="80" y1="290" x2="650" y2="290"/>
+    <line x1="80" y1="60" x2="80" y2="290"/>
+  </g>
+  <path d="M80 80 C170 110 220 215 300 235 C390 260 470 195 545 120 C590 78 625 68 650 74" fill="none" stroke="#111827" stroke-width="3"/>
+  <g fill="#2563eb" stroke="#ffffff" stroke-width="2">
+    <circle cx="80" cy="80" r="6"/>
+    <circle cx="160" cy="118" r="6"/>
+    <circle cx="240" cy="211" r="6"/>
+    <circle cx="320" cy="240" r="6"/>
+    <circle cx="400" cy="242" r="6"/>
+    <circle cx="480" cy="185" r="6"/>
+    <circle cx="560" cy="106" r="6"/>
+    <circle cx="640" cy="72" r="6"/>
+  </g>
+  <g fill="#374151" font-family="Arial, sans-serif" font-size="18">
+    <text x="356" y="330">x</text>
+    <text x="34" y="180">y</text>
+    <text x="88" y="310">x0</text>
+    <text x="154" y="310">x1</text>
+    <text x="234" y="310">x2</text>
+    <text x="314" y="310">x3</text>
+  </g>
+  <g stroke="#93c5fd" stroke-dasharray="4 5">
+    <line x1="160" y1="118" x2="160" y2="290"/>
+    <line x1="240" y1="211" x2="240" y2="290"/>
+    <line x1="320" y1="240" x2="320" y2="290"/>
+    <line x1="400" y1="242" x2="400" y2="290"/>
+    <line x1="480" y1="185" x2="480" y2="290"/>
+    <line x1="560" y1="106" x2="560" y2="290"/>
+    <line x1="640" y1="72" x2="640" y2="290"/>
+  </g>
+</svg>
