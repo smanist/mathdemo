@@ -2,6 +2,7 @@
 docs/_build/
 .doctrees/
 mathdemo-raw
+__pycache__
 
 # A-Dev artifacts
 .a-dev/
