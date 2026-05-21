@@ -12,6 +12,7 @@ chapters/interactive-placeholder
 chapters/signal-denoise-placeholder
 chapters/chap_num_ode
 chapters/linear-ode-example
+chapters/M3_EVP_for_IVP
 ```
 
 ## Site Conventions
