@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import pytest
 
 from helpers import CHAPTERS_DIR, EXAMPLES_DIR, load_conf, read_text
-from helpers import index_toctree_entries
+from helpers import all_toctree_entries
 
 
 @dataclass(frozen=True)
@@ -102,7 +102,7 @@ def test_interactive_example_is_registered(example: InteractiveExample) -> None:
     chapter_path = CHAPTERS_DIR / f"{example.chapter}.md"
     script_path = EXAMPLES_DIR / example.script
 
-    assert example.index_entry in index_toctree_entries()
+    assert example.index_entry in all_toctree_entries()
     assert example.script_entry in conf["html_js_files"]
     assert chapter_path.is_file()
     assert script_path.is_file()

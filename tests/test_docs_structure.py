@@ -1,6 +1,7 @@
 import pytest
 
-from helpers import CONF_PATH, DOCS_DIR, INDEX_PATH, load_conf, read_text
+from helpers import CONF_PATH, DOCS_DIR, INDEX_PATH, all_toctree_entries, load_conf
+from helpers import read_text
 from helpers import index_toctree_entries
 
 
@@ -15,6 +16,8 @@ def test_sphinx_conf_defines_expected_options() -> None:
     assert conf["project"] == "Interactive Course Notes"
     assert "myst_parser" in conf["extensions"]
     assert conf["numfig"] is True
+    assert "js/course-page-toc.js" in conf["html_js_files"]
+    assert (DOCS_DIR / "_static" / "js" / "course-page-toc.js").is_file()
     assert {"dd", "ddf", "norm", "ppf", "pppf"} <= set(macros)
 
 
@@ -27,6 +30,29 @@ def test_docs_index_toctree_entries_exist() -> None:
 
     missing = [entry for entry in entries if not (DOCS_DIR / f"{entry}.md").is_file()]
     assert missing == [], f"Missing toctree targets: {missing}"
+
+
+def test_all_navigation_targets_exist() -> None:
+    missing = [
+        entry
+        for entry in all_toctree_entries()
+        if not (DOCS_DIR / f"{entry}.md").is_file()
+    ]
+
+    assert missing == []
+
+
+@pytest.mark.parametrize(
+    "entry",
+    [
+        "chapters/foundations",
+        "chapters/odes",
+        "chapters/transforms",
+        "chapters/pdes",
+    ],
+)
+def test_docs_index_lists_only_chapter_groups(entry: str) -> None:
+    assert entry in index_toctree_entries()
 
 
 @pytest.mark.parametrize(
@@ -42,8 +68,8 @@ def test_docs_index_toctree_entries_exist() -> None:
         "chapters/chap_pde_sov",
     ],
 )
-def test_expected_chapters_are_listed_in_index(entry: str) -> None:
-    assert entry in index_toctree_entries()
+def test_expected_chapters_are_listed_in_navigation(entry: str) -> None:
+    assert entry in all_toctree_entries()
 
 
 @pytest.mark.parametrize(

@@ -24,18 +24,62 @@ def load_conf() -> dict[str, Any]:
     return runpy.run_path(str(CONF_PATH))
 
 
-def index_toctree_entries() -> list[str]:
+def toctree_entries(path: str | Path = INDEX_PATH) -> list[str]:
+    source_path = Path(path)
+    if not source_path.is_absolute():
+        source_path = REPO_ROOT / source_path
+
     entries: list[str] = []
     in_toctree = False
 
-    for raw_line in read_text(INDEX_PATH).splitlines():
+    for raw_line in read_text(source_path).splitlines():
         line = raw_line.strip()
         if line == "```{toctree}":
             in_toctree = True
             continue
         if in_toctree and line == "```":
-            break
+            in_toctree = False
+            continue
         if in_toctree and line and not line.startswith(":"):
             entries.append(line)
 
+    return entries
+
+
+def docs_relative_toctree_entries(path: str | Path = INDEX_PATH) -> list[str]:
+    source_path = Path(path)
+    if not source_path.is_absolute():
+        source_path = REPO_ROOT / source_path
+
+    entries: list[str] = []
+    for entry in toctree_entries(source_path):
+        if entry.endswith(">") and "<" in entry:
+            entry = entry.rsplit("<", 1)[1][:-1]
+        target = (source_path.parent / f"{entry}.md").resolve()
+        entries.append(target.relative_to(DOCS_DIR).with_suffix("").as_posix())
+
+    return entries
+
+
+def index_toctree_entries() -> list[str]:
+    return docs_relative_toctree_entries(INDEX_PATH)
+
+
+def all_toctree_entries(path: str | Path = INDEX_PATH) -> list[str]:
+    source_path = Path(path)
+    if not source_path.is_absolute():
+        source_path = REPO_ROOT / source_path
+
+    entries: list[str] = []
+    visited: set[Path] = set()
+
+    def visit(current_path: Path) -> None:
+        for entry in docs_relative_toctree_entries(current_path):
+            entries.append(entry)
+            target_path = DOCS_DIR / f"{entry}.md"
+            if target_path.is_file() and target_path not in visited:
+                visited.add(target_path)
+                visit(target_path)
+
+    visit(source_path)
     return entries

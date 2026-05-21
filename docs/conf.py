@@ -32,6 +32,7 @@ html_css_files = [
 
 html_js_files = [
     "js/course-interactives.js",
+    "js/course-page-toc.js",
     "js/examples/logistic-map.js",
     "js/examples/linear-ode.js",
     "js/examples/signal-denoise.js",
