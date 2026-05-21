@@ -10,6 +10,7 @@ Markdown, Sphinx cross-references, and LaTeX equations.
 chapters/placeholder
 chapters/interactive-placeholder
 chapters/signal-denoise-placeholder
+chapters/M1_periodic_excite
 chapters/chap_num_ode
 chapters/linear-ode-example
 ```
