@@ -16,7 +16,9 @@ def test_sphinx_conf_defines_expected_options() -> None:
     assert conf["project"] == "Interactive Course Notes"
     assert "myst_parser" in conf["extensions"]
     assert conf["numfig"] is True
+    assert "js/course-landing-gate.js" in conf["html_js_files"]
     assert "js/course-page-toc.js" in conf["html_js_files"]
+    assert (DOCS_DIR / "_static" / "js" / "course-landing-gate.js").is_file()
     assert (DOCS_DIR / "_static" / "js" / "course-page-toc.js").is_file()
     assert {"dd", "ddf", "norm", "ppf", "pppf"} <= set(macros)
 
@@ -30,6 +32,13 @@ def test_docs_index_toctree_entries_exist() -> None:
 
     missing = [entry for entry in entries if not (DOCS_DIR / f"{entry}.md").is_file()]
     assert missing == [], f"Missing toctree targets: {missing}"
+
+
+def test_docs_index_has_landing_gate_placeholder() -> None:
+    source = read_text(INDEX_PATH)
+
+    assert "course-landing-auth" in source
+    assert "course-landing-content" in source
 
 
 def test_all_navigation_targets_exist() -> None:

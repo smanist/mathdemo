@@ -31,6 +31,7 @@ html_css_files = [
 ]
 
 html_js_files = [
+    "js/course-landing-gate.js",
     "js/course-interactives.js",
     "js/course-page-toc.js",
     "js/examples/logistic-map.js",

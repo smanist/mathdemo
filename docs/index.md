@@ -1,5 +1,10 @@
 # Interactive Course Notes
 
+:::{container} course-landing-auth
+Account access loading...
+:::
+
+:::{container} course-landing-content
 These notes are built with Sphinx and MyST Markdown. Chapters can use ordinary
 Markdown, Sphinx cross-references, and LaTeX equations.
 
@@ -21,3 +26,4 @@ chapters/pdes
   example should appear.
 - Keep heavyweight libraries pinned by exact CDN version until the site needs
   vendored/offline assets.
+:::
