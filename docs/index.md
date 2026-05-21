@@ -20,6 +20,7 @@ chapters/chap_lap_trans
 chapters/chap_pde_moc
 chapters/chap_pde_sov
 chapters/chap_num_pde
+chapters/chap_la
 chapters/linear-ode-example
 ```
 
