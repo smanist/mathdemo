@@ -45,6 +45,7 @@ mathjax3_config = {
             "vz": r"\mathbf{z}",
             "dd": r"\mathrm{d}",
             "ppf": [r"\frac{\partial #1}{\partial #2}", 2],
+            "pppf": [r"\frac{\partial^2 #1}{\partial #2^2}", 2],
             "ddf": [r"\frac{\mathrm{d} #1}{\mathrm{d} #2}", 2],
             "norm": [r"\left\lVert #1 \right\rVert", 1],
             "Cr": [r"{\color{red} #1}", 1],
