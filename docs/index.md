@@ -11,6 +11,7 @@ chapters/placeholder
 chapters/interactive-placeholder
 chapters/signal-denoise-placeholder
 chapters/chap_num_ode
+chapters/chap_cmplx
 chapters/linear-ode-example
 ```
 
