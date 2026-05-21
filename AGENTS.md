@@ -73,6 +73,49 @@ normalization before it will compile correctly in Sphinx/MyST.
   docs docs/_build/html` when navigation structure, labels, or math parsing
   changed.
 
+## Temporary Ingestion Workflow
+
+During the ingestion phase, keep raw source material outside this repository and
+treat it as read-only. Do not edit files under:
+
+```text
+/Users/daninghuang/Downloads/mathdemo-raw
+```
+
+The raw source tree is organized as follows:
+
+```text
+/Users/daninghuang/Downloads/mathdemo-raw/
+  chaps/   # source chapter Markdown
+  pics/    # figures referenced by source chapters
+  demos/   # notebook sources for HTML-style interactive examples
+```
+
+When asked to migrate a chapter from `chaps/`:
+
+- Keep the original file name when creating the migrated chapter under
+  `docs/chapters/`.
+- Add the migrated chapter to the appropriate Sphinx/MyST toctree.
+- Move any new LaTeX macros into `docs/conf.py`.
+- Convert display math to MyST math fences.
+- Preserve equation labels.
+- Migrate referenced figures from `pics/` into the repository, following the
+  existing figure location and reference style. If a referenced figure file is
+  not found, leave the chapter reference clearly marked for follow-up instead of
+  inventing a replacement.
+- Do not migrate linked or embedded HTML examples as part of a chapter
+  migration unless explicitly asked.
+- Follow all other rules in this file.
+
+When asked to migrate a demo from `demos/`:
+
+- Create a standalone Markdown page for the demo, using the same base name as
+  the source `.ipynb` file.
+- Implement browser-side behavior in `docs/_static/js/examples/`.
+- Keep the Markdown page limited to prose, MyST structure, and a small semantic
+  placeholder for the interactive component.
+- Follow all other rules in this file.
+
 ## Modular Interactive Examples
 
 - Keep interactive examples as individual JavaScript files whenever possible.
