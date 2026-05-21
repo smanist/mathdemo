@@ -20,15 +20,9 @@ signal, its Fourier spectrum, and a low-pass filtered reconstruction. Use the
 numeric input to change the noise level, then use the Plotly slider to adjust
 the filtering threshold.
 
-```{raw} html
-<div
-  class="course-interactive"
-  data-example="signal-denoise"
-  data-title="Signal Denoising"
-  data-noise-level="1.0"
-  data-seed="7">
-</div>
-```
+:::{container} course-interactive course-interactive-signal-denoise
+Interactive example loading...
+:::
 
 This page is intentionally a placeholder; later text can expand the discussion
 of Fourier transforms, threshold choice, and why this particular signal admits

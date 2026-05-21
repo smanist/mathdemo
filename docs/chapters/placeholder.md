@@ -19,6 +19,6 @@ The equation above can be referenced as {eq}`eq:fixed-point`.
 
 You can also use inline math such as $f'(x)$ and display math:
 
-$$
+```{math}
 \int_0^1 x^2\,dx = \frac{1}{3}.
-$$
+```

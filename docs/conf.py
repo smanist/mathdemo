@@ -31,6 +31,9 @@ html_css_files = [
 
 html_js_files = [
     "js/course-interactives.js",
+    "js/examples/logistic-map.js",
+    "js/examples/linear-ode.js",
+    "js/examples/signal-denoise.js",
 ]
 
 mathjax3_config = {
