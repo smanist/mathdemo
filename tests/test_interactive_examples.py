@@ -32,34 +32,68 @@ EXAMPLES = [
     ),
     InteractiveExample(
         chapter="M1_periodic_excite",
-        script="M1_periodic_excite.js",
+        script="m1-periodic-excite.js",
+        placeholder_class="course-interactive-m1-periodic-excite",
+        script_registration='registerExample("m1-periodic-excite"',
     ),
     InteractiveExample(
         chapter="M1_simple_resonance",
-        script="M1_simple_resonance.js",
+        script="m1-simple-resonance.js",
         placeholder_class="course-interactive-m1-simple-resonance",
     ),
     InteractiveExample(
+        chapter="M2_double_pendulum",
+        script="m2-double-pendulum.js",
+        placeholder_class="course-interactive-m2-double-pendulum",
+        script_registration='registerExample("m2-double-pendulum"',
+    ),
+    InteractiveExample(
         chapter="M2_Euler_method_comparison",
-        script="M2_Euler_method_comparison.js",
+        script="m2-euler-method-comparison.js",
         placeholder_class="course-interactive-m2-euler-method-comparison",
         script_registration='registerExample("m2-euler-method-comparison"',
     ),
     InteractiveExample(
         chapter="M3_EVP_for_IVP",
-        script="M3_EVP_for_IVP.js",
+        script="m3-evp-for-ivp.js",
+        placeholder_class="course-interactive-m3-evp-for-ivp",
+        script_registration='registerExample("m3-evp-for-ivp"',
     ),
     InteractiveExample(
         chapter="M4_Fourier_Extension",
-        script="fourier-extension.js",
-        placeholder_class="course-interactive-fourier-extension",
+        script="m4-fourier-extension.js",
+        placeholder_class="course-interactive-m4-fourier-extension",
+        script_registration='registerExample("m4-fourier-extension"',
     ),
     InteractiveExample(
         chapter="M4_Fourier_Gibbs",
-        script="fourier-gibbs.js",
-        placeholder_class="course-interactive-fourier-gibbs",
+        script="m4-fourier-gibbs.js",
+        placeholder_class="course-interactive-m4-fourier-gibbs",
+        script_registration='registerExample("m4-fourier-gibbs"',
     ),
 ]
+
+
+def test_example_filenames_use_lowercase_kebab_case() -> None:
+    invalid_names = [
+        path.name
+        for path in EXAMPLES_DIR.glob("*.js")
+        if path.name != path.name.lower() or "_" in path.name
+    ]
+
+    assert invalid_names == []
+
+
+def test_configured_example_scripts_exist() -> None:
+    conf = load_conf()
+    missing = [
+        script
+        for script in conf["html_js_files"]
+        if script.startswith("js/examples/")
+        and not (EXAMPLES_DIR / script.removeprefix("js/examples/")).is_file()
+    ]
+
+    assert missing == []
 
 
 @pytest.mark.parametrize("example", EXAMPLES, ids=[example.chapter for example in EXAMPLES])

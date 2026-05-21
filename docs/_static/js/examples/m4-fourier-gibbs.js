@@ -183,7 +183,7 @@
     });
   }
 
-  registerExample("fourier-gibbs", initFourierGibbs, {
-    selectors: [".course-interactive-fourier-gibbs"],
+  registerExample("m4-fourier-gibbs", initFourierGibbs, {
+    selectors: [".course-interactive-m4-fourier-gibbs"],
   });
 })();

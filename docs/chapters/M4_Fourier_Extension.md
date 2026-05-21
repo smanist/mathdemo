@@ -18,6 +18,6 @@ Use the slider to change the number of terms kept in each partial sum. The
 three panels preserve the notebook's comparison so you can judge which
 extension produces the most useful approximation for this function.
 
-:::{container} course-interactive course-interactive-fourier-extension
+:::{container} course-interactive course-interactive-m4-fourier-extension
 Interactive example loading...
 :::

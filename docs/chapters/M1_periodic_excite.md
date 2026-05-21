@@ -19,7 +19,7 @@ the forcing frequency `\omega`, while the figure compares the time-domain input,
 the zero-initial-condition response, and the corresponding poles and input roots
 in the `s`-plane.
 
-:::{container} course-interactive course-interactive-periodic-excite
+:::{container} course-interactive course-interactive-m1-periodic-excite
 Interactive example loading...
 :::
 

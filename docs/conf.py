@@ -34,15 +34,15 @@ html_js_files = [
     "js/course-interactives.js",
     "js/examples/logistic-map.js",
     "js/examples/linear-ode.js",
-    "js/examples/M2_Euler_method_comparison.js",
     "js/examples/signal-denoise.js",
     "js/examples/m1-impulse.js",
-    "js/examples/M1_periodic_excite.js",
-    "js/examples/M1_simple_resonance.js",
-    "js/examples/double-pendulum.js",
-    "js/examples/M3_EVP_for_IVP.js",
-    "js/examples/fourier-extension.js",
-    "js/examples/fourier-gibbs.js",
+    "js/examples/m1-periodic-excite.js",
+    "js/examples/m1-simple-resonance.js",
+    "js/examples/m2-double-pendulum.js",
+    "js/examples/m2-euler-method-comparison.js",
+    "js/examples/m3-evp-for-ivp.js",
+    "js/examples/m4-fourier-extension.js",
+    "js/examples/m4-fourier-gibbs.js",
 ]
 
 mathjax3_config = {

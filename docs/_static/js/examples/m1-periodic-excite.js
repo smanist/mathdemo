@@ -500,7 +500,7 @@
     });
   }
 
-  registerExample("periodic-excite", initPeriodicExcite, {
-    selectors: [".course-interactive-periodic-excite"],
+  registerExample("m1-periodic-excite", initPeriodicExcite, {
+    selectors: [".course-interactive-m1-periodic-excite"],
   });
 })();

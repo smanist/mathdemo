@@ -330,7 +330,7 @@
     restartAnimation();
   }
 
-  registerExample("double-pendulum", initDoublePendulum, {
-    selectors: [".course-interactive-double-pendulum"],
+  registerExample("m2-double-pendulum", initDoublePendulum, {
+    selectors: [".course-interactive-m2-double-pendulum"],
   });
 })();

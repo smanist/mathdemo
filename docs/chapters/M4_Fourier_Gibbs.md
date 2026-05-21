@@ -15,6 +15,6 @@ Use the slider in the interactive plot to change the number of displayed terms.
 As the partial sums approach the jump discontinuities, the overshoot remains
 visible; this is the Gibbs phenomenon.
 
-:::{container} course-interactive course-interactive-fourier-gibbs
+:::{container} course-interactive course-interactive-m4-fourier-gibbs
 Interactive example loading...
 :::

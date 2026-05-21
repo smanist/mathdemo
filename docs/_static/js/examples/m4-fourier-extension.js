@@ -188,7 +188,7 @@
     redraw();
   }
 
-  registerExample("fourier-extension", initFourierExtension, {
-    selectors: [".course-interactive-fourier-extension"],
+  registerExample("m4-fourier-extension", initFourierExtension, {
+    selectors: [".course-interactive-m4-fourier-extension"],
   });
 })();

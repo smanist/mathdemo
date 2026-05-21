@@ -380,7 +380,7 @@
     redraw();
   }
 
-  registerExample("M3_EVP_for_IVP", initMatrixExponentialDemo, {
+  registerExample("m3-evp-for-ivp", initMatrixExponentialDemo, {
     selectors: [".course-interactive-m3-evp-for-ivp"],
   });
 })();

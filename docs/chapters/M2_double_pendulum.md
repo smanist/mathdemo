@@ -18,6 +18,6 @@ The notebook title says "See when it repeats itself", but the source only
 renders an animation and does not implement repeat detection. This page keeps
 that behavior and shows the evolving motion with a trailing path.
 
-:::{container} course-interactive course-interactive-double-pendulum
+:::{container} course-interactive course-interactive-m2-double-pendulum
 Interactive example loading...
 :::
