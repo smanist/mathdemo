@@ -13,6 +13,7 @@ chapters/signal-denoise-placeholder
 chapters/chap_num_ode
 chapters/chap_cmplx
 chapters/chap_fourier
+chapters/chap_pde_1st
 chapters/linear-ode-example
 ```
 
