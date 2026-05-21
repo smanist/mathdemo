@@ -33,6 +33,7 @@ html_js_files = [
     "js/course-interactives.js",
     "js/examples/logistic-map.js",
     "js/examples/linear-ode.js",
+    "js/examples/M2_Euler_method_comparison.js",
     "js/examples/signal-denoise.js",
 ]
 

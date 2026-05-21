@@ -42,12 +42,25 @@
   font-variant-numeric: tabular-nums;
 }
 
-.course-interactive__control input[type="number"] {
+.course-interactive__control input[type="number"],
+.course-interactive__control select {
   border: 1px solid var(--color-background-border, #d8dee9);
   border-radius: 4px;
   font: inherit;
   max-width: 12rem;
   padding: 0.35rem 0.45rem;
+}
+
+.course-interactive__checkbox-label {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.course-interactive__checkbox-label input[type="checkbox"] {
+  height: 1rem;
+  margin: 0;
+  width: 1rem;
 }
 
 .course-interactive__control input[aria-invalid="true"] {

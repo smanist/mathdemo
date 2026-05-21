@@ -154,6 +154,65 @@
     return wrapper;
   }
 
+  function makeSelectControl({ label, options, value, onInput }) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "course-interactive__control";
+
+    const labelElement = document.createElement("label");
+    const select = document.createElement("select");
+
+    labelElement.textContent = label;
+    select.id = `course-interactive-control-${controlIdCounter += 1}`;
+    labelElement.htmlFor = select.id;
+
+    options.forEach((option) => {
+      const optionElement = document.createElement("option");
+      optionElement.value = String(option.value);
+      optionElement.textContent = option.label;
+      if (String(option.value) === String(value)) {
+        optionElement.selected = true;
+      }
+      select.append(optionElement);
+    });
+
+    function sync() {
+      onInput(select.value);
+    }
+
+    wrapper.append(labelElement, select);
+    select.addEventListener("change", sync);
+    sync();
+
+    return wrapper;
+  }
+
+  function makeCheckboxControl({ label, checked, onInput }) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "course-interactive__control";
+
+    const labelElement = document.createElement("label");
+    const input = document.createElement("input");
+    const text = document.createElement("span");
+
+    labelElement.className = "course-interactive__checkbox-label";
+    input.type = "checkbox";
+    input.checked = checked;
+    input.id = `course-interactive-control-${controlIdCounter += 1}`;
+    labelElement.htmlFor = input.id;
+    text.textContent = label;
+
+    function sync() {
+      onInput(input.checked);
+    }
+
+    labelElement.append(input, text);
+    wrapper.append(labelElement);
+    input.addEventListener("input", sync);
+    sync();
+
+    return wrapper;
+  }
+
   function registerExample(name, initializer, options = {}) {
     examples.set(name, {
       initializer,
@@ -196,8 +255,10 @@
     loadP5,
     loadPlotly,
     loadPyodideRuntime,
+    makeCheckboxControl,
     makeNumberInputControl,
     makeRangeControl,
+    makeSelectControl,
     numberFromDataset,
     registerExample,
   };
