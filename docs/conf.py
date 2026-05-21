@@ -34,6 +34,7 @@ html_js_files = [
     "js/examples/logistic-map.js",
     "js/examples/linear-ode.js",
     "js/examples/signal-denoise.js",
+    "js/examples/double-pendulum.js",
 ]
 
 mathjax3_config = {

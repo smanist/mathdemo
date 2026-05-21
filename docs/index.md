@@ -12,6 +12,7 @@ chapters/interactive-placeholder
 chapters/signal-denoise-placeholder
 chapters/chap_num_ode
 chapters/linear-ode-example
+chapters/M2_double_pendulum
 ```
 
 ## Site Conventions
