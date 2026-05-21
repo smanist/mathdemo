@@ -101,6 +101,15 @@ normalization before it will compile correctly in Sphinx/MyST.
   actually needs them.
 - Keep the site deployable to Read the Docs as a static Sphinx build.
 
+## Local Website Workflow
+
+- For quick local static-site checks, start a server from the repository root
+  with `python -m http.server <port> --bind 127.0.0.1`.
+- Visit local pages with the Codex Browser plugin at
+  `http://localhost:<port>`.
+- Stop repo-local HTTP servers with `scripts/kill-local-http-server <pid>`.
+  Do not use raw `kill <pid>` for this workflow.
+
 ## Verification
 
 - Run `sphinx-build -b html docs docs/_build/html` after documentation or
