@@ -11,6 +11,7 @@ chapters/placeholder
 chapters/interactive-placeholder
 chapters/signal-denoise-placeholder
 chapters/chap_num_ode
+chapters/chap_pde_moc
 chapters/linear-ode-example
 ```
 
