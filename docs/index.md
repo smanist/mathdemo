@@ -7,8 +7,6 @@ Markdown, Sphinx cross-references, and LaTeX equations.
 :maxdepth: 2
 :caption: Chapters
 
-chapters/placeholder
-chapters/interactive-placeholder
 chapters/signal-denoise-placeholder
 chapters/chap_ode_intro
 chapters/chap_ode_review
