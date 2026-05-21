@@ -41,6 +41,7 @@ html_js_files = [
     "js/examples/M1_simple_resonance.js",
     "js/examples/double-pendulum.js",
     "js/examples/M3_EVP_for_IVP.js",
+    "js/examples/fourier-extension.js",
 ]
 
 mathjax3_config = {
