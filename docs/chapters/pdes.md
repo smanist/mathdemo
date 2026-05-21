@@ -21,4 +21,5 @@ M5 String Vibration by Separation of Variables (3D) <M5_2_wave_sov_3d>
 M5 1D Unsteady Heat Transfer (2D) <M5_1_1D_unsteady_heat_2d>
 M5 1D Unsteady Heat Transfer (3D) <M5_1_1D_unsteady_heat_3d>
 Numerical PDEs <chap_num_pde>
+M7 Numerical Heat Equation <M7_1d_unsteady_heat_num>
 ```

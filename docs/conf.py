@@ -41,12 +41,14 @@ html_js_files = [
     "js/examples/m1-simple-resonance.js",
     "js/examples/m2-double-pendulum.js",
     "js/examples/m2-euler-method-comparison.js",
+    "js/examples/m3-eigenvalue-problem.js",
     "js/examples/m3-evp-for-ivp.js",
     "js/examples/m4-fourier-extension.js",
     "js/examples/m4-fourier-gibbs.js",
     "js/examples/m5-1d-unsteady-heat.js",
     "js/examples/m5-first-order-moc.js",
     "js/examples/m5-wave.js",
+    "js/examples/m7-heat-num.js",
 ]
 
 mathjax3_config = {
@@ -57,6 +59,9 @@ mathjax3_config = {
             "Ln": r"\mathrm{Ln}",
             "PV": r"\mathrm{PV}",
             "cL": r"\mathcal{L}",
+            "mbf": r"\mathbf",
+            "mcl": r"\mathcal",
+            "mbb": r"\mathbb",
             "vf": r"\mathbf{f}",
             "vk": r"\mathbf{k}",
             "vy": r"\mathbf{y}",
