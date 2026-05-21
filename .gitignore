@@ -2,3 +2,6 @@
 docs/_build/
 .doctrees/
 mathdemo-raw
+
+# A-Dev artifacts
+.a-dev/
