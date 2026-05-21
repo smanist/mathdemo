@@ -39,6 +39,10 @@ html_js_files = [
 mathjax3_config = {
     "tex": {
         "macros": {
+            "Abs": r"\mathrm{Abs}",
+            "Arg": r"\mathrm{Arg}",
+            "Ln": r"\mathrm{Ln}",
+            "PV": r"\mathrm{PV}",
             "vf": r"\mathbf{f}",
             "vk": r"\mathbf{k}",
             "vy": r"\mathbf{y}",
@@ -50,6 +54,8 @@ mathjax3_config = {
             "Cr": [r"{\color{red} #1}", 1],
             "Cg": [r"{\color{green} #1}", 1],
             "Cb": [r"{\color{blue} #1}", 1],
+            "Im": r"\mathrm{Im}",
+            "Re": r"\mathrm{Re}",
         },
     },
 }
