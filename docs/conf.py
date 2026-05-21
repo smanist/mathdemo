@@ -20,6 +20,7 @@ myst_enable_extensions = [
 ]
 
 myst_heading_anchors = 3
+numfig = True
 
 html_theme = "alabaster"
 html_title = project
