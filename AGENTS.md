@@ -105,6 +105,7 @@ When asked to migrate a chapter from `chaps/`:
   inventing a replacement.
 - Do not migrate linked or embedded HTML examples as part of a chapter
   migration unless explicitly asked.
+- Ignore quiz contents.
 - Follow all other rules in this file.
 
 When asked to migrate a demo from `demos/`:
