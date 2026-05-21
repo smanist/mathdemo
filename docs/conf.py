@@ -42,6 +42,7 @@ html_js_files = [
     "js/examples/double-pendulum.js",
     "js/examples/M3_EVP_for_IVP.js",
     "js/examples/fourier-extension.js",
+    "js/examples/fourier-gibbs.js",
 ]
 
 mathjax3_config = {
