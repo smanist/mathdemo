@@ -12,6 +12,7 @@ chapters/interactive-placeholder
 chapters/signal-denoise-placeholder
 chapters/chap_ode_intro
 chapters/chap_ode_review
+chapters/M1_periodic_excite
 chapters/chap_num_ode
 chapters/chap_cmplx
 chapters/chap_fourier
