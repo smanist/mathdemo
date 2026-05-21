@@ -85,3 +85,18 @@ def test_docs_index_toctree_entries_exist() -> None:
 
     for entry in _index_toctree_entries():
         assert (DOCS_DIR / f"{entry}.md").is_file()
+
+
+def test_docs_configuration_and_index_include_pde_chapter() -> None:
+    conf = runpy.run_path(str(DOCS_DIR / "conf.py"))
+
+    assert "myst_parser" in conf["extensions"]
+    assert "pppf" in conf["mathjax3_config"]["tex"]["macros"]
+
+    index_text = (DOCS_DIR / "index.md").read_text(encoding="utf-8")
+    chapter_text = (DOCS_DIR / "chapters" / "chap_pde_sov.md").read_text(encoding="utf-8")
+
+    assert "chapters/chap_pde_sov" in index_text
+    assert "# Partial Differential Equations - Separation of Variables" in chapter_text
+    assert r"p_n= \frac{n \pi}{a}" in chapter_text
+    assert r"\int_0^a \Delta T(x)\cos\left(\frac{n\pi}{a}x\right) dx" in chapter_text

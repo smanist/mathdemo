@@ -18,6 +18,7 @@ chapters/chap_fourier
 chapters/chap_pde_1st
 chapters/chap_lap_trans
 chapters/chap_pde_moc
+chapters/chap_pde_sov
 chapters/linear-ode-example
 ```
 
