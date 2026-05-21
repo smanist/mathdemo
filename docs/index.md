@@ -22,6 +22,7 @@ chapters/chap_pde_sov
 chapters/chap_num_pde
 chapters/chap_la
 chapters/linear-ode-example
+chapters/M1_impulse
 ```
 
 ## Site Conventions
