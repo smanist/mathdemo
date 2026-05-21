@@ -38,6 +38,7 @@ html_js_files = [
     "js/examples/m1-impulse.js",
     "js/examples/M1_periodic_excite.js",
     "js/examples/M1_simple_resonance.js",
+    "js/examples/double-pendulum.js",
 ]
 
 mathjax3_config = {
