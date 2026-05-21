@@ -45,6 +45,7 @@ html_js_files = [
     "js/examples/m4-fourier-extension.js",
     "js/examples/m4-fourier-gibbs.js",
     "js/examples/m5-1d-unsteady-heat.js",
+    "js/examples/m5-first-order-moc.js",
 ]
 
 mathjax3_config = {
