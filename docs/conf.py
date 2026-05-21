@@ -39,6 +39,7 @@ html_js_files = [
 mathjax3_config = {
     "tex": {
         "macros": {
+            "cL": r"\mathcal{L}",
             "vf": r"\mathbf{f}",
             "vk": r"\mathbf{k}",
             "vy": r"\mathbf{y}",
