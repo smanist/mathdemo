@@ -14,6 +14,7 @@ chapters/chap_num_ode
 chapters/chap_cmplx
 chapters/chap_fourier
 chapters/chap_pde_1st
+chapters/chap_lap_trans
 chapters/linear-ode-example
 ```
 

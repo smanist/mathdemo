@@ -38,3 +38,10 @@ def test_index_references_pde_chapter() -> None:
 
     assert "chapters/chap_pde_1st" in index_text
     assert (repo_root / "docs" / "chapters" / "chap_pde_1st.md").is_file()
+
+
+def test_laplace_chapter_is_included_in_docs_index() -> None:
+    assert (ROOT / "docs" / "chapters" / "chap_lap_trans.md").is_file()
+
+    docs_index = (ROOT / "docs" / "index.md").read_text(encoding="utf-8")
+    assert "chapters/chap_lap_trans" in docs_index

@@ -43,6 +43,7 @@ mathjax3_config = {
             "Arg": r"\mathrm{Arg}",
             "Ln": r"\mathrm{Ln}",
             "PV": r"\mathrm{PV}",
+            "cL": r"\mathcal{L}",
             "vf": r"\mathbf{f}",
             "vk": r"\mathbf{k}",
             "vy": r"\mathbf{y}",
