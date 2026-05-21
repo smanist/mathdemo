@@ -79,13 +79,13 @@ During the ingestion phase, keep raw source material outside this repository and
 treat it as read-only. Do not edit files under:
 
 ```text
-/Users/daninghuang/Downloads/mathdemo-raw
+mathdemo-raw
 ```
 
 The raw source tree is organized as follows:
 
 ```text
-/Users/daninghuang/Downloads/mathdemo-raw/
+mathdemo-raw/
   chaps/   # source chapter Markdown
   pics/    # figures referenced by source chapters
   demos/   # notebook sources for HTML-style interactive examples
