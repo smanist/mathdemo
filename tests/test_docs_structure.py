@@ -1,16 +1,67 @@
-from pathlib import Path
+import pytest
+
+from helpers import CONF_PATH, DOCS_DIR, INDEX_PATH, load_conf, read_text
+from helpers import index_toctree_entries
 
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
+def test_docs_root_exists() -> None:
+    assert DOCS_DIR.is_dir()
 
 
-def read_text(relative_path: str) -> str:
-    return (REPO_ROOT / relative_path).read_text(encoding="utf-8")
+def test_sphinx_conf_defines_expected_options() -> None:
+    conf = load_conf()
+    macros = conf["mathjax3_config"]["tex"]["macros"]
+
+    assert conf["project"] == "Interactive Course Notes"
+    assert "myst_parser" in conf["extensions"]
+    assert conf["numfig"] is True
+    assert {"dd", "ddf", "norm", "ppf", "pppf"} <= set(macros)
 
 
-def test_pde_chapter_is_listed_in_index_toctree() -> None:
-    assert "chapters/chap_num_pde" in read_text("docs/index.md")
+def test_docs_index_toctree_entries_exist() -> None:
+    assert INDEX_PATH.is_file()
+    assert CONF_PATH.is_file()
+
+    entries = index_toctree_entries()
+    assert entries, "Expected at least one toctree entry in docs/index.md"
+
+    missing = [entry for entry in entries if not (DOCS_DIR / f"{entry}.md").is_file()]
+    assert missing == [], f"Missing toctree targets: {missing}"
 
 
-def test_pde_chapter_has_page_title() -> None:
-    assert "# Numerical Methods for PDEs" in read_text("docs/chapters/chap_num_pde.md")
+@pytest.mark.parametrize(
+    "entry",
+    [
+        "chapters/chap_cmplx",
+        "chapters/chap_fourier",
+        "chapters/chap_lap_trans",
+        "chapters/chap_num_pde",
+        "chapters/chap_ode_intro",
+        "chapters/chap_ode_review",
+        "chapters/chap_pde_1st",
+        "chapters/chap_pde_sov",
+    ],
+)
+def test_expected_chapters_are_listed_in_index(entry: str) -> None:
+    assert entry in index_toctree_entries()
+
+
+@pytest.mark.parametrize(
+    ("chapter_path", "expected_text"),
+    [
+        ("docs/chapters/chap_num_pde.md", "# Numerical Methods for PDEs"),
+        (
+            "docs/chapters/chap_pde_sov.md",
+            "# Partial Differential Equations - Separation of Variables",
+        ),
+        ("docs/chapters/chap_pde_sov.md", r"p_n= \frac{n \pi}{a}"),
+        (
+            "docs/chapters/chap_pde_sov.md",
+            r"\int_0^a \Delta T(x)\cos\left(\frac{n\pi}{a}x\right) dx",
+        ),
+    ],
+)
+def test_chapters_contain_expected_content(
+    chapter_path: str, expected_text: str
+) -> None:
+    assert expected_text in read_text(chapter_path)
