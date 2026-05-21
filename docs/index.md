@@ -26,6 +26,7 @@ chapters/linear-ode-example
 chapters/M1_impulse
 chapters/M1_simple_resonance
 chapters/M2_double_pendulum
+chapters/M2_Euler_method_comparison
 ```
 
 ## Site Conventions
