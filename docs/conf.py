@@ -44,6 +44,7 @@ html_js_files = [
     "js/examples/m3-evp-for-ivp.js",
     "js/examples/m4-fourier-extension.js",
     "js/examples/m4-fourier-gibbs.js",
+    "js/examples/m5-1d-unsteady-heat.js",
 ]
 
 mathjax3_config = {
