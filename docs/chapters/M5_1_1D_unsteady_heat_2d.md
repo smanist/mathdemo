@@ -10,7 +10,7 @@ solves the one-dimensional unsteady heat equation on
 $0 \leq x \leq L,\ t \geq 0$,
 
 ```{math}
-u_t = c u_{xx}, \qquad u(x,0)=f(x),
+u_t = c^2 u_{xx}, \qquad u(x,0)=f(x),
 ```
 
 using separation-of-variables series solutions for three boundary-condition

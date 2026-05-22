@@ -10,7 +10,7 @@ equation and boundary-condition families as the 2D view, but plots the
 solution over both space and time as surfaces:
 
 ```{math}
-u_t = c u_{xx}, \qquad u(x,0)=f(x).
+u_t = c^2 u_{xx}, \qquad u(x,0)=f(x).
 ```
 
 The top surface shows the series solution $u(x,t)$. The lower surfaces show

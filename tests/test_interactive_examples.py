@@ -96,7 +96,9 @@ def test_configured_example_scripts_exist() -> None:
     assert missing == []
 
 
-@pytest.mark.parametrize("example", EXAMPLES, ids=[example.chapter for example in EXAMPLES])
+@pytest.mark.parametrize(
+    "example", EXAMPLES, ids=[example.chapter for example in EXAMPLES]
+)
 def test_interactive_example_is_registered(example: InteractiveExample) -> None:
     conf = load_conf()
     chapter_path = CHAPTERS_DIR / f"{example.chapter}.md"

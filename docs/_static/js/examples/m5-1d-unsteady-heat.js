@@ -113,7 +113,7 @@
         const coefficient = ((modeIndex % 2 === 0 ? 1 : -1) * 8) / PI / (k * k);
 
         for (let timeIndex = 0; timeIndex < nT; timeIndex += 1) {
-          const decay = Math.exp((-((k * t[timeIndex]) ** 2) * c) / 4);
+          const decay = Math.exp((-(k * k) * c * c * t[timeIndex]) / 4);
           for (let xIndex = 0; xIndex < nX; xIndex += 1) {
             modes[modeIndex][timeIndex][xIndex] = coefficient * decay * Math.sin((k * x[xIndex]) / 2);
           }
@@ -127,7 +127,7 @@
         const coefficient = -4 / PI / (k * k);
 
         for (let timeIndex = 0; timeIndex < nT; timeIndex += 1) {
-          const decay = Math.exp(-((k * t[timeIndex]) ** 2) * c);
+          const decay = Math.exp(-(k * k) * c * c * t[timeIndex]);
           for (let xIndex = 0; xIndex < nX; xIndex += 1) {
             modes[modeIndex][timeIndex][xIndex] = coefficient * decay * Math.cos(k * x[xIndex]);
           }
@@ -143,7 +143,7 @@
           ((modeIndex % 2 === 0 ? -1 : 1) + Math.sqrt(2) * ((Math.floor(modeIndex / 2) % 2 === 0) ? 1 : -1));
 
         for (let timeIndex = 0; timeIndex < nT; timeIndex += 1) {
-          const decay = Math.exp((-((k * t[timeIndex]) ** 2) * c) / 4);
+          const decay = Math.exp((-(k * k) * c * c * t[timeIndex]) / 4);
           for (let xIndex = 0; xIndex < nX; xIndex += 1) {
             modes[modeIndex][timeIndex][xIndex] = coefficient * decay * Math.sin((k * x[xIndex]) / 4);
           }
