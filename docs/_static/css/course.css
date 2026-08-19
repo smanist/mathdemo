@@ -127,6 +127,11 @@ div.bodywrapper {
   display: block;
 }
 
+.course-landing--unlocked div.sphinxsidebar ul ul,
+.course-landing--unlocked .course-landing-content ul ul {
+  display: none;
+}
+
 .course-page-toc {
   border-left: 1px solid var(--color-background-border, #d8dee9);
   box-sizing: border-box;

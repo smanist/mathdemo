@@ -1,16 +1,14 @@
 ---
-title: Foundations
+title: 1. Linear Algebra
 ---
 
-# Foundations
+# 1. Linear Algebra
 
-Core mathematical background used throughout the notes.
+Linear algebra notes and an interactive matrix-transformation example.
 
 ```{toctree}
 :maxdepth: 1
 
 Linear Algebra <chap_la>
 M3 Matrix Transformations and Eigenvectors <M3_Eigenvalue_problem>
-Probability and Statistics <chap_prob_stat>
-Complex Analysis <chap_cmplx>
 ```
