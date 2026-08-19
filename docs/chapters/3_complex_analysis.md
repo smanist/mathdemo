@@ -9,5 +9,5 @@ Core concepts and methods from complex analysis.
 ```{toctree}
 :maxdepth: 1
 
-Complex Analysis <chap_cmplx>
+Notes: Complex Analysis <chap_cmplx>
 ```

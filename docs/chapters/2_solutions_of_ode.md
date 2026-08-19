@@ -10,14 +10,16 @@ interactive dynamics examples.
 ```{toctree}
 :maxdepth: 1
 
-Why ODE Methods? <chap_ode_intro>
-Analytical Review <chap_ode_review>
-Laplace Transform <chap_lap_trans>
-Numerical ODEs <chap_num_ode>
-Linear ODE Demo <linear-ode-example>
-M1 Impulse <M1_impulse>
-M1 Resonance <M1_periodic_excite>
-M1 Simple Resonance <M1_simple_resonance>
-M2 Double Pendulum <M2_double_pendulum>
-M2 Euler Comparison <M2_Euler_method_comparison>
+2.1 Why ODE Methods? <chap_ode_intro>
+
+2.2 Review of Analytical Methods <chap_ode_review>
+
+2.3 Laplace Transform <chap_lap_trans>
+Demo: Simple Resonance <M1_simple_resonance>
+Demo: Impulse <M1_impulse>
+
+2.4 Numerical ODEs <chap_num_ode>
+Demo: Double Pendulum <M2_double_pendulum>
+Demo: Linear ODE <linear-ode-example>
+Demo: Euler Comparison <M2_Euler_method_comparison>
 ```

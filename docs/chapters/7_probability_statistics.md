@@ -9,5 +9,5 @@ Probability and statistics notes.
 ```{toctree}
 :maxdepth: 1
 
-Probability and Statistics <chap_prob_stat>
+Notes: Probability and Statistics <chap_prob_stat>
 ```
