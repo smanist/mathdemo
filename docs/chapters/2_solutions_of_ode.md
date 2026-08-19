@@ -20,6 +20,6 @@ Demo: Impulse <M1_impulse>
 
 2.4 Numerical ODEs <chap_num_ode>
 Demo: Double Pendulum <M2_double_pendulum>
-Demo: Linear ODE <linear-ode-example>
+Demo: Linear ODE <M2_linear_ode>
 Demo: Euler Comparison <M2_Euler_method_comparison>
 ```
