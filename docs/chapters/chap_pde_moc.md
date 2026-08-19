@@ -7,7 +7,7 @@ date: 06/19/2024
 
 ## Learning Objectives
 
-After learning the basic modules of this chapter, you will be able to:
+After learning this chapter, you will be able to:
 
 + Use the d'Alembert solution to solve wave equations.
 + Classify 2nd-order PDE's based on the number of characteristics.

@@ -7,7 +7,7 @@ date: 12/17/2023
 
 ## Learning Objectives
 
-After learning the basic modules of this chapter, you will be able to:
+After learning this chapter, you will be able to:
 
 + Know what complex numbers are and ways to represent them.
 + Perform basic mathematical operations of complex numbers.
@@ -764,13 +764,6 @@ We need to compute $z^c$ with $z=2i$ and $c=2i$.
 \end{aligned}
 ```
 
-## Integrals
-
-_Advanced topic._
-
-## Introduction to Potential Theory
-
-_Advanced topic._
 
 ## Summary of Basic Modules
 

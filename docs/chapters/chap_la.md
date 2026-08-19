@@ -2,7 +2,14 @@
 
 ## Learning objectives
 
-In this chapter, we provide an introduction to linear algebra that is designed to help the reader pursue advanced topics that involve computations with matrices and vectors. The chapter is designed such that no prior exposure to the topic is necessary for the reader. The specific learning objectives of this chapter include (i) understanding matrices and vectors, and their relationship (ii) exposure to common notations and nomenclature used in linear algebra (iii) exposure to special types of matrices (iv) introduction to performing elementary operations with matrices, and (v) interpreting certain operations with and properties of matrices.
+In this chapter, we provide an introduction to linear algebra that is designed to help the reader pursue advanced topics that involve computations with matrices and vectors. The chapter is designed such that no prior exposure to the topic is necessary for the reader. The specific learning objectives of this chapter include
+
++ Understanding matrices and vectors, and their relationship.
++ Exposure to common notations and nomenclature used in linear algebra.
++ Exposure to special types of matrices.
++ Introduction to performing elementary operations with matrices.
++ Interpreting certain operations with and properties of matrices.
+
 
 ## Introduction
 

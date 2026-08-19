@@ -2,7 +2,7 @@
 
 ## Learning Objectives
 
-After learning the basic modules of this chapter, you will be able to:
+After learning this chapter, you will be able to:
 
 + Compute the Fourier series of periodic functions.
 + Apply Fourier transform to non-periodic functions.

@@ -7,7 +7,7 @@ date: 12/18/2023
 
 ## Learning Objectives
 
-After learning the basic modules of this chapter, you will be able to:
+After learning this chapter, you will be able to:
 
 + Understand the physical meaning of a first-order PDE.
 + Understand the concept of characteristics in a nonlinear setting.
@@ -387,25 +387,3 @@ By now you should be able to:
 + Explain how the solution of a first-order PDE behaves along the characteristics.
 + Find the characteristics of a first-order PDE.
 + Use the characteristics to solve homogeneous and non-homogeneous first-order PDEs.
-
-
-## Advanced Topics
-
-### More general case
-
-*We give a more general treatment of the PDE.*
-
-```{math}
-\begin{aligned}
-\text{PDE:} &\quad a(u,x,t)u_t+b(u,x,t)u_x = c(u,x,t) \\
-\text{IC:} &\quad u(\xi) = u_0(\xi)\text{ on }x=x_0(\xi),\ y=y_0(\xi)
-\end{aligned}
-```
-
-### Existence of solution
-
-*For mathematical rigor, we discuss when the solution exists.*
-
-### When things break down
-
-*Now we formally formulate the problems of shocks and expansion waves, and discuss how to tackle these cases.*

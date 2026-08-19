@@ -7,7 +7,7 @@ date: 06/19/2024
 
 ## Learning Objectives
 
-After learning the basic modules of this chapter, you will be able to:
+After learning this chapter, you will be able to:
 
 + Identify three basic types of PDE: Unsteady heat transfer, Steady heat transfer, and String vibration.
 + Differentiate between initial conditions and the three types of boundary conditions (BC's).
@@ -154,9 +154,6 @@ In the above example, to pinpoint a unique solution, we needed a combination of 
 This combination forms the so-called **Initial Value Problem** (IVP).  This is the direct extension of the IVP concept from ODE's.  In addition, for a problem having only boundary conditions, we call it **Boundary Value Problem** (BVP).  Later we will see many forms of IVP and BVP, involving different types and numbers of BC's and IC's.
 
 
-:::{note}
-Skill-builder content was not migrated as part of this chapter ingestion.
-:::
 
 
 ## Separation of variables
@@ -474,9 +471,6 @@ As a sanity check, let's confirm that the solution that we found is indeed the s
 + At $t=0$, the solution reduces to a Sine series that sums to $u_0(x)$, and hence satisfies the IC.
 
 
-:::{note}
-Skill-builder content was not migrated as part of this chapter ingestion.
-:::
 
 
 #### A numerical example
@@ -723,9 +717,6 @@ While all BC's are Neumann, two of them are non-homogeneous.  Also, note the dir
 &clubs; The IC in unsteady heat transfer can be viewed as a non-homogeneous Dirichlet BC.  In this sense, the IVP can be viewed as a special type of BVP.
 
 
-:::{note}
-Skill-builder content was not migrated as part of this chapter ingestion.
-:::
 
 
 ### Solving BVP's by SoV
@@ -890,9 +881,6 @@ A_n &= \frac{2}{a\sinh\left(\frac{n\pi b}{a}\right)}\int_0^a \Delta T(x)\cos\lef
 ```
 
 
-:::{note}
-Skill-builder content was not migrated as part of this chapter ingestion.
-:::
 
 
 ## Summary of Basic Modules
@@ -911,9 +899,3 @@ By now you should be able to:
   - Solve the ODE's to derive the eigenfunctions, leveraging the table for homogeneous ODE solutions.
   - Determine the coefficients of eigenfunctions using Fourier Series from the IC or non-homogeneous BC's.
 
-
-## Method of assumed modes
-
-:::{note}
-Advanced topic placeholder from the source chapter; detailed content was not included in the raw source.
-:::

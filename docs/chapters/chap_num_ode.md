@@ -7,7 +7,7 @@ date: 12/17/2023
 
 ## Learning Objectives
 
-After learning the basic modules of this chapter, you will be able to:
+After learning this chapter, you will be able to:
 
 + Learn about a few common numerical ODE methods.
 + Understand several ways to assess a numerical method.
@@ -614,15 +614,6 @@ The standalone {doc}`linear-ode-example` page compares numerical solutions of
 $\dot{x}=kx$ using four different methods: (1) Explicit Euler, (2) Implicit
 Euler, (3) RK2, and (4) RK4.
 
-
-## Stability and Error Analysis
-
-**Advanced topics.**
-
-
-## Numerical Methods for Special Cases
-
-**Advanced topics.**
 
 
 ## Summary of Basic Modules

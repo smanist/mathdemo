@@ -7,7 +7,7 @@ date: 12/16/2023
 
 ## Learning Objectives
 
-After learning the basic modules of this chapter, you will be able to:
+After learning this chapter, you will be able to:
 
 - Perform Laplace Transform and inverse Laplace Transform of common functions.
 - Use Laplace Transform to solve ODEs with constant coefficients and nonlinear forcing terms.
@@ -804,11 +804,3 @@ By now you should be able to:
   - Know the definition and LT of the unit step and Dirac delta functions.
   - Perform LT and ILT with the $t$-shifting property.
   - Solve ODEs involving the two functions.
-
-## Integral and Convolution
-
-_Advanced topic placeholder from the source material._
-
-## Laplace Transform and Linear Systems
-
-_Advanced topic placeholder from the source material._
