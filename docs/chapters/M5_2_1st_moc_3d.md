@@ -4,8 +4,7 @@ title: First-Order PDEs with Characteristics (3D)
 
 # First-Order PDEs with Characteristics (3D)
 
-This standalone demo migrates the source notebook
-`M5_2_1st_moc_3d.ipynb`. It is a surface view of the same four first-order
+This demo is a surface view of the same four first-order
 PDE cases from the 2D characteristics demo:
 
 ```{math}

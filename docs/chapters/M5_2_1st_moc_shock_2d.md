@@ -4,8 +4,7 @@ title: First-Order PDEs and Shock Formation
 
 # First-Order PDEs and Shock Formation
 
-This standalone demo migrates the source notebook
-`M5_2_1st_moc_shock_2d.ipynb`. It considers the nonlinear transport equation
+This demo considers the nonlinear transport equation
 
 ```{math}
 \begin{aligned}

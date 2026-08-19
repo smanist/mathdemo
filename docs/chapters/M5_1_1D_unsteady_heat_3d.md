@@ -4,8 +4,7 @@ title: 1D Unsteady Heat Transfer (3D)
 
 # 1D Unsteady Heat Transfer (3D)
 
-This standalone demo migrates the source notebook
-`M5_1_1D_unsteady_heat_3d.ipynb`. It uses the same one-dimensional heat
+This demo uses the same one-dimensional heat
 equation and boundary-condition families as the 2D view, but plots the
 solution over both space and time as surfaces:
 

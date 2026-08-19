@@ -4,9 +4,7 @@ title: Euler Method Comparison
 
 # Euler Method Comparison
 
-This standalone demo migrates the source notebook
-`M2_Euler_method_comparison.ipynb` into a browser-side Sphinx/MyST page. It
-compares four numerical methods for three initial value problems:
+This demo compares four numerical methods for three initial value problems:
 
 1. $y' = -20y$, $y(0)=1$
 2. $y' = -20y + 20t^2 + 2t$, $y(0)=1$

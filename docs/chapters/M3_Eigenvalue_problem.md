@@ -4,8 +4,7 @@ title: 2x2 Matrix Transformations and Eigenvectors
 
 # 2x2 Matrix Transformations and Eigenvectors
 
-This standalone demo migrates the source notebook
-`M3_Eigenvalue_problem.ipynb`. It considers a matrix
+This demo considers a matrix
 
 ```{math}
 A=\begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}

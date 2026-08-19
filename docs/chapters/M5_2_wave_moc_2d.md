@@ -4,8 +4,7 @@ title: String Vibration by Characteristics
 
 # String Vibration by Characteristics
 
-This standalone demo migrates the source notebook
-`M5_2_wave_moc_2d.ipynb`. It solves the fixed-end string vibration problem
+This demo solves the fixed-end string vibration problem
 
 ```{math}
 \begin{aligned}

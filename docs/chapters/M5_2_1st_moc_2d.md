@@ -4,9 +4,7 @@ title: First-Order PDEs with Characteristics (2D)
 
 # First-Order PDEs with Characteristics (2D)
 
-This standalone demo migrates the source notebook
-`M5_2_1st_moc_2d.ipynb` into the site's browser-side format. It considers
-first-order PDEs of the form
+This demo considers first-order PDEs of the form
 
 ```{math}
 \begin{aligned}

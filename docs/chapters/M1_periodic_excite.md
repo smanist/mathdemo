@@ -4,8 +4,7 @@ title: Resonance of a Spring-Mass-Damper System
 
 # Resonance of a Spring-Mass-Damper System
 
-This demo migrates the notebook `M1_periodic_excite.ipynb` into the site's
-static MyST format. It explores the forced second-order system
+This demo explores the forced second-order system
 
 ```{math}
 y'' + 2\zeta\omega_0 y' + \omega_0^2 y = e^{-\sigma t}\cos(\omega t),

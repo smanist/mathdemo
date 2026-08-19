@@ -4,9 +4,7 @@ title: 1D Unsteady Heat Transfer (2D)
 
 # 1D Unsteady Heat Transfer (2D)
 
-This standalone demo migrates the source notebook
-`M5_1_1D_unsteady_heat_2d.ipynb` into the site's browser-side format. It
-solves the one-dimensional unsteady heat equation on
+This demo solves the one-dimensional unsteady heat equation on
 $0 \leq x \leq L,\ t \geq 0$,
 
 ```{math}

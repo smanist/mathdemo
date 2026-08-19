@@ -4,8 +4,7 @@ title: Numerical Solutions of the 1D Heat Equation
 
 # Numerical Solutions of the 1D Heat Equation
 
-This standalone demo migrates the source notebook
-`M7_1d_unsteady_heat_num.ipynb`. It solves the one-dimensional heat equation
+This demo solves the one-dimensional heat equation
 on $0 \leq x \leq 2\pi$,
 
 ```{math}
