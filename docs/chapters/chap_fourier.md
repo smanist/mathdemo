@@ -192,8 +192,8 @@ Practically, one would be only interested in the first few terms of the Fourier 
 
 As one increases the number of terms of approximation, shown in the blue curve, we see the series converges to the function $f(x)$ in black curve.  Also, note the high oscillations near the discontinuity of $f(x)$; this is the so-called Gibbs phenomenon, that is unavoidable for jump discontinuities.  The **hint** for us is to avoid as much as possible applying Fourier series to discontinuous functions.
 
-:::{note}
-Interactive example omitted during chapter ingestion; migrate the related demo separately if needed.
+:::{container} course-interactive course-interactive-m4-fourier-gibbs
+Interactive example loading...
 :::
 
 ### General case: Period $p=2L$
@@ -444,8 +444,8 @@ The above discussion can be verified visually in a plotted comparison. Explore h
 
 &clubs; Try to come up with a case where the odd extension is better than the even extension, i.e., a Sine series that converges faster than its Cosine counterpart.
 
-:::{note}
-Interactive example omitted during chapter ingestion; migrate the related demo separately if needed.
+:::{container} course-interactive course-interactive-m4-fourier-extension
+Interactive example loading...
 :::
 
 ## Fourier Transform
@@ -629,8 +629,13 @@ Explore how the choice of the cut-off frequency impacts the recovered signal.
 
 &clubs; For this particular example, there is an even better way to denoise the signal - think about what it is.
 
-:::{note}
-Interactive example omitted during chapter ingestion; migrate the related demo separately if needed.
+The interaction below shows the noisy time-domain
+signal, its Fourier spectrum, and a low-pass filtered reconstruction. Use the
+numeric input to change the noise level, then use the slider to adjust
+the filtering threshold.
+
+:::{container} course-interactive course-interactive-signal-denoise
+Interactive example loading...
 :::
 
 ## Summary of Basic Modules

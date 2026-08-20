@@ -44,7 +44,7 @@ where $u$ is the "density" of vehicles, $\phi$ gives the initial distribution of
 This chapter will focus on the scalar first-order PDEs, and solve a model problem in the following form:
 
 ```{math}
-:label: eq:model
+:label: eq:pde_model
 
 \begin{aligned}
 \text{PDE:} &\quad u_t+V(u,x,t)u_x = S(u,x,t) \\
@@ -52,7 +52,7 @@ This chapter will focus on the scalar first-order PDEs, and solve a model proble
 \end{aligned}
 ```
 
-where $u(x,t)$ is defined for $x\in(-\infty,\infty)$ and $t\in[0,\infty)$, i.e., the entire upper part of the $x$-$t$ plane. Due to the presence of the initial condition, which is defined on the entire $x$-axis, {eq}`eq:model` is an **initial value problem** (IVP).
+where $u(x,t)$ is defined for $x\in(-\infty,\infty)$ and $t\in[0,\infty)$, i.e., the entire upper part of the $x$-$t$ plane. Due to the presence of the initial condition, which is defined on the entire $x$-axis, {eq}`eq:pde_model` is an **initial value problem** (IVP).
 
 (sec:mean)=
 ### What does the PDE really mean?
@@ -87,12 +87,12 @@ At this point, we can conclude that, qualitatively, the first-order PDE describe
 
 ### Plan of attack
 
-Now return to the more general model problem {eq}`eq:model`. You might have noticed two key differences from the second-order PDEs we have solved so far:
+Now return to the more general model problem {eq}`eq:pde_model`. You might have noticed two key differences from the second-order PDEs we have solved so far:
 
-1. {eq}`eq:model` does not have boundary conditions. There are fewer conditions to satisfy and our life is thus *easier*.
-2. {eq}`eq:model` can be nonlinear, i.e., we might have terms involving products of unknown functions and their derivatives. For example, if $V(u,x,t)=u^2$, we would get a nonlinear convection term $u^2 u_x$ in the PDE. The nonlinearity would make our life *harder*.
+1. {eq}`eq:pde_model` does not have boundary conditions. There are fewer conditions to satisfy and our life is thus *easier*.
+2. {eq}`eq:pde_model` can be nonlinear, i.e., we might have terms involving products of unknown functions and their derivatives. For example, if $V(u,x,t)=u^2$, we would get a nonlinear convection term $u^2 u_x$ in the PDE. The nonlinearity would make our life *harder*.
 
-Yet, luckily, {eq}`eq:model` can be viewed as *quasi-linear*, in the sense that the $u_t$ and $u_x$ terms are always first-order regardless of the nonlinearity in $V$ and $S$. Here "first-order" means that we do not have "strange" terms such as $u_t^2$, $\sqrt{u_x}$, $\sin(u_t)$, etc. We will leverage this quasi-linearity and use a modified version of the **method of characteristics** to solve the IVP of first-order PDEs.
+Yet, luckily, {eq}`eq:pde_model` can be viewed as *quasi-linear*, in the sense that the $u_t$ and $u_x$ terms are always first-order regardless of the nonlinearity in $V$ and $S$. Here "first-order" means that we do not have "strange" terms such as $u_t^2$, $\sqrt{u_x}$, $\sin(u_t)$, etc. We will leverage this quasi-linearity and use a modified version of the **method of characteristics** to solve the IVP of first-order PDEs.
 
 
 ## Method of Characteristics: Nonlinear Version

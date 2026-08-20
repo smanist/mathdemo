@@ -22,6 +22,3 @@ in the `s`-plane.
 Interactive example loading...
 :::
 
-The browser version keeps the notebook's qualitative behavior but recomputes the
-response directly in JavaScript on the plotted time grid so the page remains a
-fully static Sphinx build.

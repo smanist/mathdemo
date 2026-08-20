@@ -750,6 +750,9 @@ Clearly, the Dirac delta greatly simplifies the solution procedure by eliminatin
 
 ![Finite impulses approximated by Dirac Delta](../pics/unit_v_dirac.png)
 
+See an interactive example in {doc}`M1_impulse`.
+
+
 ## Exploration by Interaction
 
 From previous courses you may have seen the concept of resonance. For a spring-mass-damper system, when the excitation frequency is closer to the system frequency, the system response becomes maximized and unbounded if there is no damping.
@@ -785,8 +788,8 @@ Two more things to explore if you are interested:
 - Turn on the gain plot. We plot contours of the absolute value of $Q(s)$, or more accurately the log of $|Q(s)|$ due to the rapid change in $|Q(s)|$. How is $|Q(s)|$ related to the response amplitude? The answer explains why $|Q(s)|$ is called gain.
 - With all the above knowledge, explore the overdamped case, namely $\zeta>1$.
 
-:::{note}
-The interactive exploration embedded in the raw source was intentionally left out of this migration. This issue only ingests the chapter prose and static assets into the Sphinx/MyST site.
+:::{container} course-interactive course-interactive-m1-periodic-excite
+Interactive example loading...
 :::
 
 ## Summary of Basic Modules

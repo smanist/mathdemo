@@ -31,6 +31,7 @@ where $y'=\dd y/\dd x$, $f(x,y)$ is a nonlinear function, $y(x)$ denotes the tru
 
 &clubs; While we are starting with a first-order ODE of a scalar unknown, later we will see that the methods presented in this chapter can be adapted easily to solve first-order ODE's of multiple unknowns and higher-order ODE's.
 
+See an interactive example in {doc}`M2_double_pendulum`.
 
 ## Problem Formulation
 The first thing to know about numerical methods is that they produce only approximate solutions.  The approximation, ultimately, comes from the digital representation of numbers in a computer: there is no way to *truly* represent a continuous range of numbers in the computer, and everything needs to be discretized in one way or another.  Specific to the IVP, the discretization means we can only find a sequence of points
@@ -610,10 +611,25 @@ This is exactly the problem solved in the previous section.
 
 ## Exploration by Interaction
 
-The standalone {doc}`linear-ode-example` page compares numerical solutions of
-$\dot{x}=kx$ using four different methods: (1) Explicit Euler, (2) Implicit
-Euler, (3) RK2, and (4) RK4.
+This interactive example compares several numerical methods for the linear ODE,
+including (1) Explicit Euler, (2) Implicit Euler, (3) RK2, and (4) RK4.
 
+```{math}
+\dot{x}=kx,\qquad x(0)=x_0.
+```
+
+Try changing the parameter $k$, the initial condition $x_0$, the final time
+$t_f$, and the step size $h$.  Explore:
+
+- See if changing step size changes the errors in solution as we learned from class.
+- Does the initial condition impact solution stability and accuracy?
+- Is implicit Euler always "stable"?
+
+:::{container} course-interactive course-interactive--linear-ode
+Interactive example loading...
+:::
+
+An interactive example with more complex ODE's is in {doc}`M2_Euler_method_comparison`.
 
 
 ## Summary of Basic Modules
