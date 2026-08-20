@@ -629,7 +629,7 @@ $t_f$, and the step size $h$.  Explore:
 Interactive example loading...
 :::
 
-An interactive example with more complex ODE's is in {doc}`M2_Euler_method_comparison`.
+Also in {doc}`M2_linear_ode`.  An interactive example with more complex ODE's is in {doc}`M2_Euler_method_comparison`.
 
 
 ## Summary of Basic Modules

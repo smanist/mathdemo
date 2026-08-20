@@ -196,6 +196,8 @@ As one increases the number of terms of approximation, shown in the blue curve, 
 Interactive example loading...
 :::
 
+Also in {doc}`M4_Fourier_Gibbs`.
+
 ### General case: Period $p=2L$
 
 Now that we already know how to extend a function of period $2\pi$ into a Fourier series, let's extend the results to a general case where a function has a period of $2L$.
@@ -448,6 +450,8 @@ The above discussion can be verified visually in a plotted comparison. Explore h
 Interactive example loading...
 :::
 
+Also in {doc}`M4_Fourier_Extension`.
+
 ## Fourier Transform
 
 In the second part of the chapter, we will extend Fourier series further to non-periodic functions on an infinite interval, which ultimately leads to the Fourier transform.
@@ -637,6 +641,8 @@ the filtering threshold.
 :::{container} course-interactive course-interactive-signal-denoise
 Interactive example loading...
 :::
+
+Also in {doc}`M4_signal_denoise`.
 
 ## Summary of Basic Modules
 

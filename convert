@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  printf 'Usage: %s CHAPTER.md\n' "$(basename "$0")" >&2
+  printf 'Converts docs/chapters/CHAPTER.md to pdfs/CHAPTER.pdf.\n' >&2
+}
+
+if [[ $# -ne 1 ]]; then
+  usage
+  exit 2
+fi
+
+chapter_name=$1
+case "$chapter_name" in
+  */* | .md | "")
+    printf 'error: pass a Markdown filename, not a path: %s\n' "$chapter_name" >&2
+    exit 2
+    ;;
+  *.md)
+    ;;
+  *)
+    printf 'error: chapter filename must end in .md: %s\n' "$chapter_name" >&2
+    exit 2
+    ;;
+esac
+
+for program in pandoc xelatex; do
+  if ! command -v "$program" >/dev/null 2>&1; then
+    printf 'error: required program is not available: %s\n' "$program" >&2
+    exit 1
+  fi
+done
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+chapters_dir="$repo_root/docs/chapters"
+source_file="$chapters_dir/$chapter_name"
+pdf_dir="$repo_root/pdfs"
+pdf_name="${chapter_name%.md}.pdf"
+output_file="$pdf_dir/$pdf_name"
+lua_filter="$repo_root/scripts/pandoc-myst.lua"
+latex_header="$repo_root/scripts/pandoc-math-header.tex"
+
+if [[ ! -f "$source_file" ]]; then
+  printf 'error: chapter not found: docs/chapters/%s\n' "$chapter_name" >&2
+  exit 1
+fi
+
+mkdir -p "$pdf_dir"
+
+work_dir=$(mktemp -d "${TMPDIR:-/tmp}/mathdemo-convert.XXXXXX")
+cleanup() {
+  rm -rf -- "$work_dir"
+}
+trap cleanup EXIT HUP INT TERM
+
+temporary_pdf="$work_dir/$pdf_name"
+
+pandoc "$source_file" \
+  --from=commonmark_x \
+  --lua-filter="$lua_filter" \
+  --include-in-header="$latex_header" \
+  --pdf-engine=xelatex \
+  --resource-path="$chapters_dir:$repo_root/docs" \
+  --metadata title= \
+  --variable geometry:margin=0.8in \
+  --output="$temporary_pdf"
+
+mv -f -- "$temporary_pdf" "$output_file"
+printf 'Created pdfs/%s\n' "$pdf_name"

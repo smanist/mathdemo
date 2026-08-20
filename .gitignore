@@ -3,3 +3,4 @@ docs/_build/
 .doctrees/
 mathdemo-raw
 __pycache__
+pdfs/

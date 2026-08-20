@@ -16,12 +16,3 @@ M5 First-Order Characteristics (2D) <M5_2_1st_moc_2d>
 M5 First-Order Characteristics (3D) <M5_2_1st_moc_3d>
 M5 Shock Formation <M5_2_1st_moc_shock_2d>
 ```
-
-<!--
-Interactive examples already in notes:
-M1 Resonance <M1_periodic_excite>
-M2 Linear ODE <M2_linear_ode>
-M4 Gibbs Phenomenon <M4_Fourier_Gibbs>
-M4 Fourier Extensions <M4_Fourier_Extension>
-M4 Signal Denoising <M4_signal_denoise>
--->
