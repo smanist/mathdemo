@@ -216,6 +216,10 @@ Collectively, the solution represents an oscillating parabolic pattern. But this
 
 If we think the problem as string vibration, the string makes a sound that is dominated by the base frequency, because the first mode has the highest amplitude; the modal amplitudes decay quickly as $n$ increases, hence the sound would only contain the first few higher harmonics that are discernable to human ears.
 
+
+Access an interactive example in {doc}`M5_2_wave_sov_2d`.  The 3D version is in {doc}`M5_2_wave_sov_3d`.
+
+
 ## Characteristics in the Wave Equation
 
 Now we transform the solutions found by SoV and reveal the existence of characteristics in the wave equations.
@@ -381,6 +385,8 @@ u(x,t) &= \frac{1}{2}[f(x+ct)+f(x-ct)] \\
 \end{aligned}
 ```
 This correctly recovers our earlier solution.
+
+Access an interactive example in {doc}`M5_2_wave_moc_2d`.
 
 ## Classification of Second-Order PDE's
 

@@ -508,9 +508,8 @@ Now we are ready to explore the effect of $c$: it controls how fast the exponent
 
 In addition, we can also observe what happens when $t\rightarrow\infty$.  Mathematically, all exponentials go to zero, and $u(x,t)=0$.  Physically this means the temperature evens out, and this is due to the BC's.  Fixing the temperature to 0 at the two ends effectively serves as heat sinks, to which all thermal energy will escape eventually.  This is how mathematics connects to the laws of physics.
 
-:::{note}
-Interactive visualization omitted during ingestion and should be migrated separately if needed.
-:::
+
+Access the interactive example in {doc}`M5_1_1D_unsteady_heat_2d`.  The 3D version is in {doc}`M5_1_1D_unsteady_heat_3d`.
 
 
 ## More on 1D Unsteady Heat Transfer
@@ -536,9 +535,7 @@ u(0,t)=u_x(a,t)=0
 ```
 This solution is also available in the interaction.  Try to make sense of this solution.
 
-:::{note}
-Interactive visualization omitted during ingestion and should be migrated separately if needed.
-:::
+Access the interactive example in {doc}`M5_1_1D_unsteady_heat_2d`.  The 3D version is in {doc}`M5_1_1D_unsteady_heat_3d`.  Make sure to select appropriate BC types.
 
 
 ### Non-homogeneous cases
@@ -663,9 +660,7 @@ This is exactly the equation we solved for the non-homogeneous component!
 
 &clubs; Explore how the non-homogeneous IVP solutions change when other types of BC's are used.
 
-:::{note}
-Interactive visualization omitted during ingestion and should be migrated separately if needed.
-:::
+Access the interactive example in {doc}`M5_1_1D_unsteady_heat_2d`.  The 3D version is in {doc}`M5_1_1D_unsteady_heat_3d`.  Make sure to add appropriate non-homogeneous terms.
 
 
 ## Steady Heat Transfer in 2D
