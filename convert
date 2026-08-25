@@ -3,12 +3,53 @@
 set -euo pipefail
 
 usage() {
-  printf 'Usage: %s CHAPTER.md\n' "$(basename "$0")" >&2
+  printf 'Usage: %s [-s FACTOR|--width-scale FACTOR] CHAPTER.md\n' "$(basename "$0")" >&2
   printf 'Converts docs/chapters/CHAPTER.md to pdfs/CHAPTER.pdf.\n' >&2
+  printf 'Scales requested figure widths by FACTOR (default: 1).\n' >&2
 }
+
+width_scale=1
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -s | --width-scale)
+      if [[ $# -lt 2 ]]; then
+        printf 'error: %s requires a factor\n' "$1" >&2
+        exit 2
+      fi
+      width_scale=$2
+      shift 2
+      ;;
+    --width-scale=*)
+      width_scale=${1#*=}
+      shift
+      ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    --)
+      shift
+      break
+      ;;
+    -*)
+      printf 'error: unknown option: %s\n' "$1" >&2
+      usage
+      exit 2
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
 
 if [[ $# -ne 1 ]]; then
   usage
+  exit 2
+fi
+
+if [[ ! "$width_scale" =~ ^([0-9]+([.][0-9]*)?|[.][0-9]+)$ ]]; then
+  printf 'error: width scale must be a positive number: %s\n' "$width_scale" >&2
   exit 2
 fi
 
@@ -26,12 +67,17 @@ case "$chapter_name" in
     ;;
 esac
 
-for program in pandoc xelatex; do
+for program in awk pandoc xelatex; do
   if ! command -v "$program" >/dev/null 2>&1; then
     printf 'error: required program is not available: %s\n' "$program" >&2
     exit 1
   fi
 done
+
+if ! awk -v factor="$width_scale" 'BEGIN { exit !(factor > 0) }'; then
+  printf 'error: width scale must be greater than zero: %s\n' "$width_scale" >&2
+  exit 2
+fi
 
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 chapters_dir="$repo_root/docs/chapters"
@@ -41,6 +87,7 @@ pdf_name="${chapter_name%.md}.pdf"
 output_file="$pdf_dir/$pdf_name"
 lua_filter="$repo_root/scripts/pandoc-myst.lua"
 latex_header="$repo_root/scripts/pandoc-math-header.tex"
+myst_preprocessor="$repo_root/scripts/pandoc-myst-preprocess.awk"
 
 if [[ ! -f "$source_file" ]]; then
   printf 'error: chapter not found: docs/chapters/%s\n' "$chapter_name" >&2
@@ -56,9 +103,12 @@ cleanup() {
 trap cleanup EXIT HUP INT TERM
 
 temporary_pdf="$work_dir/$pdf_name"
+normalized_source="$work_dir/$chapter_name"
 
-pandoc "$source_file" \
-  --from=commonmark_x \
+awk -v width_scale="$width_scale" -f "$myst_preprocessor" "$source_file" >"$normalized_source"
+
+pandoc "$normalized_source" \
+  --from=commonmark_x+implicit_figures \
   --lua-filter="$lua_filter" \
   --include-in-header="$latex_header" \
   --pdf-engine=xelatex \

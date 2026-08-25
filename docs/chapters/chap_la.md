@@ -311,7 +311,7 @@ Crucially, the matrix $A$ *transformed* the vector $\mathbf{b}_1 = \begin{bmatri
 
 ```{figure} ../pics/linear_transform.png
 :name: fig-linear-transform
-:width: 100%
+:width: 70%
 :align: center
 
 Linear transformation of a vector $\mathbf{b}$ by the matrix $A$.
@@ -319,7 +319,7 @@ Linear transformation of a vector $\mathbf{b}$ by the matrix $A$.
 
 ```{figure} ../pics/detA0.png
 :name: fig-det-a-zero
-:width: 97%
+:width: 70%
 :align: center
 
 Degenerate linear transformation with zero determinant.
@@ -429,4 +429,4 @@ The eigenvalue problem solves $A\mathbf{x}=\lambda \mathbf{x}$, where $A$ is a s
 
 ## Summary
 
-In this chapter, we began by introducing general notations necessary to interpret linear algebra equations followed by introducing a few important types of matrices. Then, we learned two fundamental elementary operations in linear algebra: matrix addition and multiplication, and their physical interpretation. We concluded the chapter by learning three important matrix properties that find widespread applications, namely, matrix determinants, eigenvalues, and eigenvectors. In the following chapter, we will venture into matrix computations.
+In this chapter, we began by introducing general notations necessary to interpret linear algebra equations followed by introducing a few important types of matrices. Then, we learned two fundamental elementary operations in linear algebra: matrix addition and multiplication, and their physical interpretation. We concluded the chapter by learning three important matrix properties that find widespread applications, namely, matrix determinants, eigenvalues, and eigenvectors.
