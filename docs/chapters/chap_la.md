@@ -758,7 +758,7 @@ Geometric interpretation of the determinant as an area-scaling factor.
         \end{bmatrix}$, then $\det(A) = a\times e \times i$.
     Particularly, this means for an identity matrix $I$, $\det(I) = 1$.
 
-10. If $A^{-1}$ exists,
+8. If $A^{-1}$ exists,
 
    $$
    \det(A^{-1})=\frac{1}{\det(A)}.
@@ -766,9 +766,9 @@ Geometric interpretation of the determinant as an area-scaling factor.
 
    (This is a composition of two properties above.)
 
-8.  **Orthogonal matrix.** The determinant of an orthogonal matrix $A$ is $\pm1$.
+9.  **Orthogonal matrix.** The determinant of an orthogonal matrix $A$ is $\pm1$.
 
-9.  **$A\mathbf{x}=\mathbf{0}$.** Let there be a vector $\mathbf{x} \neq \mathbf{0}$ (so $\mathbf{x}$ is not all $0$'s), and $A$ is also not all $0$'s. Then, the only way $A\mathbf{x}=\mathbf{0}$ is if $\det(A) = 0$! We will see this applied in the next section.
+10.  **$A\mathbf{x}=\mathbf{0}$.** Let there be a vector $\mathbf{x} \neq \mathbf{0}$ (so $\mathbf{x}$ is not all $0$'s), and $A$ is also not all $0$'s. Then, the only way $A\mathbf{x}=\mathbf{0}$ is if $\det(A) = 0$! We will see this applied in the next section.
 
 
 ### Cramer's Rule
