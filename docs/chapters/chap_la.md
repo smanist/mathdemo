@@ -80,7 +80,7 @@ Notations are important and play a key role in communicating mathematics. Here a
 
   - For example, let $A=\begin{bmatrix}
             1 & 2 \\ 
-            -2 & 1 \\
+            -2 & -1 \\
         \end{bmatrix}$, then $\mathbf{a}_1 = \begin{bmatrix}
             1\\
             -2
@@ -130,10 +130,10 @@ A matrix is a structured collection of numerical elements (typically reals, inte
   - For square matrices, we can identify the "diagonal" of the matrix which is defined as $\text{diag}(A) = a_{ii}, ~\forall i = 1,\ldots, n$.
 
 - **Symmetric matrices.** Matrices that are *unchanged* under transposition: $A = A^\top$. For example, $A = \begin{bmatrix}
-          1 & 0 & 2\\
+          1 & 0 & 1\\
           0 & 2 & 1\\
           1 & 1 & 3
-      \end{bmatrix} = A^\top.$ A straightforward advantage of symmetric matrices is that, for a matrix $A \in \mathbb{R}^{n\times n}$ you only need to store $\frac{n(n-1)}{2}$ elements (why?).
+      \end{bmatrix} = A^\top.$ A straightforward advantage of symmetric matrices is that, for a matrix $A \in \mathbb{R}^{n\times n}$ you only need to store $\frac{n(n+1)}{2}$ elements (why?).
 
 - **Skew-symmetric matrices.** Transposition results in scalar multiplication by $-1$: $A^\top = -A$. For example, $A = \begin{bmatrix}
           0 & 2 \\
@@ -222,7 +222,7 @@ Let's quickly review an important elementary operation with vectors, called the 
 \text{dot}(\mathbf{x}, \mathbf{y}) = \mathbf{x}^\top \mathbf{y}=\sum_{i=1}^n x_i y_i.
 ```
 
-For instance, let $\mathbf{x}=[1, 2, 3]^\top$ and $\mathbf{y}=[2, 1, 3]^\top$ then, $\mathbf{x}^\top \mathbf{y} = 1\times 2 + 2\times 1 + 3 \times 3 = 13.$ Note that the dot product of two vectors is a scalar. Its magnitude measures the "similarity" between two vectors; vectors are completely dissimilar when their dot product is zero: $\mathbf{x}^\top \mathbf{y}=0$. Such vectors are called *orthogonal* vectors, e.g., the due north and due south directions. Its sign indicates if the increase in one vector results in the increase in the other; some illustrations are shown in the figure below.
+For instance, let $\mathbf{x}=[1, 2, 3]^\top$ and $\mathbf{y}=[2, 1, 3]^\top$ then, $\mathbf{x}^\top \mathbf{y} = 1\times 2 + 2\times 1 + 3 \times 3 = 13.$ Note that the dot product of two vectors is a scalar. Its magnitude measures the "similarity" between two vectors; vectors are completely dissimilar when their dot product is zero: $\mathbf{x}^\top \mathbf{y}=0$. Such vectors are called *orthogonal* vectors, e.g., the due north and due east directions. Its sign indicates if the increase in one vector results in the increase in the other; some illustrations are shown in the figure below.
 
 The length of a vector is then the square-root of its dot product with itself: $\|\mathbf{x}\|_2 = (\mathbf{x}^\top \mathbf{x})^{1/2}.$
 
@@ -1048,7 +1048,7 @@ Repeated Gaussian elimination requires repeated triangularization because the ri
 ## Eigenvalue Problems
 
 
-The eigenvalue problem solves $A\mathbf{x}=\lambda \mathbf{x}$, where $A$ is a square matrix, $\mathbf{x}$ is called the eigenvector of $A$ and $\lambda$ is called the eigenvalue of $A$. Geometrically, the eigenvalue problem seeks to find the vector $\mathbf{x}$ which is un-rotated and un-translated by a linear transformation with $A$ but is scaled by the scalar $\lambda$ (eigenvalue). The eigenvector can be interpreted as a *principal axis* or *axis of rotation* of the matrix $A$. It finds widespread applications but we will not go into them here.
+The eigenvalue problem solves $A\mathbf{x}=\lambda \mathbf{x}$, where $A$ is a square matrix, $\mathbf{x}$ is called the eigenvector of $A$ and $\lambda$ is called the eigenvalue of $A$. Geometrically, the eigenvalue problem seeks to find the vector $\mathbf{x}$ which is un-rotated by a linear transformation with $A$ but is scaled by the scalar $\lambda$ (eigenvalue). The eigenvector can be interpreted as a *principal axis* of the matrix $A$. It finds widespread applications but we will not go into them here.
 
 
 ### Eigenvalues and eigenvectors
@@ -1203,13 +1203,13 @@ $$
 
 ### Some properties of matrix eigenvalues and eigenvectors
 
-1.  The eigenvalues of a square matrix can be real, complex or a mix of both.
+1.  The eigenvalues of a square matrix can be real, complex or a mix of both, even if the matrix is real valued.
 
 2.  A square matrix $A$ has at least 1 unique eigenvalue; it can have up to $n$ unique eigenvalues.
 
 3.  The eigenvalues of a matrix $A$ are called its *spectrum*. The eigenvalue with largest absolute magnitude is called the *spectral radius*.
 
-4.  The eigenvectors of a matrix are not unique. If $\mathbf{x}_1$ and $\mathbf{x}_2$ are eigenvectors of $A$ associated with the same eigenvalue, then any nonzero linear combination $k_1\mathbf{x}_1 + k_2 \mathbf{x}_2$ is also an eigenvector of $A$.
+4.  The eigenvectors of a matrix are not unique. If $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent eigenvectors of $A$ associated with the same eigenvalue, then any non-zero linear combination $k_1\mathbf{x}_1 + k_2 \mathbf{x}_2$ is also an eigenvector of $A$.
 
 5.  The eigenvalues of a diagonal matrix are the diagonal elements.
 
@@ -1235,4 +1235,4 @@ By now you should be able to:
   - Compute the eigenvalues and eigenvectors.
   - Use the eigenvalues and eigenvectors to solve system of ODE's.
 
-Also, by now you are prepared to  learn methods to numerically solve PDE systems in the later chapters.
+Also, by now you are prepared to learn methods to numerically solve PDE systems in the later chapters.
