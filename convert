@@ -4,11 +4,14 @@ set -euo pipefail
 
 usage() {
   printf 'Usage: %s [-s FACTOR|--width-scale FACTOR] CHAPTER.md\n' "$(basename "$0")" >&2
+  printf '       %s [-s FACTOR|--width-scale FACTOR] {-m|--merge} FIRST.md SECOND.md\n' "$(basename "$0")" >&2
   printf 'Converts docs/chapters/CHAPTER.md to pdfs/CHAPTER.pdf.\n' >&2
+  printf 'With -m/--merge, combines two chapters into pdfs/FIRST-SECOND.pdf.\n' >&2
   printf 'Scales requested figure widths by FACTOR (default: 1).\n' >&2
 }
 
 width_scale=1
+merge=false
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -22,6 +25,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     --width-scale=*)
       width_scale=${1#*=}
+      shift
+      ;;
+    -m | --merge)
+      merge=true
       shift
       ;;
     -h | --help)
@@ -43,7 +50,13 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ $# -ne 1 ]]; then
+if [[ "$merge" == true && $# -ne 2 ]]; then
+  printf 'error: --merge requires exactly two Markdown filenames\n' >&2
+  usage
+  exit 2
+fi
+
+if [[ "$merge" == false && $# -ne 1 ]]; then
   usage
   exit 2
 fi
@@ -53,19 +66,21 @@ if [[ ! "$width_scale" =~ ^([0-9]+([.][0-9]*)?|[.][0-9]+)$ ]]; then
   exit 2
 fi
 
-chapter_name=$1
-case "$chapter_name" in
-  */* | .md | "")
-    printf 'error: pass a Markdown filename, not a path: %s\n' "$chapter_name" >&2
-    exit 2
-    ;;
-  *.md)
-    ;;
-  *)
-    printf 'error: chapter filename must end in .md: %s\n' "$chapter_name" >&2
-    exit 2
-    ;;
-esac
+chapter_names=("$@")
+for chapter_name in "${chapter_names[@]}"; do
+  case "$chapter_name" in
+    */* | .md | "")
+      printf 'error: pass a Markdown filename, not a path: %s\n' "$chapter_name" >&2
+      exit 2
+      ;;
+    *.md)
+      ;;
+    *)
+      printf 'error: chapter filename must end in .md: %s\n' "$chapter_name" >&2
+      exit 2
+      ;;
+  esac
+done
 
 for program in awk pandoc xelatex; do
   if ! command -v "$program" >/dev/null 2>&1; then
@@ -81,18 +96,23 @@ fi
 
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 chapters_dir="$repo_root/docs/chapters"
-source_file="$chapters_dir/$chapter_name"
 pdf_dir="$repo_root/pdfs"
-pdf_name="${chapter_name%.md}.pdf"
+if [[ "$merge" == true ]]; then
+  pdf_name="${chapter_names[0]%.md}-${chapter_names[1]%.md}.pdf"
+else
+  pdf_name="${chapter_names[0]%.md}.pdf"
+fi
 output_file="$pdf_dir/$pdf_name"
 lua_filter="$repo_root/scripts/pandoc-myst.lua"
 latex_header="$repo_root/scripts/pandoc-math-header.tex"
 myst_preprocessor="$repo_root/scripts/pandoc-myst-preprocess.awk"
 
-if [[ ! -f "$source_file" ]]; then
-  printf 'error: chapter not found: docs/chapters/%s\n' "$chapter_name" >&2
-  exit 1
-fi
+for chapter_name in "${chapter_names[@]}"; do
+  if [[ ! -f "$chapters_dir/$chapter_name" ]]; then
+    printf 'error: chapter not found: docs/chapters/%s\n' "$chapter_name" >&2
+    exit 1
+  fi
+done
 
 mkdir -p "$pdf_dir"
 
@@ -103,20 +123,34 @@ cleanup() {
 trap cleanup EXIT HUP INT TERM
 
 temporary_pdf="$work_dir/$pdf_name"
-normalized_source="$work_dir/$chapter_name"
+normalized_sources=()
 
-awk -v width_scale="$width_scale" -f "$myst_preprocessor" "$source_file" >"$normalized_source"
+for index in "${!chapter_names[@]}"; do
+  normalized_source="$work_dir/input-$((index + 1)).md"
+  awk -v width_scale="$width_scale" -f "$myst_preprocessor" \
+    "$chapters_dir/${chapter_names[$index]}" >"$normalized_source"
+  normalized_sources+=("$normalized_source")
+done
 
-pandoc "$normalized_source" \
-  --from=commonmark_x+implicit_figures \
-  --lua-filter="$lua_filter" \
-  --include-in-header="$latex_header" \
-  --number-sections \
-  --pdf-engine=xelatex \
-  --resource-path="$chapters_dir:$repo_root/docs" \
-  --metadata title= \
-  --variable geometry:margin=0.8in \
-  --output="$temporary_pdf"
+pandoc_arguments=(
+  "${normalized_sources[@]}"
+  --from=commonmark_x+implicit_figures
+)
+if [[ "$merge" == true ]]; then
+  pandoc_arguments+=(--file-scope)
+fi
+pandoc_arguments+=(
+  "--lua-filter=$lua_filter"
+  "--include-in-header=$latex_header"
+  --number-sections
+  --pdf-engine=xelatex
+  "--resource-path=$chapters_dir:$repo_root/docs"
+  --metadata title=
+  --variable geometry:margin=0.8in
+  "--output=$temporary_pdf"
+)
+
+pandoc "${pandoc_arguments[@]}"
 
 mv -f -- "$temporary_pdf" "$output_file"
 printf 'Created pdfs/%s\n' "$pdf_name"

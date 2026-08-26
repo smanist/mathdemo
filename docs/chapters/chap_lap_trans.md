@@ -798,7 +798,7 @@ Interactive example loading...
 
 Also in {doc}`M1_periodic_excite`.
 
-## Summary of Basic Modules
+## Summary
 
 By now you should be able to:
 

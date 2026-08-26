@@ -636,7 +636,7 @@ Interactive example loading...
 Also in {doc}`M2_linear_ode`.  An interactive example with more complex ODE's is in {doc}`M2_Euler_method_comparison`.
 
 
-## Summary of Basic Modules
+## Summary
 
 By now you should be able to:
 

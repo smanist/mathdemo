@@ -200,7 +200,7 @@ The addition operation is commutative; that is, $A+B = B+A$. We will see later t
 
 #### Matrix Multiplication
 
-```{figure} ../pics/vector_geom.png
+```{figure} ../pics/M1_vector_geom.png
 :name: fig-vector-geom
 :width: 70%
 :align: center
@@ -226,7 +226,7 @@ For instance, let $\mathbf{x}=[1, 2, 3]^\top$ and $\mathbf{y}=[2, 1, 3]^\top$ th
 
 The length of a vector is then the square-root of its dot product with itself: $\|\mathbf{x}\|_2 = (\mathbf{x}^\top \mathbf{x})^{1/2}.$
 
-```{figure} ../pics/dotprod.png
+```{figure} ../pics/M1_dotprod.png
 :name: fig-dotprod
 :width: 100%
 :align: center
@@ -315,7 +315,7 @@ Crucially, the matrix $A$ *transformed* the vector $\mathbf{b}_1 = \begin{bmatri
         2
     \end{bmatrix}$. We call this transformation a *linear* transformation because matrix multiplication defines maps that preserve vector addition and scalar multiplication. Geometrically, these maps can produce effects such as *scaling*, *rotations*, *reflections*, and *shears*. In this specific example, the vector $\mathbf{b}_1$ has been *rotated counterclockwise and scaled* by the matrix-vector product, as shown in the figures below.
 
-```{figure} ../pics/linear_transform.png
+```{figure} ../pics/M1_linear_transform.png
 :name: fig-linear-transform
 :width: 70%
 :align: center
@@ -323,7 +323,7 @@ Crucially, the matrix $A$ *transformed* the vector $\mathbf{b}_1 = \begin{bmatri
 Linear transformation of a vector $\mathbf{b}$ by the matrix $A$.
 ```
 
-```{figure} ../pics/detA0.png
+```{figure} ../pics/M1_detA0.png
 :name: fig-det-a-zero
 :width: 70%
 :align: center
@@ -381,7 +381,7 @@ $$
 
 The two lines are parallel and do not intersect, so the system has no solution.
 
-```{figure} ../pics/linear_system_no_solution.png
+```{figure} ../pics/M1_linear_system_no_solution.png
 :name: fig-linear-system-no-solution
 :width: 55%
 :align: center
@@ -713,7 +713,7 @@ $$
 
 In two dimensions, a triangle of area $\tfrac12$ is mapped to one of area $1$. Thus the area is scaled by a factor of $2$, matching $|\det(A)|$.
 
-```{figure} ../pics/determinant_area_scaling.png
+```{figure} ../pics/M1_determinant_area_scaling.png
 :name: fig-determinant-area-scaling
 :width: 55%
 :align: center
@@ -1061,7 +1061,7 @@ $$
 
 where $\lambda$ is the corresponding eigenvalue. Geometrically, an eigenvector is a direction that is only scaled, and possibly reversed, by the linear transformation.
 
-```{figure} ../pics/eigenvector_geometry.png
+```{figure} ../pics/M1_eigenvector_geometry.png
 :name: fig-eigenvector-geometry
 :width: 55%
 :align: center
