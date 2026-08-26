@@ -111,6 +111,7 @@ pandoc "$normalized_source" \
   --from=commonmark_x+implicit_figures \
   --lua-filter="$lua_filter" \
   --include-in-header="$latex_header" \
+  --number-sections \
   --pdf-engine=xelatex \
   --resource-path="$chapters_dir:$repo_root/docs" \
   --metadata title= \

@@ -3,6 +3,10 @@ title: Why More Methods for Solving ODEs?
 date: 08/21/2023
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # Why More Methods for Solving ODEs?
 
 We know very well how to solve ODEs with constant coefficients and relatively

@@ -3,6 +3,10 @@ title: Numerical Methods for ODEs
 date: 12/17/2023
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # Numerical Methods for ODEs
 
 ## Learning Objectives

@@ -3,6 +3,10 @@ title: Laplace Transform
 date: 12/16/2023
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # Laplace Transform
 
 ## Learning Objectives

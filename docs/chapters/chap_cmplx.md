@@ -3,6 +3,10 @@ title: Complex Analysis
 date: 12/17/2023
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # Complex Analysis
 
 ## Learning Objectives

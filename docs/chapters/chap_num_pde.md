@@ -2,6 +2,10 @@
 title: Numerical Methods for PDEs
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # Numerical Methods for PDEs
 
 ## Introduction

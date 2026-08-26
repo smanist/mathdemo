@@ -2,6 +2,10 @@
 title: Review - Analytical Methods for ODEs
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # Review - Analytical Methods for ODEs
 
 So far you should already know how to solve some first-order and second-order

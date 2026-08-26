@@ -3,6 +3,10 @@ title: First-Order Partial Differential Equations
 date: 12/18/2023
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # First-Order Partial Differential Equations
 
 ## Learning Objectives

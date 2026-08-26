@@ -1,3 +1,6 @@
+from docutils import nodes
+
+
 project = "Interactive Course Notes"
 author = "Course Staff"
 
@@ -85,3 +88,23 @@ html_theme_options = {
     "description": "Static Sphinx/MyST notes with browser-side examples",
     "fixed_sidebar": True,
 }
+
+
+def simplify_section_numbers(app, doctree, docname):
+    if app.builder.format != "html":
+        return
+
+    for number in doctree.findall(nodes.generated):
+        if "sectnum" not in number.get("classes", []):
+            continue
+
+        parts = number.astext().strip().split(".")
+        if len(parts) == 1:
+            number.parent.remove(number)
+            continue
+
+        number.children[:] = [nodes.Text(f"{'.'.join(parts[1:])}\N{NO-BREAK SPACE}")]
+
+
+def setup(app):
+    app.connect("doctree-resolved", simplify_section_numbers)

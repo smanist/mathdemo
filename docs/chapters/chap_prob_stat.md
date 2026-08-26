@@ -2,6 +2,10 @@
 title: Probability and Statistics
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # Probability and Statistics
 
 ## Introduction

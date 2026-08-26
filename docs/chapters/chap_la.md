@@ -1,3 +1,7 @@
+```{sectnum}
+:depth: 5
+```
+
 # Introduction to Linear Algebra
 
 ## Learning objectives
@@ -389,16 +393,16 @@ Two parallel equations representing a linear system with no solution.
 
 Suppose
 
-$$
+```{math}
 \begin{bmatrix}
 1 & -1 & 1\\
 0 & 10 & 25\\
 0 & 0 & -95
 \end{bmatrix}
-\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}
+\begin{bmatrix}x_1\\ x_2\\ x_3\end{bmatrix}
 =
 \begin{bmatrix}0\\90\\-190\end{bmatrix}.
-$$
+```
 
 Because the coefficient matrix is upper triangular, solve from the last equation upward:
 
@@ -506,14 +510,14 @@ $$
 
 From $A=LU$,
 
-$$
+```{math}
 \begin{bmatrix}
 u_{11} & u_{12}\\
 u_{11}\ell_{21} & u_{12}\ell_{21}+u_{22}
 \end{bmatrix}
 =
-\begin{bmatrix}4&3\\6&3\end{bmatrix}.
-$$
+\begin{bmatrix}4&3\\ 6&3\end{bmatrix}.
+```
 
 Therefore
 
@@ -531,12 +535,12 @@ $$
 
 First solve
 
-$$
+```{math}
 \begin{bmatrix}1&0\\\frac32&1\end{bmatrix}
 \begin{bmatrix}y_1\\y_2\end{bmatrix}
 =
 \begin{bmatrix}10\\12\end{bmatrix},
-$$
+```
 
 which gives
 
@@ -548,12 +552,12 @@ $$
 
 Then solve
 
-$$
+```{math}
 \begin{bmatrix}4&3\\0&-\frac32\end{bmatrix}
 \begin{bmatrix}x_1\\x_2\end{bmatrix}
 =
 \begin{bmatrix}10\\-3\end{bmatrix},
-$$
+```
 
 which gives
 

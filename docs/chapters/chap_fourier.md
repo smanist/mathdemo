@@ -1,3 +1,7 @@
+```{sectnum}
+:depth: 5
+```
+
 # Fourier Methods
 
 ## Learning Objectives

@@ -3,7 +3,9 @@
 
   function headingText(heading) {
     const clone = heading.cloneNode(true);
-    clone.querySelectorAll(".headerlink").forEach((link) => link.remove());
+    clone
+      .querySelectorAll(".headerlink, .sectnum, .section-number")
+      .forEach((element) => element.remove());
     return clone.textContent.trim();
   }
 

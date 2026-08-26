@@ -22,3 +22,9 @@
 \providecommand{\Cb}[1]{{\color{blue} #1}}
 \renewcommand{\Im}{\mathrm{Im}}
 \renewcommand{\Re}{\mathrm{Re}}
+
+% The chapter H1 is an unnumbered title; number its descendants locally.
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\renewcommand{\theparagraph}{\thesubsubsection.\arabic{paragraph}}
+\renewcommand{\thesubparagraph}{\theparagraph.\arabic{subparagraph}}

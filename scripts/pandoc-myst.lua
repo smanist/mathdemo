@@ -1,6 +1,10 @@
 -- Normalize the small subset of MyST used by the chapter PDFs.
 
 function CodeBlock(block)
+  if block.classes[1] == "{sectnum}" then
+    return {}
+  end
+
   if block.classes[1] ~= "{math}" then
     return nil
   end
@@ -21,6 +25,14 @@ function CodeBlock(block)
   end
 
   return pandoc.Para({pandoc.Math("DisplayMath", body)})
+end
+
+function Header(header)
+  if header.level == 1 then
+    header.classes:insert("unnumbered")
+  end
+
+  return header
 end
 
 function Para(para)

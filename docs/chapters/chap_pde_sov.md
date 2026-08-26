@@ -3,6 +3,10 @@ title: Partial Differential Equations - Separation of Variables
 date: 06/19/2024
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # Partial Differential Equations - Separation of Variables
 
 ## Learning Objectives
@@ -893,4 +897,3 @@ By now you should be able to:
   - Separate the PDE into two ODE's, and identify appropriate BC's for the ODE's
   - Solve the ODE's to derive the eigenfunctions, leveraging the table for homogeneous ODE solutions.
   - Determine the coefficients of eigenfunctions using Fourier Series from the IC or non-homogeneous BC's.
-

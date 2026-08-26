@@ -3,6 +3,10 @@ title: Partial Differential Equations - Method of Characteristics
 date: 06/19/2024
 ---
 
+```{sectnum}
+:depth: 5
+```
+
 # Partial Differential Equations - Method of Characteristics
 
 ## Learning Objectives
