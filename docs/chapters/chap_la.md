@@ -17,7 +17,9 @@ The word "algebra" is derived from the Arabic word "al-jabr" meaning the *scienc
 
 This document is meant to be a *quick* review of linear algebra fundamentals. We will review concepts pertinent to *real valued* matrices---complex valued matrices are out of scope.
 
-## Notations
+## Review of Basics
+
+### Notations
 
 Notations are important and play a key role in communicating mathematics. Here are some notations that you must get comfortable with for this module. It is very important to learn the nuances behind these notations.
 
@@ -28,8 +30,8 @@ Notations are important and play a key role in communicating mathematics. Here a
           2 \\
           3
       \end{bmatrix}$, $\mathbf{y}=\begin{bmatrix}
-          1E-6 \\ 
-          -2E-4 \\
+          10^{-6} \\ 
+          -2\times 10^{-4} \\
           0
       \end{bmatrix}$. As you can see, a vector is a stack of scalars.
 
@@ -108,7 +110,7 @@ Notations are important and play a key role in communicating mathematics. Here a
 
   - The matrix $A$ can be expressed as $A = [a_{ij}],~\forall i=1,\ldots,m,~j=1,\ldots,n$. Note that the symbol $\forall$ denotes "for all".
 
-## Types of matrices
+### Types of matrices
 
 A matrix is a structured collection of numerical elements (typically reals, integers, or complex numbers). As we previously saw, a matrix is also a stack of row or column vectors. However, if we see beyond just rows and columns in a matrix, we might be able to see some structure that we can potentially exploit in computations. According to this structure, we can classify matrices into various types, some of which are illustrated below.
 
@@ -173,11 +175,11 @@ A matrix is a structured collection of numerical elements (typically reals, inte
 
 We now proceed to discussing elementary matrix operations. Whenever applicable, we will demonstrate how the special properties of certain types of matrices discussed above simplify these matrix operations.
 
-## Elementary matrix operations
+### Elementary matrix operations
 
 We now introduce two fundamental elementary operations with matrices namely, addition and multiplication. These operations are building blocks of more complex operations with matrices that we will see in subsequent chapters.
 
-### Matrix Addition
+#### Matrix Addition
 
 The addition of two matrices $A$ and $B$ is possible only if they have the same shape. For two matrices of identical shape, the matrix sum is just an elementwise addition. For example, $X=\begin{bmatrix}
         1 & -2 \\ 
@@ -192,7 +194,7 @@ The addition of two matrices $A$ and $B$ is possible only if they have the same 
 
 The addition operation is commutative; that is, $A+B = B+A$. We will see later that not all matrix operations share this property.
 
-### Matrix Multiplication
+#### Matrix Multiplication
 
 ```{figure} ../pics/vector_geom.png
 :name: fig-vector-geom
@@ -204,11 +206,11 @@ Visualization of vectors.
 
 Before delving into matrix multiplication, we will quickly review some concepts behind vectors.
 
-#### Geometric Meaning of a Vector
+##### Geometric Meaning of a Vector
 
 A vector $\mathbf{x} = [x_1, x_2, \ldots, x_n]^\top$ can be construed as a line that connects the origin $(0, 0,\ldots,0)$ to the point $(x_1, x_2, \ldots, x_n)$. For example, the vectors $\mathbf{x} = [1, 1]^T$ and $\mathbf{y} = [1, 2]^T$ can be visualized in the figure below. The length of the vector, then, can be conveniently expressed as the distance to the origin. This is also called the $2$-norm or $\ell_2$ norm of the vector $\mathbf{x}$: $\|\mathbf{x}\|_2 = \sqrt{x_1^2 + x_2^2 + \ldots, x_n^2}$. In the same figure, the length of vector $\mathbf{x}$ is $\|\mathbf{x}\|_2 = (1^2 + 1^2)^{1/2} = \sqrt{2}$ and that of $\mathbf{y}$ is $\|\mathbf{y}\|_2 = (1^2 + 2^2)^{1/2} = \sqrt{5}$.
 
-#### Dot Product
+##### Dot Product
 
 Let's quickly review an important elementary operation with vectors, called the *dot product*. A dot product between two vectors of identical shape $\mathbf{x} \in \mathbb{R}^n$ and $\mathbf{y} \in \mathbb{R}^n$ is defined as
 
@@ -241,7 +243,7 @@ The matrix product can be performed in 3 common ways.
 1.  **Dot product approach.** Let $A \in \mathbb{R}^{m \times n}$ and $B \in \mathbb{R}^{n \times q}$, then
 
 ```{math}
-C = A \times B = \begin{bmatrix}
+C = A  B = \begin{bmatrix}
             (\mathbf{a}^\top)_1 \mathbf{b}_1 & (\mathbf{a}^\top)_1 \mathbf{b}_2 & \ldots & (\mathbf{a}^\top)_1 \mathbf{b}_q \\
             (\mathbf{a}^\top)_2 \mathbf{b}_1 & (\mathbf{a}^\top)_2\mathbf{b}_2 & \ldots & (\mathbf{a}^\top)_2 \mathbf{b}_q \\
             \vdots & \ldots & \ldots & \ldots \\
@@ -251,10 +253,10 @@ C = A \times B = \begin{bmatrix}
 
 This can be more concisely written as $C_{ij} = (\mathbf{a}^\top)_i\mathbf{b}_j,~\forall i=1,\ldots,m,~j=1,\ldots,q$.
 
-2.  **Matrix-vector products approach (or columnwise product approach).** Let us write the same matrices as $A\times B = A\times [\mathbf{b}_1, \mathbf{b}_2, \ldots, \mathbf{b}_q]$. Then the product can be written as a column stack of the individual matrix-vector products.
+2.  **Matrix-vector products approach (or columnwise product approach).** Let us write the same matrices as $A B = A [\mathbf{b}_1, \mathbf{b}_2, \ldots, \mathbf{b}_q]$. Then the product can be written as a column stack of the individual matrix-vector products.
 
 ```{math}
-C = A\times B  = [A\times\mathbf{b}_1, A\times\mathbf{b}_2, \ldots, A\times\mathbf{b}_q].
+C = A B  = [A\mathbf{b}_1, A\mathbf{b}_2, \ldots, A\mathbf{b}_q].
 ```
 
 This is particularly convenient in computations because we don't have to store the matrix $B$ in its entirety--we just need to store one column at a time, which is much less storage!
@@ -263,20 +265,20 @@ This is particularly convenient in computations because we don't have to store t
             (\mathbf{a}^\top)_1 \\
             \vdots \\
             (\mathbf{a}^\top)_m
-        \end{bmatrix} \times B$. Then,
+        \end{bmatrix}  B$. Then,
 
 ```{math}
-C = A\times B = \begin{bmatrix}
-            (\mathbf{a}^\top)_1 \times B \\
-            (\mathbf{a}^\top)_2 \times B \\
+C = A B = \begin{bmatrix}
+            (\mathbf{a}^\top)_1  B \\
+            (\mathbf{a}^\top)_2  B \\
             \vdots \\
-            (\mathbf{a}^\top)_m \times B \\
+            (\mathbf{a}^\top)_m  B \\
         \end{bmatrix}.
 ```
 
 This approach has the same benefits as the previous one.
 
-#### Matrix Products Are Just Linear Transformations
+##### Matrix Products Are Just Linear Transformations
 
 It is useful to see the matrix product as a column stack of matrix-vector products, i.e., approach 2 above. So let's look at a single matrix-vector product. Let $A=\begin{bmatrix}
         1 & 0 \\
@@ -287,7 +289,7 @@ It is useful to see the matrix product as a column stack of matrix-vector produc
     \end{bmatrix}$. Then, the matrix-vector product
 
 ```{math}
-A\times \mathbf{b}_1 = \begin{bmatrix}
+A \mathbf{b}_1 = \begin{bmatrix}
         1 \times \begin{bmatrix}
         1 \\
         1
@@ -327,15 +329,287 @@ Degenerate linear transformation with zero determinant.
 
 Therefore, in summary, matrix products are linear transforms! In the matrix product $C=AB$, every column of $B$ is linearly transformed by the matrix $A$.
 
-#### Some Matrix Product Properties
+##### Some Matrix Product Properties
 
 - Matrix product is NOT commutative. So, $AB \neq BA$. This should make sense if you apply the linear transformation interpretation described above (think about what is being linearly transformed in $AB$ as opposed to $BA$).
 
-- The product of a matrix with an identity matrix is the matrix itself: $A \times I = A$. Check this yourself!
+- The product of a matrix with an identity matrix is the matrix itself: $A  I = A$. Check this yourself!
 
-- The multiplication of a matrix with its transpose is always symmetric: $(A \times A^\top)^\top = A \times A^\top.$
+- The multiplication of a matrix with its transpose is always symmetric: $(A  A^\top)^\top = A  A^\top.$
 
-## Matrix determinants
+
+
+
+
+## Solving Linear Systems
+
+Consider a linear system
+
+$$
+A\mathbf{x}=\mathbf{b},
+$$
+
+where $A$ is the coefficient matrix, $\mathbf{x}$ is the unknown vector, and $\mathbf{b}$ is the right-hand-side vector. If $A^{-1}$ exists, then
+
+$$
+\mathbf{x}=A^{-1}\mathbf{b}.
+$$
+
+Given $A$ and $\mathbf{b}$, several scenarios are possible:
+
+- a solution may not exist;
+- solutions may exist but not be unique (there may be infinitely many);
+- for a homogeneous system, $\mathbf{b}=\mathbf{0}$, the trivial solution $\mathbf{x}=\mathbf{0}$ is always present;
+- a solution may exist and be unique.
+
+### The First Examples
+
+#### Example: a system with no solution
+
+Consider
+
+$$
+\begin{aligned}
+x_1+x_2 &= 1,\\
+x_1+x_2 &= 0.
+\end{aligned}
+$$
+
+The two lines are parallel and do not intersect, so the system has no solution.
+
+```{figure} ../pics/linear_system_no_solution.png
+:name: fig-linear-system-no-solution
+:width: 55%
+:align: center
+
+Two parallel equations representing a linear system with no solution.
+```
+
+#### Solving an upper-triangular system by back substitution
+
+Suppose
+
+$$
+\begin{bmatrix}
+1 & -1 & 1\\
+0 & 10 & 25\\
+0 & 0 & -95
+\end{bmatrix}
+\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}
+=
+\begin{bmatrix}0\\90\\-190\end{bmatrix}.
+$$
+
+Because the coefficient matrix is upper triangular, solve from the last equation upward:
+
+$$
+\begin{aligned}
+-95x_3&=-190 &&\Longrightarrow x_3=2,\\
+10x_2+25x_3&=90 &&\Longrightarrow x_2=4,\\
+x_1-x_2+x_3&=0 &&\Longrightarrow x_1=2.
+\end{aligned}
+$$
+
+Thus
+
+$$
+\mathbf{x}=\begin{bmatrix}2\\4\\2\end{bmatrix}.
+$$
+
+#### Reducing a general system to triangular form
+
+For
+
+$$
+\begin{aligned}
+2x_1+5x_2&=2,\\
+-4x_1+3x_2&=-30,
+\end{aligned}
+$$
+
+write the augmented matrix
+
+$$
+\left[\begin{array}{cc|c}
+2&5&2\\
+-4&3&-30
+\end{array}\right].
+$$
+
+Apply the row operation $R_2\leftarrow 2R_1+R_2$:
+
+$$
+\left[\begin{array}{cc|c}
+2&5&2\\
+0&13&-26
+\end{array}\right].
+$$
+
+Back substitution gives
+
+$$
+x_2=-2,\qquad x_1=6.
+$$
+
+Three routes for solving $A\mathbf{x}=\mathbf{b}$, when the required conditions hold, are:
+
+1. **Triangularization:** Gaussian elimination or LU decomposition.
+2. **Determinants:** Cramer's rule.
+3. **Matrix inverse:** Gauss--Jordan elimination.
+
+### LU Decomposition
+
+Assume $A\mathbf{x}=\mathbf{b}$ has a unique solution and write
+
+$$
+A=LU,
+$$
+
+where $L$ is lower triangular and $U$ is upper triangular. Then
+
+$$
+LU\mathbf{x}=\mathbf{b}.
+$$
+
+Introduce
+
+$$
+U\mathbf{x}=\mathbf{y}.
+$$
+
+The solution proceeds in two triangular solves:
+
+$$
+\begin{aligned}
+L\mathbf{y}&=\mathbf{b} &&\text{(forward substitution)},\\
+U\mathbf{x}&=\mathbf{y} &&\text{(back substitution)}.
+\end{aligned}
+$$
+
+#### LU example
+
+Let
+
+$$
+A=\begin{bmatrix}4&3\\6&3\end{bmatrix},
+\qquad
+\mathbf{b}=\begin{bmatrix}10\\12\end{bmatrix}.
+$$
+
+Seek
+
+$$
+L=\begin{bmatrix}1&0\\\ell_{21}&1\end{bmatrix},
+\qquad
+U=\begin{bmatrix}u_{11}&u_{12}\\0&u_{22}\end{bmatrix}.
+$$
+
+From $A=LU$,
+
+$$
+\begin{bmatrix}
+u_{11} & u_{12}\\
+u_{11}\ell_{21} & u_{12}\ell_{21}+u_{22}
+\end{bmatrix}
+=
+\begin{bmatrix}4&3\\6&3\end{bmatrix}.
+$$
+
+Therefore
+
+$$
+u_{11}=4,\qquad u_{12}=3,\qquad \ell_{21}=\frac{3}{2},\qquad u_{22}=-\frac{3}{2},
+$$
+
+and
+
+$$
+L=\begin{bmatrix}1&0\\\frac32&1\end{bmatrix},
+\qquad
+U=\begin{bmatrix}4&3\\0&-\frac32\end{bmatrix}.
+$$
+
+First solve
+
+$$
+\begin{bmatrix}1&0\\\frac32&1\end{bmatrix}
+\begin{bmatrix}y_1\\y_2\end{bmatrix}
+=
+\begin{bmatrix}10\\12\end{bmatrix},
+$$
+
+which gives
+
+$$
+y_1=10,\qquad y_2=-3,
+\qquad
+\mathbf{y}=\begin{bmatrix}10\\-3\end{bmatrix}.
+$$
+
+Then solve
+
+$$
+\begin{bmatrix}4&3\\0&-\frac32\end{bmatrix}
+\begin{bmatrix}x_1\\x_2\end{bmatrix}
+=
+\begin{bmatrix}10\\-3\end{bmatrix},
+$$
+
+which gives
+
+$$
+x_2=2,\qquad x_1=1,
+\qquad
+\boxed{\mathbf{x}=\begin{bmatrix}1\\2\end{bmatrix}}.
+$$
+
+#### A second elimination setup
+
+Consider
+
+$$
+\begin{aligned}
+x_1-x_2+x_3&=0,\\
+-x_1+x_2-x_3&=0,\\
+10x_2+25x_3&=90,\\
+20x_1+10x_2&=80.
+\end{aligned}
+$$
+
+The second equation is redundant with the first, so it can be removed. This gives
+
+$$
+A=\begin{bmatrix}
+1&-1&1\\
+0&10&25\\
+20&10&0
+\end{bmatrix},
+\qquad
+\mathbf{b}=\begin{bmatrix}0\\90\\80\end{bmatrix}.
+$$
+
+Starting from the augmented matrix, the row operation
+
+$$
+R_3\leftarrow R_3-20R_1
+$$
+
+produces
+
+$$
+\left[\begin{array}{ccc|c}
+1&-1&1&0\\
+0&10&25&90\\
+0&30&-20&80
+\end{array}\right].
+$$
+
+Continue the elimination as an exercise.
+
+### Determinants
+
+
+#### Definitions
 
 The determinant is a property of a *square* matrix and is a scalar value. The determinant measures the factor by which an area (volume in higher dimensions) is scaled due to a linear transformation with the matrix. It is hard (and somewhat useless) to give a generic formula for a matrix determinant. But the following illustration for a $2\times 2$ and $3\times 3$ matrix is illuminating.
 
@@ -377,13 +651,91 @@ In the expression above, you will notice two things.
 
 - For matrices of shape larger than $3 \times 3$, the principle used for the $3\times 3$ example above can be applied *recursively*. However, we will see that such an approach is not necessary and more efficient approaches exist.
 
-### Some properties of matrix determinants (without proof)
+
+
+#### Examples of determinant calculation
+
+For
+
+$$
+A=\begin{bmatrix}1&2\\2&6\end{bmatrix},
+$$
+
+$$
+\det(A)=1\cdot 6-2\cdot 2=2.
+$$
+
+For the $3\times 3$ matrix
+
+$$
+A=\begin{bmatrix}
+1&0&1\\
+1&2&1\\
+-1&0&2
+\end{bmatrix},
+$$
+
+expansion along the first row gives
+
+$$
+\begin{aligned}
+\det(A)
+&=1\det\begin{bmatrix}2&1\\0&2\end{bmatrix}
+-0\det\begin{bmatrix}1&1\\-1&2\end{bmatrix}
++1\det\begin{bmatrix}1&2\\-1&0\end{bmatrix}\\
+&=4+2=6.
+\end{aligned}
+$$
+
+For higher-dimensional matrices, the same cofactor-expansion idea can be applied recursively.
+
+#### Geometric interpretation
+
+Let
+
+$$
+A=\begin{bmatrix}1&0\\0&2\end{bmatrix},
+\qquad
+\mathbf{x}=\begin{bmatrix}1\\1\end{bmatrix}.
+$$
+
+Then
+
+$$
+A\mathbf{x}=\begin{bmatrix}1\\2\end{bmatrix},
+\qquad
+\det(A)=2.
+$$
+
+In two dimensions, a triangle of area $\tfrac12$ is mapped to one of area $1$. Thus the area is scaled by a factor of $2$, matching $|\det(A)|$.
+
+```{figure} ../pics/determinant_area_scaling.png
+:name: fig-determinant-area-scaling
+:width: 55%
+:align: center
+
+Geometric interpretation of the determinant as an area-scaling factor.
+```
+
+
+
+### Some properties of matrix determinants
 
 1.  If any row (or column) of a matrix $A$ is all $0$'s, then $\det(A)=0$. This means, a linear transformation by the matrix $A$ would shrink an area (or volume) to $0$! Check this yourself!
 
-2.  If any row (or column) of matrix $A$ is a scalar multiple of another, then $\det(A)=0$.
+2.  If any row (or column) of matrix $A$ is a scalar multiple of another, then $\det(A)=0$. For example,
 
-3.  Let $A \in \mathbb{R}^{n\times n}$. Then, $\det(k A) = k^n \det(A)$. Why?
+   $$
+   \begin{bmatrix}1&3\\2&6\end{bmatrix}
+   $$
+
+   has linearly dependent columns.
+
+3.  Let $A \in \mathbb{R}^{n\times n}$. Then, $\det(k A) = k^n \det(A)$.  Specifically, for $A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$,
+
+   $$
+   \det(kA)=k^2(ad-bc).
+   $$
 
 4.  Let $A, B \in \mathbb{R}^{n\times n}$. Then, $\det(AB) = \det(A)\det(B)$.
 
@@ -395,23 +747,459 @@ In the expression above, you will notice two things.
             0 & 0 & i
         \end{bmatrix}$, then $\det(A) = a\times e \times i$. Therefore, one of the common ways of finding determinant of a general $n\times n$ matrix is to first reduce it to triangular form and then use the formula above.
 
-7.  **Diagonal matrix.** The determinant of a triangular matrix is the product of its diagonal elements: Let $A = \begin{bmatrix}
+7.  **Diagonal matrix.** The determinant of a diagonal matrix is the product of its diagonal elements: Let $A = \begin{bmatrix}
             a & 0 & 0\\
             0 & e & 0\\
             0 & 0 & i
         \end{bmatrix}$, then $\det(A) = a\times e \times i$.
+    Particularly, this means for an identity matrix $I$, $\det(I) = 1$.
 
-8.  **Orthogonal matrix.** The determinant of an orthogonal matrix $A$ is $\pm1$!
+10. If $A^{-1}$ exists,
+
+   $$
+   \det(A^{-1})=\frac{1}{\det(A)}.
+   $$
+
+   (This is a composition of two properties above.)
+
+8.  **Orthogonal matrix.** The determinant of an orthogonal matrix $A$ is $\pm1$.
 
 9.  **$A\mathbf{x}=\mathbf{0}$.** Let there be a vector $\mathbf{x} \neq \mathbf{0}$ (so $\mathbf{x}$ is not all $0$'s), and $A$ is also not all $0$'s. Then, the only way $A\mathbf{x}=\mathbf{0}$ is if $\det(A) = 0$! We will see this applied in the next section.
 
-## Eigenvalues and Eigenvectors
+
+### Cramer's Rule
+
+For the linear system
+
+$$
+A\mathbf{x}=\mathbf{b},
+$$
+
+where $A$ is $n\times n$ and $\det(A)\neq 0$, Cramer's rule gives
+
+$$
+x_k=\frac{\det(A_k)}{\det(A)},
+\qquad k=1,\ldots,n,
+$$
+
+where $A_k$ is obtained by replacing the $k$-th column of $A$ with $\mathbf{b}$.
+
+#### Example
+
+Consider
+
+$$
+\begin{aligned}
+4x_1+3x_2&=12,\\
+2x_1+5x_2&=-8.
+\end{aligned}
+$$
+
+Then
+
+$$
+A=\begin{bmatrix}4&3\\2&5\end{bmatrix},
+\qquad
+\mathbf{b}=\begin{bmatrix}12\\-8\end{bmatrix},
+$$
+
+with
+
+$$
+A_1=\begin{bmatrix}12&3\\-8&5\end{bmatrix},
+\qquad
+A_2=\begin{bmatrix}4&12\\2&-8\end{bmatrix}.
+$$
+
+The determinants are
+
+$$
+\det(A)=14,\qquad
+\det(A_1)=84,\qquad
+\det(A_2)=-56.
+$$
+
+Hence
+
+$$
+x_1=\frac{84}{14}=6,
+\qquad
+x_2=\frac{-56}{14}=-4,
+$$
+
+and
+
+$$
+\boxed{\mathbf{x}=\begin{bmatrix}6\\-4\end{bmatrix}}.
+$$
+
+Cramer's rule is simple in structure, but it is not the most computationally efficient approach.
+
+### Linear Independence of Rows and Columns
+
+Linear independence has a direct consequence for the existence and uniqueness of solutions to $A\mathbf{x}=\mathbf{b}$.
+
+Let $A$ be an $n\times n$ matrix with columns
+
+$$
+A=\begin{bmatrix}\mathbf{a}_1&\mathbf{a}_2&\cdots&\mathbf{a}_n\end{bmatrix}.
+$$
+
+The columns are linearly independent if
+
+$$
+\alpha_1\mathbf{a}_1+\alpha_2\mathbf{a}_2+\cdots+\alpha_n \mathbf{a}_n=\mathbf{0}
+$$
+
+only when
+
+$$
+\alpha_1=\alpha_2=\cdots=\alpha_n=0.
+$$
+
+Equivalently,
+
+$$
+A\boldsymbol{\alpha}=\mathbf{0}
+$$
+
+has only the trivial solution. The same definition applies to the rows of $A$.
+
+If a homogeneous system
+
+$$
+A\mathbf{x}=\mathbf{0}
+$$
+
+has a nonzero solution $\mathbf{x}\neq\mathbf{0}$, then the columns of $A$ are linearly dependent and $\det(A)=0$. For a square matrix, this corresponds to a singular matrix, so $A\mathbf{x}=\mathbf{b}$ does not have a unique solution for every $\mathbf{b}$.
+
+#### Examples
+
+For
+
+$$
+A=\begin{bmatrix}1&1\\-1&-1\end{bmatrix},
+$$
+
+the rows satisfy
+
+$$
+1\begin{bmatrix}1&1\end{bmatrix}
++1\begin{bmatrix}-1&-1\end{bmatrix}
+=\begin{bmatrix}0&0\end{bmatrix},
+$$
+
+so the rows are linearly dependent.
+
+For
+
+$$
+A=\begin{bmatrix}
+1&2&4\\
+2&1&5\\
+1&1&3
+\end{bmatrix},
+$$
+
+the third column satisfies
+
+$$
+A_3=2A_1+A_2,
+$$
+
+so the columns are linearly dependent and $\det(A)=0$.
+
+### Solving via the Matrix Inverse
+
+Let $A$ be $n\times n$. A matrix $B$ is the inverse of $A$ if
+
+$$
+AB=I,
+$$
+
+and we write $B=A^{-1}$. If $A\mathbf{x}=\mathbf{b}$ has a unique solution, then
+
+$$
+\mathbf{x}=A^{-1}\mathbf{b}.
+$$
+
+#### Gauss--Jordan elimination
+
+Starting from
+
+$$
+A\mathbf{x}=\mathbf{b},
+$$
+
+left-multiplication by $A^{-1}$ gives
+
+$$
+A^{-1}A\mathbf{x}=A^{-1}\mathbf{b},
+$$
+
+so
+
+$$
+\mathbf{x}=A^{-1}\mathbf{b}.
+$$
+
+Gauss--Jordan elimination applies row operations to the augmented matrix
+
+$$
+\left[\begin{array}{c|c}A&\mathbf{b}\end{array}\right]
+$$
+
+until the left block becomes $I$. The right block then becomes the solution $\mathbf{x}$.
+
+#### Example
+
+Use
+
+$$
+\left[\begin{array}{cc|c}
+4&3&10\\
+6&3&12
+\end{array}\right].
+$$
+
+First,
+
+$$
+R_2\leftarrow \frac{3}{2}R_1-R_2,
+$$
+
+which gives
+
+$$
+\left[\begin{array}{cc|c}
+4&3&10\\
+0&\frac32&3
+\end{array}\right].
+$$
+
+Next,
+
+$$
+R_1\leftarrow R_1-2R_2,
+$$
+
+which gives
+
+$$
+\left[\begin{array}{cc|c}
+4&0&4\\
+0&\frac32&3
+\end{array}\right].
+$$
+
+Finally scale the rows:
+
+$$
+R_1\leftarrow \frac14R_1,
+\qquad
+R_2\leftarrow \frac{1}{3/2}R_2.
+$$
+
+Then
+
+$$
+\left[\begin{array}{cc|c}
+1&0&1\\
+0&1&2
+\end{array}\right],
+$$
+
+so
+
+$$
+\boxed{\mathbf{x}=\begin{bmatrix}1\\2\end{bmatrix}}.
+$$
+
+#### Computing the inverse from linear systems
+
+If
+
+$$
+B=A^{-1}
+=\begin{bmatrix}\mathbf{b}_1&\mathbf{b}_2&\cdots&\mathbf{b}_n\end{bmatrix},
+$$
+
+then
+
+$$
+AB=I
+=\begin{bmatrix}\mathbf{e}_1&\mathbf{e}_2&\cdots&\mathbf{e}_n\end{bmatrix},
+$$
+
+so the columns of $B$ are found from the $n$ linear systems
+
+$$
+A\mathbf{b}_1=\mathbf{e}_1,\qquad
+A\mathbf{b}_2=\mathbf{e}_2,\qquad \ldots,\qquad
+A\mathbf{b}_n=\mathbf{e}_n.
+$$
+
+Repeated Gaussian elimination requires repeated triangularization because the right-hand sides differ, whereas an LU decomposition of $A$ can be computed once and reused for all right-hand sides.
+
+## Eigenvalue Problems
+
 
 The eigenvalue problem solves $A\mathbf{x}=\lambda \mathbf{x}$, where $A$ is a square matrix, $\mathbf{x}$ is called the eigenvector of $A$ and $\lambda$ is called the eigenvalue of $A$. Geometrically, the eigenvalue problem seeks to find the vector $\mathbf{x}$ which is un-rotated and un-translated by a linear transformation with $A$ but is scaled by the scalar $\lambda$ (eigenvalue). The eigenvector can be interpreted as a *principal axis* or *axis of rotation* of the matrix $A$. It finds widespread applications but we will not go into them here.
 
-### Some properties of matrix eigenvalues and eigenvectors (without proof)
 
-1.  The eigenvalues of a square matrix can be real, complex or a mix of both!
+### Eigenvalues and eigenvectors
+
+For an $n\times n$ matrix $A$, a nonzero vector $\mathbf{x}$ is an eigenvector if
+
+$$
+A\mathbf{x}=\lambda\mathbf{x},
+$$
+
+where $\lambda$ is the corresponding eigenvalue. Geometrically, an eigenvector is a direction that is only scaled, and possibly reversed, by the linear transformation.
+
+```{figure} ../pics/eigenvector_geometry.png
+:name: fig-eigenvector-geometry
+:width: 55%
+:align: center
+
+An eigenvector retains its direction under the linear transformation and is scaled by its eigenvalue.
+```
+
+If $\mathbf{x}$ is an eigenvector, any nonzero scalar multiple of $\mathbf{x}$ is also an eigenvector with the same eigenvalue.
+
+### Example
+
+Let
+
+$$
+A=\begin{bmatrix}6&3\\4&7\end{bmatrix},
+\qquad
+\mathbf{x}=\begin{bmatrix}3\\4\end{bmatrix}.
+$$
+
+Then
+
+$$
+A\mathbf{x}
+=\begin{bmatrix}30\\40\end{bmatrix}
+=10\begin{bmatrix}3\\4\end{bmatrix},
+$$
+
+so $\mathbf{x}$ is an eigenvector and $\lambda=10$. The vector
+
+$$
+\begin{bmatrix}6\\8\end{bmatrix}
+=2\begin{bmatrix}3\\4\end{bmatrix}
+$$
+
+is another eigenvector associated with the same eigenvalue.
+
+### Computing eigenvalues
+
+Starting from
+
+$$
+A\mathbf{x}=\lambda\mathbf{x},
+$$
+
+write
+
+$$
+\begin{aligned}
+A\mathbf{x}&=\lambda I\mathbf{x},\\
+(A-\lambda I)\mathbf{x}&=\mathbf{0}.
+\end{aligned}
+$$
+
+The trivial vector $\mathbf{x}=\mathbf{0}$ always satisfies this equation, but an eigenvector must satisfy $\mathbf{x}\neq\mathbf{0}$. Thus $A-\lambda I$ must be singular, which leads to the characteristic equation
+
+$$
+\boxed{\det(A-\lambda I)=0}.
+$$
+
+If
+
+$$
+A=\begin{bmatrix}A_1&A_2&\cdots&A_n\end{bmatrix}
+$$
+
+and $\mathbf{e}_i$ denotes the $i$-th standard basis vector, then
+
+$$
+(A-\lambda I)\mathbf{x}
+=x_1(A_1-\lambda\mathbf{e}_1)+\cdots+x_n(A_n-\lambda\mathbf{e}_n)=\mathbf{0}.
+$$
+
+For a nonzero $\mathbf{x}$, these columns must be linearly dependent, again yielding $\det(A-\lambda I)=0$.
+
+### Eigenvalue/eigenvector example
+
+Let
+
+$$
+A=\begin{bmatrix}-5&2\\2&-2\end{bmatrix}.
+$$
+
+Then
+
+$$
+A-\lambda I
+=\begin{bmatrix}-5-\lambda&2\\2&-2-\lambda\end{bmatrix}.
+$$
+
+The characteristic equation is
+
+$$
+\begin{aligned}
+0&=\det(A-\lambda I)\\
+&=(-5-\lambda)(-2-\lambda)-4\\
+&=(\lambda+5)(\lambda+2)-4\\
+&=\lambda^2+7\lambda+6\\
+&=(\lambda+6)(\lambda+1).
+\end{aligned}
+$$
+
+Therefore
+
+$$
+\lambda_1=-6,\qquad \lambda_2=-1.
+$$
+
+For $\lambda=-6$, solve
+
+$$
+A\mathbf{x}=-6\mathbf{x}.
+$$
+
+The equations reduce to
+
+$$
+x_1+2x_2=0.
+$$
+
+Choose $x_1=1$, which gives $x_2=-\tfrac12$. One eigenvector is
+
+$$
+\boxed{\mathbf{x}_{-6}=\begin{bmatrix}1\\-\frac12\end{bmatrix}}.
+$$
+
+For $\lambda=-1$, the equations reduce to
+
+$$
+2x_1-x_2=0.
+$$
+
+Choose $x_2=1$, which gives $x_1=\tfrac12$. One eigenvector is
+
+$$
+\boxed{\mathbf{x}_{-1}=\begin{bmatrix}\frac12\\1\end{bmatrix}}.
+$$
+
+
+
+### Some properties of matrix eigenvalues and eigenvectors
+
+1.  The eigenvalues of a square matrix can be real, complex or a mix of both.
 
 2.  A square matrix $A$ has at least 1 unique eigenvalue; it can have up to $n$ unique eigenvalues.
 
@@ -427,6 +1215,20 @@ The eigenvalue problem solves $A\mathbf{x}=\lambda \mathbf{x}$, where $A$ is a s
 
 8.  The eigenvalues of an orthogonal matrix are either real or complex. When they are complex, they occur as a complex-conjugate pair ($a\pm ib$) and always have their absolute value $=1$: $\sqrt{a^2 + b^2}=1$.
 
+
+
+
+
 ## Summary
 
-In this chapter, we began by introducing general notations necessary to interpret linear algebra equations followed by introducing a few important types of matrices. Then, we learned two fundamental elementary operations in linear algebra: matrix addition and multiplication, and their physical interpretation. We concluded the chapter by learning three important matrix properties that find widespread applications, namely, matrix determinants, eigenvalues, and eigenvectors.
+By now you should be able to:
+
++ Comfortably interpret linear algebra notations.
++ Interpret basic matrix operations, e.g. matrix multiplication, and dot products.
++ Perform matrix operations and compute properties, e.g., matrix determinants, multiplication, and inverse.
++ Concerning eigenvalue problems:
+  - Interpret and eigenvalue problem, eigenvalues and eigenvectors.
+  - Compute the eigenvalues and eigenvectors.
+  - Use the eigenvalues and eigenvectors to solve system of ODE's.
+
+Also, by now you are prepared to  learn methods to numerically solve PDE systems in the later chapters.
