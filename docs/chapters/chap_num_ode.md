@@ -44,7 +44,7 @@ The first thing to know about numerical methods is that they produce only approx
 ```
 that lie on or near the true solution $y=y_{\text{true}}(x)$, instead of the value of $y$ at any $x$.  This is the price to pay when we turn to a numerical method, instead of an analytical, exact, method.  Yet, for nonlinear ODE's, there are really not many choices.
 
-![Discretization of an IVP solution](../pics/euler_dsc.png)
+![Discretization of an IVP solution](../pics/M2_euler_dsc.png)
 
 Furthermore, we simplify the problem a little more.  Suppose we choose a fixed **step size** of $h$, meaning that we distribute the $x$'s evenly over the interval $[x_0,x_f]$ with a space of $h$ between neighboring $x$'s.  This way we know $x_i=x_0+ih$ for $i=1,2,\cdots,N$, and our goal is to find the only unknowns $y_1,y_2,\cdots,y_N$.  We define the numerical IVP as
 ```{math}
@@ -88,7 +88,7 @@ This is the explicit Euler method.  The "explicit" means that, once the quantiti
 
 &clubs; Later we will see an "implicit" version, where $y_{n+1}$ cannot be computed immediately.
 
-![Explicit Euler viewed via slopes](../pics/euler_exp_slp.png)
+![Explicit Euler viewed via slopes](../pics/M2_euler_exp_slp.png)
 
 
 + **Riemann sum**: Another way to look at the ODE is to integrate it on both sides from $x_0$ to $x_1$,
@@ -111,7 +111,7 @@ which is again the explicit Euler method.
 
 &clubs; Riemann sum has other rules, such as right and trapezoidal rules, and we will see that those correspond to different numerical ODE methods.
 
-![Explicit Euler viewed via integral](../pics/euler_exp_int.png)
+![Explicit Euler viewed via integral](../pics/M2_euler_exp_int.png)
 
 
 **Example**
@@ -270,7 +270,7 @@ y_1 = y_0 + f(x_1,y_1)h
 ```
 which is again the implicit Euler method.
 
-![Implicit Euler viewed via integral](../pics/euler_imp_int.png)
+![Implicit Euler viewed via integral](../pics/M2_euler_imp_int.png)
 
 
 **Example**
@@ -436,7 +436,7 @@ y_{n+1} &= y_n + h \bar{k} = y_n + h \frac{k_1 + k_2}{2}
 ```
 where $k_2$ is equivalent to $f(x_{n+1},y_{n+1}^*)$, as $x_n+h=x_{n+1}$ and $y_n+hk_1=y_{n+1}^*$, and the last step is effectively the corrector step but written using an estimated slope $\bar{k}$.
 
-![Illustration of slope estimation](../pics/rk2_slp.png)
+![Illustration of slope estimation](../pics/M2_rk2_slp.png)
 
 The reason to write the methods in terms of slope estimation is to introduce an important family of methods, the **Runge-Kutta methods**.  These methods can be viewed as a systematic way to accurately estimate the slope needed for predicting $y_{n+1}$.  The most commonly used methods are the explicit second-order and fourth-order methods, denoted **RK2** and **RK4**, respectively.
 

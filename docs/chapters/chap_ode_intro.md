@@ -72,7 +72,7 @@ aerodynamic forces $L,M,N$. It is nonlinear, involving products of different
 variables. Next, we simplify the equations to just one ODE and show that, even
 so, the analytical method for ODEs is not good enough.
 
-![Aircraft coordinate system](../pics/wiki_aircraft_coordinates.png)
+![Aircraft coordinate system](../pics/M2_wiki_aircraft_coordinates.png)
 
 Assume the aircraft is in level flight, so there is no roll or yaw and we do
 not care about the displacements. What remains is the pitch, and the pitch rate
@@ -132,4 +132,4 @@ questions:
 We address these three questions respectively by Laplace transform, numerical
 ODE methods, and linear algebra.
 
-![Pitch control and response](../pics/rg_pitch_control.png)
+![Pitch control and response](../pics/M2_rg_pitch_control.png)

@@ -486,7 +486,7 @@ k(t_1-t_0), &\ t\geq t_1\quad \text{Full throttle}
 
 The second type of IVP involves transient impulses that can emulate sudden impacts on an engineering system. One example is a car crash experiment, where the input to the car is a huge force that lasts for a tiny period of time.
 
-![Thrust profile of a rocket](../pics/rocket_thrust.png)
+![Thrust profile of a rocket](../pics/M2_rocket_thrust.png)
 
 ### Unit Step Function and Piecewise Function
 
@@ -503,7 +503,7 @@ u(t-a) = \left\{
 
 This is as if a switch: the switch is turned off when $t<a$ and once past $t=a$ the switch is instantly turned on. For example, if $f(t)=t^2$, then $f(t)u(t)$ is a function that is zero when $t<0$ and a parabolic curve when $t\geq 0$. Furthermore, since for any function $g(t)$, $g(t-a)$ means shifting the function to the right by $a$, then in the previous example $f(t-a)u(t-a)$ represents half of a parabolic curve that starts from $t=a$ and everything left of $t=a$ is zero.
 
-![Unit step function](../pics/unit_step.png)
+![Unit step function](../pics/M2_unit_step.png)
 
 Taking a step further, using two unit step functions, we can represent a function over a finite interval. Since $u(t-a)-u(t-b)$ is a function that is $1$ when $a\leq t < b$ and $0$ otherwise, then for any function $f(t)$, $f(t)(u(t-a)-u(t-b))$ is only a segment of $f(t)$ over the interval $a\leq t < b$.
 
@@ -613,7 +613,7 @@ Hence the response is
 
 The solution means that upon ignition, the rocket deformation has two modes of motion, both of which can be dangerous: static compression ($k(t-a)$, buckling of the hull) and longitudinal vibration ($k\sin(t-a)$, destabilizing flight dynamics).
 
-![Time history of rocket deformation](../pics/rocket_deform.png)
+![Time history of rocket deformation](../pics/M2_rocket_deform.png)
 
 ### Dirac Delta Function and Sudden Impulse
 
@@ -752,7 +752,7 @@ Then using $t$-shifting, we find the final response
 
 Clearly, the Dirac delta greatly simplifies the solution procedure by eliminating the shortcomings mentioned earlier with finite impulses. Even better, the Dirac delta solution matches quantitatively well with the finite-impulse one, and hence Dirac delta has been widely used in many engineering applications.
 
-![Finite impulses approximated by Dirac Delta](../pics/unit_v_dirac.png)
+![Finite impulses approximated by Dirac Delta](../pics/M2_unit_v_dirac.png)
 
 See an interactive example in {doc}`M1_impulse`.
 
