@@ -17,7 +17,7 @@ In this chapter, we provide an introduction to linear algebra that is designed t
 
 ## Introduction
 
-The word "algebra" is derived from the Arabic word "al-jabr" meaning the *science of restoring and balancing*. It is due to a Persian polymath, Mohammed al-Khwarizmi, who lived circa 800 CE. In today's parlance, algebra refers to the study of variables and rules for manipulating the variables in systems of equations. Therefore *linear* algebra refers to the algebra of linear systems; that is, systems involving only the *first power of the variables of interest*. This begs the question: *what is nonlinear algebra?* Of course, that would be algebra that is not linear, but more importantly, it refers to a different field called "algebraic topology", which deals with curves and surfaces which can be viewed as geometric objects and as solutions of algebraic equations. Nonlinear algebra is outside the scope of this module.
+The word "algebra" is derived from the Arabic word "al-jabr" meaning the *science of restoring and balancing*. It is due to a Persian polymath, Mohammed al-Khwarizmi, who lived circa 800 CE. In today's parlance, algebra refers to the study of variables and rules for manipulating the variables in systems of equations. Therefore *linear* algebra refers to the algebra of linear systems; that is, systems involving only the *first power of the variables of interest*.
 
 This document is meant to be a *quick* review of linear algebra fundamentals. We will review concepts pertinent to *real valued* matrices---complex valued matrices are out of scope.
 
@@ -168,7 +168,7 @@ A matrix is a structured collection of numerical elements (typically reals, inte
           0 & 0 & 4 \\
       \end{bmatrix}$? Is it upper or lower triangular? Triangular matrices require storing the same number of elements as a symmetric matrix of the same size. Why? We will later see that triangular matrices are a desirable form to arrive at when solving linear systems.
 
-- **Orthogonal matrices.** Matrices in which the dot product of any two columns is $0$! The dot product of a column with itself is $1$! So, orthogonal matrices foreshadow a new concept, an elementary matrix operation called the "dot product", formally introduced in the matrix addition section (you are encouraged to pause and review it before proceeding further.) Consider the Givens rotation matrix $A = \begin{bmatrix}
+- **Orthogonal matrices.** Matrices in which the dot product of any two columns is $0$! The dot product of a column with itself is $1$! So, orthogonal matrices foreshadow a new concept, an elementary matrix operation called the "dot product", formally introduced in the matrix multiplication section (you are encouraged to pause and review it before proceeding further.) Consider the Givens rotation matrix $A = \begin{bmatrix}
           \cos(\theta) & -\sin(\theta)\\
           \sin(\theta) & \cos(\theta)
       \end{bmatrix}$. $\mathbf{a}_1^\top \mathbf{a}_1 = \cos^2(\theta)+\sin^2(\theta)=1$, $\mathbf{a}_1^\top \mathbf{a}_2 = -\cos(\theta)\sin(\theta) + \sin(\theta)\cos(\theta)=0$.
@@ -212,7 +212,7 @@ Before delving into matrix multiplication, we will quickly review some concepts 
 
 ##### Geometric Meaning of a Vector
 
-A vector $\mathbf{x} = [x_1, x_2, \ldots, x_n]^\top$ can be construed as a line that connects the origin $(0, 0,\ldots,0)$ to the point $(x_1, x_2, \ldots, x_n)$. For example, the vectors $\mathbf{x} = [1, 1]^T$ and $\mathbf{y} = [1, 2]^T$ can be visualized in the figure below. The length of the vector, then, can be conveniently expressed as the distance to the origin. This is also called the $2$-norm or $\ell_2$ norm of the vector $\mathbf{x}$: $\|\mathbf{x}\|_2 = \sqrt{x_1^2 + x_2^2 + \ldots, x_n^2}$. In the same figure, the length of vector $\mathbf{x}$ is $\|\mathbf{x}\|_2 = (1^2 + 1^2)^{1/2} = \sqrt{2}$ and that of $\mathbf{y}$ is $\|\mathbf{y}\|_2 = (1^2 + 2^2)^{1/2} = \sqrt{5}$.
+A vector $\mathbf{x} = [x_1, x_2, \ldots, x_n]^\top$ can be construed as a line that connects the origin $(0, 0,\ldots,0)$ to the point $(x_1, x_2, \ldots, x_n)$. For example, the vectors $\mathbf{x} = [1, 1]^T$ and $\mathbf{y} = [1, 2]^T$ can be visualized in the figure below. The length of the vector, then, can be conveniently expressed as the distance to the origin. This is also called the $2$-norm or $\ell_2$ norm of the vector $\mathbf{x}$: $\|\mathbf{x}\|_2 = \sqrt{x_1^2 + x_2^2 + \ldots + x_n^2}$. In the same figure, the length of vector $\mathbf{x}$ is $\|\mathbf{x}\|_2 = (1^2 + 1^2)^{1/2} = \sqrt{2}$ and that of $\mathbf{y}$ is $\|\mathbf{y}\|_2 = (1^2 + 2^2)^{1/2} = \sqrt{5}$.
 
 ##### Dot Product
 
@@ -1231,8 +1231,7 @@ By now you should be able to:
 + Interpret basic matrix operations, e.g. matrix multiplication, and dot products.
 + Perform matrix operations and compute properties, e.g., matrix determinants, multiplication, and inverse.
 + Concerning eigenvalue problems:
-  - Interpret and eigenvalue problem, eigenvalues and eigenvectors.
+  - Interpret eigenvalue problem, eigenvalues and eigenvectors.
   - Compute the eigenvalues and eigenvectors.
-  - Use the eigenvalues and eigenvectors to solve system of ODE's.
 
 Also, by now you are prepared to learn methods to numerically solve PDE systems in the later chapters.
