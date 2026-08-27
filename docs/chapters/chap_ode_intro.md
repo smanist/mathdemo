@@ -47,7 +47,7 @@ A few examples:
   This one looks very simple, and even the characteristic equation might be too
   "heavy" for this problem. Is there a *simpler* method?
 
-  > This is one reason we introduced **Linear Algebra and the Eigenvalue Problem**.
+  > This is where we introduce **Matrix Exponentials** for linear systems.
 
 ## Example: Flight Dynamics of an Aircraft
 

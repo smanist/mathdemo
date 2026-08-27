@@ -287,8 +287,8 @@
     controls.append(
       makeNumberInputControl({
         label: "a11",
-        min: -2,
-        max: 2,
+        min: -10,
+        max: 10,
         step: 0.1,
         value: a11,
         onInput: (value) => {
@@ -298,8 +298,8 @@
       }),
       makeNumberInputControl({
         label: "a12",
-        min: -2,
-        max: 2,
+        min: -10,
+        max: 10,
         step: 0.1,
         value: a12,
         onInput: (value) => {
@@ -309,8 +309,8 @@
       }),
       makeNumberInputControl({
         label: "a21",
-        min: -2,
-        max: 2,
+        min: -10,
+        max: 10,
         step: 0.1,
         value: a21,
         onInput: (value) => {
@@ -320,8 +320,8 @@
       }),
       makeNumberInputControl({
         label: "a22",
-        min: -2,
-        max: 2,
+        min: -10,
+        max: 10,
         step: 0.1,
         value: a22,
         onInput: (value) => {
@@ -331,8 +331,8 @@
       }),
       makeNumberInputControl({
         label: "y01",
-        min: -2,
-        max: 2,
+        min: -10,
+        max: 10,
         step: 0.1,
         value: y01,
         onInput: (value) => {
@@ -342,8 +342,8 @@
       }),
       makeNumberInputControl({
         label: "y02",
-        min: -2,
-        max: 2,
+        min: -10,
+        max: 10,
         step: 0.1,
         value: y02,
         onInput: (value) => {
