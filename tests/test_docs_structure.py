@@ -73,6 +73,7 @@ def test_docs_index_lists_only_chapter_groups(entry: str) -> None:
         "chapters/chap_num_pde",
         "chapters/chap_ode_intro",
         "chapters/chap_ode_review",
+        "chapters/chap_matrix_exponential",
         "chapters/chap_pde_1st",
         "chapters/chap_pde_sov",
     ],
