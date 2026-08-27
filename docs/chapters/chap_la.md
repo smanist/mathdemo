@@ -234,13 +234,13 @@ The length of a vector is then the square-root of its dot product with itself: $
 Geometric meaning of the dot product.
 ```
 
-Now, we are ready to talk about matrix multiplication. Two matrices $A \in \mathbb{R}^{m\times n}$ and $B \in \mathbb{R}^{p\times q}$ can be multiplied only if $n=p$; that is, the number of columns in $A$ must equal the number of rows in $B$. The resulting matrix product $C=A\times B$ is then of shape $m \times q$.
+Now, we are ready to talk about matrix multiplication. Two matrices $A \in \mathbb{R}^{m\times n}$ and $B \in \mathbb{R}^{p\times q}$ can be multiplied only if $n=p$; that is, the number of columns in $A$ must equal the number of rows in $B$. The resulting matrix product $C=A B$ is then of shape $m \times q$.
 
-- If $A$ is $3 \times 4$ and $B$ is $4 \times 2$, then $C=A\times B$ is $3 \times 2$.
+- If $A$ is $3 \times 4$ and $B$ is $4 \times 2$, then $C=A B$ is $3 \times 2$.
 
-- If $A$ is $1 \times 4$ and $B$ is $4 \times 1$, then $C=A\times B$ is a scalar and the matrix product is also a vector dot product!
+- If $A$ is $1 \times 4$ and $B$ is $4 \times 1$, then $C=A B$ is a scalar and the matrix product is also a vector dot product!
 
-- If $A$ is $4 \times 1$ and $B$ is $1 \times 4$, then $C=A\times B$ is $4 \times 4$ and the matrix product is also called an *outer product*!
+- If $A$ is $4 \times 1$ and $B$ is $1 \times 4$, then $C=A B$ is $4 \times 4$ and the matrix product is also called an *outer product*!
 
 The matrix product can be performed in 3 common ways.
 
