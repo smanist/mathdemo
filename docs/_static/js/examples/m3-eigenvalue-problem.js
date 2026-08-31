@@ -3,7 +3,6 @@
 
   const {
     loadPlotly,
-    makeNumberInputControl,
     makeRangeControl,
     numberFromDataset,
     registerExample,
@@ -33,6 +32,144 @@
 
   function formatNumber(value, digits = 3) {
     return Number(value).toFixed(digits).replace(/\.?0+$/, "");
+  }
+
+  function roundedEntry(value) {
+    const rounded = Number(value.toFixed(4));
+    return Object.is(rounded, -0) ? 0 : rounded;
+  }
+
+  function randomEntry(nonzero = false) {
+    if (nonzero) {
+      const magnitude = 1 + Math.floor(Math.random() * 20);
+      return (Math.random() < 0.5 ? -magnitude : magnitude) / 10;
+    }
+    return (Math.floor(Math.random() * 41) - 20) / 10;
+  }
+
+  function randomMatrix(type) {
+    if (type === "generic") {
+      return Array.from({ length: 2 }, () => Array.from({ length: 2 }, () => randomEntry()));
+    }
+
+    if (type === "symmetric") {
+      const a11 = randomEntry();
+      const a12 = randomEntry();
+      const a22 = randomEntry();
+      return [
+        [a11, a12],
+        [a12, a22],
+      ];
+    }
+
+    if (type === "skew-symmetric") {
+      const a12 = randomEntry(true);
+      return [
+        [0, a12],
+        [-a12, 0],
+      ];
+    }
+
+    if (type === "diagonal") {
+      return [
+        [randomEntry(), 0],
+        [0, randomEntry()],
+      ];
+    }
+
+    if (type === "upper-triangular") {
+      return [
+        [randomEntry(), randomEntry()],
+        [0, randomEntry()],
+      ];
+    }
+
+    if (type === "degenerate") {
+      let a11 = randomEntry();
+      const a12 = randomEntry();
+      if (a11 === 0 && a12 === 0) {
+        a11 = randomEntry(true);
+      }
+      const rowScale = Math.random() < 0.5 ? -1 : 1;
+      return [
+        [a11, a12],
+        [rowScale * a11, rowScale * a12],
+      ];
+    }
+
+    const angle = Math.random() * 2 * Math.PI;
+    const cosine = Math.cos(angle);
+    const sine = Math.sin(angle);
+
+    if (type === "orthogonal") {
+      const shrink = 0.25 + Math.random() * 0.65;
+      const amplify = 1.1 + Math.random() * 0.7;
+      const [column1Scale, column2Scale] =
+        Math.random() < 0.5 ? [shrink, amplify] : [amplify, shrink];
+      const orientation = Math.random() < 0.5 ? -1 : 1;
+
+      return [
+        [
+          roundedEntry(column1Scale * cosine),
+          roundedEntry(-orientation * column2Scale * sine),
+        ],
+        [
+          roundedEntry(column1Scale * sine),
+          roundedEntry(orientation * column2Scale * cosine),
+        ],
+      ];
+    }
+
+    if (type === "reflection") {
+      return [
+        [roundedEntry(cosine), roundedEntry(sine)],
+        [roundedEntry(sine), roundedEntry(-cosine)],
+      ];
+    }
+
+    return [
+      [roundedEntry(cosine), roundedEntry(-sine)],
+      [roundedEntry(sine), roundedEntry(cosine)],
+    ];
+  }
+
+  function makeRandomMatrixControl(onGenerate) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "course-interactive__control";
+
+    const label = document.createElement("label");
+    const select = document.createElement("select");
+    select.id = `course-interactive-random-matrix-${Math.random().toString(36).slice(2)}`;
+    label.htmlFor = select.id;
+    label.textContent = "Generate random matrix";
+
+    [
+      { value: "", label: "Choose a type..." },
+      { value: "generic", label: "Generic" },
+      { value: "rotation", label: "Rotation" },
+      { value: "reflection", label: "Reflection" },
+      { value: "orthogonal", label: "Orthogonal columns" },
+      { value: "symmetric", label: "Symmetric" },
+      { value: "skew-symmetric", label: "Skew-symmetric" },
+      { value: "diagonal", label: "Diagonal" },
+      { value: "upper-triangular", label: "Upper triangular" },
+      { value: "degenerate", label: "Degenerate (det = 0)" },
+    ].forEach((option) => {
+      const optionElement = document.createElement("option");
+      optionElement.value = option.value;
+      optionElement.textContent = option.label;
+      select.append(optionElement);
+    });
+
+    select.addEventListener("change", () => {
+      if (select.value) {
+        onGenerate(select.value);
+        select.value = "";
+      }
+    });
+
+    wrapper.append(label, select);
+    return wrapper;
   }
 
   function trajectory(matrix, samples) {
@@ -121,6 +258,8 @@
     readout.className = "course-interactive__readout";
     const plot = document.createElement("div");
     plot.className = "course-interactive__plot course-interactive__plot--large";
+    const matrixInputs = {};
+    let matrixMessage;
 
     function redraw() {
       if (suppress) {
@@ -131,6 +270,7 @@
         [state.a11, state.a12],
         [state.a21, state.a22],
       ];
+      const determinant = state.a11 * state.a22 - state.a12 * state.a21;
       const data = trajectory(matrix, angleCount);
       const theta = data.theta[state.thetaIndex];
       const x = data.x[state.thetaIndex];
@@ -143,9 +283,13 @@
         directionDifference += 360;
       }
 
-      readout.textContent = `theta = ${formatNumber(degrees(theta), 1)} deg; |y| = ${formatNumber(
-        Math.hypot(y[0], y[1])
-      )}; dir(x)-dir(y) = ${formatNumber(directionDifference, 1)} deg`;
+      readout.textContent = `det(A) = ${formatNumber(determinant)}; theta = ${formatNumber(
+        degrees(theta),
+        1
+      )} deg; |y| = ${formatNumber(Math.hypot(y[0], y[1]))}; dir(x)-dir(y) = ${formatNumber(
+        directionDifference,
+        1
+      )} deg`;
 
       plotly.react(
         plot,
@@ -193,25 +337,82 @@
       );
     }
 
-    function matrixControl(label, key) {
-      return makeNumberInputControl({
-        label,
-        min: -2,
-        max: 2,
-        step: 0.1,
-        value: state[key],
-        onInput(value) {
+    function makeMatrixControl() {
+      const wrapper = document.createElement("fieldset");
+      wrapper.className = "course-interactive__control course-interactive__matrix-control";
+      const legend = document.createElement("legend");
+      legend.textContent = "Matrix A";
+      const grid = document.createElement("div");
+      grid.className = "course-interactive__matrix-grid";
+      matrixMessage = document.createElement("div");
+      matrixMessage.className = "course-interactive__message course-interactive__matrix-message";
+
+      [
+        ["a11", "a11"],
+        ["a12", "a12"],
+        ["a21", "a21"],
+        ["a22", "a22"],
+      ].forEach(([label, key]) => {
+        const input = document.createElement("input");
+        input.type = "number";
+        input.min = "-2";
+        input.max = "2";
+        input.step = "0.1";
+        input.value = String(state[key]);
+        input.inputMode = "decimal";
+        input.className = "course-interactive__matrix-input";
+        input.setAttribute("aria-label", label);
+        input.title = label;
+        matrixInputs[key] = input;
+
+        input.addEventListener("input", () => {
+          const value = Number(input.value);
+          const isValid =
+            input.value.trim() !== "" && Number.isFinite(value) && value >= -2 && value <= 2;
+
+          if (!isValid) {
+            input.setAttribute("aria-invalid", "true");
+            matrixMessage.textContent = "Each matrix entry must be between -2 and 2.";
+            return;
+          }
+
+          input.removeAttribute("aria-invalid");
           state[key] = value;
+          matrixMessage.textContent = Object.values(matrixInputs).some(
+            (matrixInput) => matrixInput.getAttribute("aria-invalid") === "true"
+          )
+            ? "Each matrix entry must be between -2 and 2."
+            : "";
           redraw();
-        },
+        });
+        grid.append(input);
       });
+
+      wrapper.append(legend, grid, matrixMessage);
+      return wrapper;
     }
 
+    function setMatrix(matrix) {
+      const entries = {
+        a11: matrix[0][0],
+        a12: matrix[0][1],
+        a21: matrix[1][0],
+        a22: matrix[1][1],
+      };
+
+      Object.entries(entries).forEach(([key, value]) => {
+        state[key] = value;
+        matrixInputs[key].value = String(value);
+        matrixInputs[key].removeAttribute("aria-invalid");
+      });
+      matrixMessage.textContent = "";
+      redraw();
+    }
+
+    const matrixControl = makeMatrixControl();
     controls.append(
-      matrixControl("a11", "a11"),
-      matrixControl("a12", "a12"),
-      matrixControl("a21", "a21"),
-      matrixControl("a22", "a22"),
+      makeRandomMatrixControl((type) => setMatrix(randomMatrix(type))),
+      matrixControl,
       makeRangeControl({
         label: "theta",
         min: 0,

@@ -274,6 +274,63 @@ div.bodywrapper {
   border-color: #b42318;
 }
 
+fieldset.course-interactive__matrix-control {
+  border: 0;
+  display: block;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.course-interactive__matrix-control legend {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  padding: 0;
+}
+
+.course-interactive__matrix-grid {
+  display: grid;
+  gap: 0.35rem 0.45rem;
+  grid-template-columns: repeat(2, 6.25rem);
+  padding: 0.3rem 0.75rem;
+  position: relative;
+  width: max-content;
+}
+
+.course-interactive__matrix-grid::before,
+.course-interactive__matrix-grid::after {
+  border-bottom: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0.4rem;
+}
+
+.course-interactive__matrix-grid::before {
+  border-left: 2px solid currentColor;
+  left: 0;
+}
+
+.course-interactive__matrix-grid::after {
+  border-right: 2px solid currentColor;
+  right: 0;
+}
+
+.course-interactive__control .course-interactive__matrix-input {
+  box-sizing: border-box;
+  font-variant-numeric: tabular-nums;
+  min-width: 0;
+  text-align: right;
+  width: 6.25rem;
+}
+
+.course-interactive__matrix-message {
+  margin-top: 0.25rem;
+}
+
 .course-interactive__message {
   color: #b42318;
   font-size: 0.85rem;

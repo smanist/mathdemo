@@ -24,5 +24,10 @@ the output vector stays on the same line and $\lambda$ is the scaling factor.
 Interactive example loading...
 :::
 
-Use the angle slider to look for directions where the blue input vector and
-red transformed vector align.
+Use the random-matrix menu to compare generic, rotation, reflection,
+orthogonal-column, symmetric, skew-symmetric, diagonal, and upper-triangular
+transformations, as well as degenerate matrices with $\det(A)=0$. The
+orthogonal-column option keeps the two columns perpendicular but scales them
+independently, shrinking one input direction while amplifying the other. The
+readout reports $\det(A)$. Use the angle slider to look for directions where
+the blue input vector and red transformed vector align.
