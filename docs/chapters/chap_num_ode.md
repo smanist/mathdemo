@@ -160,7 +160,7 @@ y_2 &= y_1 + h (-y_1) \\
 &= 0.81
 \end{aligned}
 ```
-The exact solution is $y(0.1)=\exp(-0.2)\approx 0.819$, with a relative error of 1.1\% - still reasonably low.
+The exact solution is $y(0.2)=\exp(-0.2)\approx 0.819$, with a relative error of 1.1\% - still reasonably low.
 
 
 ### Error Analysis
@@ -239,7 +239,7 @@ To mitigate the stability issue, people introduce implicit methods.  Here we dis
 \begin{aligned}
 y_0 &= y(x_0) \\
 &= y(x_1-h) \\
-&= y(x_1) - \ddf{y}{x}(x_1) h + \frac{\dd^2 y}{\dd x^2}(x_0) h^2 + ... \\
+&= y(x_1) - \ddf{y}{x}(x_1) h + \frac{\dd^2 y}{\dd x^2}(x_1) h^2 + ... \\
 &= y_1 - f(x_1,y_1) h + O(h^2) \\
 &\approx y_1 - f(x_1,y_1) h
 \end{aligned}
@@ -578,7 +578,7 @@ z_1'=z_2
 Then, combining the above equations, we get vector-valued first-order ODE's, $\vz'=\vf(x,\vz)$,
 ```{math}
 \begin{bmatrix} z_1 \\ z_2 \end{bmatrix}' =
-\begin{bmatrix} z_2 \\ - 2\zeta\omega z_2 - \omega^2 z_1 + r(t) \end{bmatrix}
+\begin{bmatrix} z_2 \\ - 2\zeta\omega z_2 - \omega^2 z_1 + r(x) \end{bmatrix}
 ```
 The ODE's are paired with the initial conditions,
 ```{math}

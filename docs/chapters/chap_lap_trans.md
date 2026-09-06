@@ -617,17 +617,17 @@ The solution means that upon ignition, the rocket deformation has two modes of m
 
 ### Dirac Delta Function and Sudden Impulse
 
-Lastly, we turn to IVPs with impulse inputs. First consider a realistic impulse, meaning that the duration and amplitude of the impulse are finite, and thus the total impulse energy is finite. We use unit step functions to represent this impulse,
+Lastly, we turn to IVPs with impulse inputs. First consider a finite-duration pulse whose duration and amplitude are both finite. We use unit step functions to represent this rectangular input,
 
 ```{math}
 r(t) = h (u(t-a)-u(t-b))
 ```
 
-with duration $b-a$, amplitude $h$, and total energy $h(b-a)$.
+with duration $b-a$, amplitude $h$, and area $h(b-a)$. If $r(t)$ represents a force, this area is the total impulse delivered by the force.
 
 **Example, Part I**
 
-Consider a car crash experiment, where we can model the impact as $r(t)=u(t-1)-u(t-2)$, that is, an impulse of amplitude $1$ that starts at $t=1$ and ends at $t=2$. Suppose the car bumper system is modeled as
+Consider a car crash experiment, where we can model the impact as $r(t)=u(t-1)-u(t-2)$, that is, a finite-duration pulse of amplitude $1$ that starts at $t=1$ and ends at $t=2$. Suppose the car bumper system is modeled as
 
 ```{math}
 y''+3y'+2y = r(t),\quad y'(0)=y(0)=0
@@ -671,34 +671,23 @@ Then using $t$-shifting, we find the final response
 \boxed{y(t) = f(t-1)u(t-1) - f(t-2)u(t-2)}
 ```
 
-This solution is rather cumbersome. One impulse has two unit steps, and we have to carry around two $e^{-as}$ terms throughout the solution; unit step introduces an extra factor $1/s$ that complicates the PFD; $f(t)$ has three terms, so $y(t)$ has six terms, which can be difficult to analyze and interpret.
+This solution is rather cumbersome. One finite-duration pulse has two unit steps, and we have to carry around two $e^{-as}$ terms throughout the solution; unit step introduces an extra factor $1/s$ that complicates the PFD; $f(t)$ has three terms, so $y(t)$ has six terms, which can be difficult to analyze and interpret.
 
-This is where the Dirac delta function $\delta(t)$ comes into play. It is an idealization of the finite impulse and simplifies the solution and analysis of impulse-related IVPs. Specifically, Dirac delta is an impulse having zero duration, infinite amplitude, and finite total impulse energy. Formally, we define
-
-```{math}
-\delta(t-a) = \left\{
-\begin{array}{ll}
-\infty, &\ t=a \\
-0, &\ \text{Otherwise}
-\end{array}
-\right.
-```
-
-and
+This is where the Dirac delta $\delta(t)$ comes into play. It is an idealized unit-area impulse that simplifies the solution and analysis of impulse-related IVPs. More precisely, the Dirac delta is a generalized function (or distribution), not an ordinary function with a meaningful pointwise value. The shifted delta $\delta(t-a)$ is characterized by its unit integral
 
 ```{math}
 \int_{-\infty}^\infty \delta(t-a)\,\dd t = 1
 ```
 
-The integral says that the total impulse energy is unity. The Dirac delta has an indicator property that, for any function $g(t)$,
+and its sifting property: for any sufficiently regular function $g(t)$,
 
 ```{math}
 \int_{-\infty}^\infty g(t)\delta(t-a)\,\dd t = g(a)
 ```
 
-so that $\delta(t-a)$ acts as if it picks out the value of $g(t)$ at $t=a$.
+Thus $\delta(t-a)$ has area $1$ and acts under an integral as if it picks out the value of $g(t)$ at $t=a$. When the delta models a force, that unit area represents a unit total impulse.
 
-Using the indicator property, the Laplace Transform is easy to find,
+Using the sifting property, the Laplace Transform is easy to find,
 
 ```{math}
 \cL[\delta(t-a)] = \int_0^\infty e^{-st}\delta(t-a)\,\dd t = \boxed{e^{-as}}
@@ -706,7 +695,7 @@ Using the indicator property, the Laplace Transform is easy to find,
 
 **Example, Part II**
 
-Now turn back to the previous example. The finite impulse model had total energy $1$ starting at $t=1$, so here we replace the input with a Dirac delta at $t=1$:
+Now turn back to the previous example. The finite-duration pulse had area $1$ (and therefore total impulse $1$ when $r(t)$ is a force), starting at $t=1$. We replace it with a Dirac delta at $t=1$:
 
 ```{math}
 y''+3y'+2y = r(t) = \delta(t-1),\quad y'(0)=y(0)=0
@@ -750,9 +739,9 @@ Then using $t$-shifting, we find the final response
 \boxed{y(t) = (e^{-(t-1)} - e^{-2(t-1)})u(t-1)}
 ```
 
-Clearly, the Dirac delta greatly simplifies the solution procedure by eliminating the shortcomings mentioned earlier with finite impulses. Even better, the Dirac delta solution matches quantitatively well with the finite-impulse one, and hence Dirac delta has been widely used in many engineering applications.
+Clearly, the Dirac delta greatly simplifies the solution procedure by eliminating the shortcomings mentioned earlier with finite-duration pulses. Even better, the Dirac delta solution matches quantitatively well with the finite-duration-pulse response, and hence the Dirac delta has been widely used in many engineering applications.
 
-![Finite impulses approximated by Dirac Delta](../pics/M2_unit_v_dirac.png)
+![Finite-duration pulses approximated by a Dirac delta](../pics/M2_unit_v_dirac.png)
 
 See an interactive example in {doc}`M1_impulse`.
 
