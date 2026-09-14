@@ -355,8 +355,8 @@
       ].forEach(([label, key]) => {
         const input = document.createElement("input");
         input.type = "number";
-        input.min = "-2";
-        input.max = "2";
+        input.min = "-10";
+        input.max = "10";
         input.step = "0.1";
         input.value = String(state[key]);
         input.inputMode = "decimal";
@@ -368,11 +368,11 @@
         input.addEventListener("input", () => {
           const value = Number(input.value);
           const isValid =
-            input.value.trim() !== "" && Number.isFinite(value) && value >= -2 && value <= 2;
+            input.value.trim() !== "" && Number.isFinite(value) && value >= -10 && value <= 10;
 
           if (!isValid) {
             input.setAttribute("aria-invalid", "true");
-            matrixMessage.textContent = "Each matrix entry must be between -2 and 2.";
+            matrixMessage.textContent = "Each matrix entry must be between -10 and 10.";
             return;
           }
 
@@ -381,7 +381,7 @@
           matrixMessage.textContent = Object.values(matrixInputs).some(
             (matrixInput) => matrixInput.getAttribute("aria-invalid") === "true"
           )
-            ? "Each matrix entry must be between -2 and 2."
+            ? "Each matrix entry must be between -10 and 10."
             : "";
           redraw();
         });

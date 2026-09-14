@@ -16,6 +16,7 @@ interactive dynamics examples.
 
 2.3 Matrix Exponentials for Linear Systems <chap_mat_exp>
 Demo: ODE with Matrix Exponentials <M3_EVP_for_IVP>
+Demo: Longitudinal Aircraft Modes <M3_aircraft_modes>
 
 2.4 Laplace Transform <chap_lap_trans>
 Demo: Resonance <M1_periodic_excite>

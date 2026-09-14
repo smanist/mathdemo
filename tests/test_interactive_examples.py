@@ -60,6 +60,12 @@ EXAMPLES = [
         script_registration='registerExample("m3-evp-for-ivp"',
     ),
     InteractiveExample(
+        chapter="M3_aircraft_modes",
+        script="m3-aircraft-modes.js",
+        placeholder_class="course-interactive-m3-aircraft-modes",
+        script_registration='registerExample("m3-aircraft-modes"',
+    ),
+    InteractiveExample(
         chapter="M4_Fourier_Extension",
         script="m4-fourier-extension.js",
         placeholder_class="course-interactive-m4-fourier-extension",

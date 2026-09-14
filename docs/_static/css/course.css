@@ -298,6 +298,10 @@ fieldset.course-interactive__matrix-control {
   width: max-content;
 }
 
+.course-interactive__matrix-grid--vector {
+  grid-template-columns: 6.25rem;
+}
+
 .course-interactive__matrix-grid::before,
 .course-interactive__matrix-grid::after {
   border-bottom: 2px solid currentColor;
@@ -354,4 +358,378 @@ fieldset.course-interactive__matrix-control {
 .course-interactive__status {
   color: var(--color-foreground-muted, #5f6c7b);
   font-size: 0.9rem;
+}
+
+.aircraft-modes {
+  --aircraft-fast: #2563eb;
+  --aircraft-slow: #d97706;
+  --aircraft-total: #111827;
+  --aircraft-velocity: #138a72;
+  --aircraft-foreground: #1f2937;
+  --aircraft-muted: #748091;
+  --aircraft-grid: #d8dee9;
+}
+
+.aircraft-modes__controls {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.aircraft-modes__control-row {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.aircraft-modes__control-row--primary {
+  grid-template-columns: repeat(3, minmax(10rem, 1fr));
+}
+
+.aircraft-modes__control-row--coefficients {
+  grid-template-columns: repeat(4, minmax(3.7rem, 6.5rem));
+}
+
+.aircraft-modes__control-row--disturbance {
+  grid-template-columns: repeat(2, minmax(12rem, 1fr));
+}
+
+.aircraft-modes__coefficient-field label {
+  font-style: italic;
+}
+
+.course-interactive__control.aircraft-modes__coefficient-field input[type="number"] {
+  box-sizing: border-box;
+  max-width: 6.5rem;
+  width: 100%;
+}
+
+.aircraft-modes__spectrum-readout {
+  border-left: 3px solid var(--aircraft-fast);
+  line-height: 1.55;
+  padding-left: 0.7rem;
+}
+
+.aircraft-modes__transport {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.8rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.aircraft-modes__button {
+  background: var(--color-background-primary, #fff);
+  border: 1px solid var(--color-background-border, #b8c1cc);
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.4rem 0.8rem;
+}
+
+.aircraft-modes__button:hover,
+.aircraft-modes__button:focus {
+  border-color: #60758a;
+}
+
+.aircraft-modes__time-label {
+  align-items: center;
+  display: grid;
+  flex: 1 1 22rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 0.25rem 0.6rem;
+  grid-template-columns: auto auto minmax(10rem, 1fr);
+}
+
+.aircraft-modes__time-label output {
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+  min-width: 4.5rem;
+}
+
+.aircraft-modes__time-label input {
+  min-width: 10rem;
+  width: 100%;
+}
+
+.aircraft-modes__current-readout {
+  color: var(--color-foreground-muted, #526070);
+  min-height: 1.45rem;
+}
+
+.aircraft-modes__dashboard {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.aircraft-modes__panel {
+  background: var(--color-background-primary, #fff);
+  border: 1px solid var(--color-background-border, #d8dee9);
+  border-radius: 6px;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  min-width: 0;
+  padding: 0.75rem;
+}
+
+.aircraft-modes__dashboard .aircraft-modes__panel {
+  margin-top: 0;
+}
+
+.aircraft-modes__panel-title {
+  font-size: 0.95rem;
+  font-weight: 650;
+  margin: 0 0 0.5rem;
+}
+
+.aircraft-modes__canvas {
+  display: block;
+  height: 330px;
+  width: 100%;
+}
+
+.aircraft-modes__svg-host {
+  min-width: 0;
+  width: 100%;
+}
+
+.aircraft-modes__eigen-svg,
+.aircraft-modes__response-svg {
+  display: block;
+  height: auto;
+  overflow: visible;
+  width: 100%;
+}
+
+.aircraft-modes__chart-frame {
+  fill: none;
+  stroke: var(--aircraft-grid);
+  stroke-width: 1;
+}
+
+.aircraft-modes__axis,
+.aircraft-modes__zero-line {
+  stroke: var(--aircraft-grid);
+  stroke-width: 1;
+}
+
+.aircraft-modes__stability-axis {
+  stroke: var(--aircraft-foreground);
+  stroke-dasharray: 4 4;
+  stroke-width: 1.4;
+}
+
+.aircraft-modes__axis-label,
+.aircraft-modes__axis-title,
+.aircraft-modes__state-label,
+.aircraft-modes__current-value {
+  fill: var(--aircraft-foreground);
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.aircraft-modes__axis-title,
+.aircraft-modes__state-label {
+  font-weight: 600;
+}
+
+.aircraft-modes__current-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.aircraft-modes__eigen {
+  stroke: var(--color-background-primary, #fff);
+  stroke-width: 2;
+  transition: opacity 120ms ease, r 120ms ease;
+}
+
+.aircraft-modes__eigen--fast {
+  fill: var(--aircraft-fast);
+}
+
+.aircraft-modes__eigen--slow {
+  fill: var(--aircraft-slow);
+}
+
+.aircraft-modes__eigen--active {
+  opacity: 1;
+  stroke: var(--aircraft-foreground);
+  stroke-width: 2.5;
+}
+
+.aircraft-modes__eigen--inactive {
+  opacity: 0.2;
+}
+
+.aircraft-modes__svg-host--eigen {
+  margin: 0 auto;
+  max-width: 42rem;
+}
+
+.aircraft-modes__mode-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.aircraft-modes__mode-card {
+  border-left: 3px solid var(--aircraft-fast);
+  min-width: 0;
+  padding-left: 0.65rem;
+}
+
+.aircraft-modes__mode-card--slow {
+  border-left-color: var(--aircraft-slow);
+}
+
+.aircraft-modes__mode-card h4 {
+  font-size: 0.88rem;
+  font-weight: 650;
+  margin: 0 0 0.45rem;
+}
+
+.aircraft-modes__shape-row {
+  align-items: center;
+  display: grid;
+  font-size: 0.78rem;
+  gap: 0.4rem;
+  grid-template-columns: 3rem minmax(4rem, 1fr) 5.4rem;
+  margin: 0.25rem 0;
+}
+
+.aircraft-modes__shape-track {
+  background: #e6eaf0;
+  display: block;
+  height: 0.48rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.aircraft-modes__shape-track--real::after {
+  background: #8d98a6;
+  bottom: 0;
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 0;
+  width: 1px;
+}
+
+.aircraft-modes__shape-bar {
+  background: var(--aircraft-fast);
+  bottom: 0;
+  display: block;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.aircraft-modes__mode-card--slow .aircraft-modes__shape-bar {
+  background: var(--aircraft-slow);
+}
+
+.aircraft-modes__shape-value {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.aircraft-modes__legend {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.aircraft-modes__legend > span {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.aircraft-modes__legend-swatch {
+  background: var(--aircraft-total);
+  display: inline-block;
+  height: 3px;
+  width: 1rem;
+}
+
+.aircraft-modes__legend-swatch--fast {
+  background: var(--aircraft-fast);
+}
+
+.aircraft-modes__legend-swatch--slow {
+  background: var(--aircraft-slow);
+}
+
+.aircraft-modes__response-line {
+  fill: none;
+  stroke-linejoin: round;
+}
+
+.aircraft-modes__response-line--fast {
+  stroke: var(--aircraft-fast);
+  stroke-width: 1.5;
+}
+
+.aircraft-modes__response-line--slow {
+  stroke: var(--aircraft-slow);
+  stroke-width: 1.5;
+}
+
+.aircraft-modes__response-line--total {
+  stroke: var(--aircraft-total);
+  stroke-width: 2;
+}
+
+.aircraft-modes__lane-separator {
+  stroke: var(--aircraft-grid);
+  stroke-width: 0.7;
+}
+
+.aircraft-modes__time-cursor {
+  stroke: #9b1c1c;
+  stroke-width: 1.3;
+}
+
+.aircraft-modes__matrix-details {
+  margin-top: 0.9rem;
+}
+
+.aircraft-modes__matrix-details summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.aircraft-modes__matrix-details pre {
+  background: var(--color-background-primary, #fff);
+  border: 1px solid var(--color-background-border, #d8dee9);
+  font-size: 0.78rem;
+  overflow-x: auto;
+  padding: 0.65rem;
+}
+
+@media screen and (max-width: 720px) {
+  .aircraft-modes__control-row--primary,
+  .aircraft-modes__control-row--disturbance {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .aircraft-modes__time-label {
+    grid-template-columns: auto auto;
+  }
+
+  .aircraft-modes__time-label input {
+    grid-column: 1 / -1;
+  }
+
+  .aircraft-modes__shape-row {
+    grid-template-columns: 2.8rem minmax(3.5rem, 1fr) 4.9rem;
+  }
 }
