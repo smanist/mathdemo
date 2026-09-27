@@ -64,7 +64,7 @@
     const plotly = await loadPlotly();
     let k = numberFromDataset(element, "k", -1);
     let x0 = numberFromDataset(element, "x0", 1);
-    let tFinal = numberFromDataset(element, "tFinal", 1);
+    let tFinal = numberFromDataset(element, "tFinal", 10);
     let stepSize = numberFromDataset(element, "stepSize", 0.1);
 
     element.innerHTML = "";
@@ -149,7 +149,7 @@
         ],
         {
           autosize: true,
-          legend: { orientation: "h", y: -0.2 },
+          legend: { orientation: "h", y: -0.2, uirevision: "linear-ode" },
           margin: { t: 24, r: 24, b: 88, l: 56 },
           xaxis: { title: "t", range: [0, tFinal] },
           yaxis: { title: "x(t)", autorange: true },
@@ -195,7 +195,7 @@
       makeRangeControl({
         label: "h",
         min: 0.005,
-        max: 0.5,
+        max: 5,
         step: 0.005,
         value: stepSize,
         onInput: (value) => {
