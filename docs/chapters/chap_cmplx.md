@@ -85,10 +85,11 @@ y=r\sin\theta
 \left\{
 \begin{array}{l}
 r = \sqrt{x^2+y^2} \\
-\theta = \tan^{-1}\frac{y}{x}
+\theta = \operatorname{atan2}(y,x)+2k\pi,\quad k\in\mathbb{Z}\quad(r>0)
 \end{array}
 \right.
 ```
+Here $\operatorname{atan2}(y,x)$ chooses the angle in the correct quadrant, including when $x=0$. The argument is undefined for $z=0$.
 
 So is a complex number, $z=x+iy$; we can represent it using a radius and an angle, $(r,\theta)$.  Specifically, if we use the famous Euler formula,
 ```{math}
@@ -121,11 +122,11 @@ Geometrically, it means reflecting the 2D vector by the real axis.  In the polar
 \bar{z} = r\cos\theta - ir\sin\theta = r(\cos\theta - i\sin\theta) = \boxed{re^{-i\theta}}
 ```
 
-One reason to introduce conjugates is simply that complex numbers frequently appear in conjugate pairs.  Two examples include the solutions to a mass-spring damper ($e^{i\omega t}$ and $e^{-i\omega t}$) and the eigenvalues of the Givens rotation matrix ($\cos\theta\pm\sin\theta$); in both cases the conjugacy is actually due to the roots of a quadratic polynomial of real coefficients.
+One reason to introduce conjugates is simply that complex numbers frequently appear in conjugate pairs.  Two examples include the solutions to a mass-spring damper ($e^{i\omega t}$ and $e^{-i\omega t}$) and the eigenvalues of the Givens rotation matrix ($\cos\theta\pm i\sin\theta$); in both cases the conjugacy is actually due to the roots of a quadratic polynomial of real coefficients.
 
 Some convenient properties of complex conjugate are,
 
-+ The relation to the real and imaginary parts: $x=\frac{z+\bar{z}}{2}$, $y=\frac{z-\bar{z}}{2}$
++ The relation to the real and imaginary parts: $x=\frac{z+\bar{z}}{2}$, $y=\frac{z-\bar{z}}{2i}$
 + The relation to the radius: $z\bar{z}=(re^{i\theta})(re^{-i\theta})=r^2$
 
 ### Arithmetics
@@ -138,7 +139,7 @@ In Cartesian form, the multiplication is defined as,
 ```{math}
 \begin{aligned}
 z_1z_2 &= (x_1+iy_1)(x_2+iy_2) \\
-&= x_1x_2 + iy_1x_2 + ix_1y_2 + i^2 x_2y_1 \\
+&= x_1x_2 + iy_1x_2 + ix_1y_2 + i^2 y_1y_2 \\
 &= (x_1x_2-y_1y_2) + i(x_1y_2+x_2y_1)
 \end{aligned}
 ```
@@ -468,7 +469,7 @@ Note again that the derivative again align with the intuition from real calculus
 
 By now one might have established an intuition that if a complex function's derivative is defined, then it behaves as if a real function.  This is true and we can formalize the intuition by the concept of analytic function:
 
-A complex function is **analytic** at $z=z_o$ if it is defined and differentiable at $z=z_o$.
+A complex function is **analytic** at $z=z_o$ if it is complex differentiable throughout some open neighborhood of $z_o$.
 
 If a complex function is analytic, then its derivative can be computed following rules of real calculus, including the product and chain rules.  Furthermore, the sum, product, division, and composition of analytic functions are still analytic, when the function is defined.  Hence, many analytical functions can be treated as if real functions, which saves us the cumbersome computation by the CR equations.
 
@@ -625,6 +626,8 @@ and
 ```
 which still aligns with the real counterpart.
 
+&clubs; This derivative formula applies after choosing an analytic branch of the logarithm. With our convention $-\pi<\Arg(z)\leq\pi$, the principal branch $\Ln(z)$ is analytic on $\mathbb{C}\setminus(-\infty,0]$.
+
 **Example 1**
 
 Compute $\ln(1+i)$.
@@ -637,7 +640,7 @@ Then $\ln(z) = \Ln(z)+i2k\pi$ and the PV is $\Ln(z) = \ln(\sqrt{2})+i\frac{\pi}{
 
 Now the $\ln$ of negative reals are defined: $\ln(-1)$
 
-The polar form: $|z|=1$ and $\arg(z)= \pi+2k\pi$.  Then $\ln(-1) = i(2k+1)\pi$, and $\Ln(-1) = \ln(1)+i\pi=i\pi$, which are purely real - no wonder why $\ln(-1)$ does not exist in real domain.
+The polar form: $|z|=1$ and $\arg(z)= \pi+2k\pi$.  Then $\ln(-1) = i(2k+1)\pi$, and $\Ln(-1) = \ln(1)+i\pi=i\pi$, which is purely imaginary. This explains why $-1$ has no real logarithm. The assigned principal value at $-1$ does not make $\Ln$ analytic across the negative real axis.
 
 ### Trigonometric Functions
 Here we only discuss the sine and cosine functions.
@@ -698,9 +701,32 @@ Find the Cosine of $z=\frac{\pi}{2}+i$.
 We compute this by the Cartesian form,
 ```{math}
 \begin{aligned}
-\cos z &= \cos(\pi/2)\cosh(1) - \sin(\pi/2)\sinh(1) \\
+\cos z &= \cos(\pi/2)\cosh(1) - i\sin(\pi/2)\sinh(1) \\
 &= -i\sinh(1) = -\frac{i}{2}(e^1-e^{-1}) \\
 &\approx -1.175 i
+\end{aligned}
+```
+
+### Hyperbolic Functions
+
+The exponential definitions of hyperbolic cosine and sine also apply to complex inputs:
+```{math}
+\cosh z = \frac{e^z+e^{-z}}{2},\qquad
+\sinh z = \frac{e^z-e^{-z}}{2}.
+```
+For $z=x+iy$, Euler's formula gives
+```{math}
+\cosh(x+iy)=\cosh x\cos y+i\sinh x\sin y.
+```
+
+**Example**
+
+Compute $\cosh(1+i)$. Substituting $x=y=1$ yields
+```{math}
+\begin{aligned}
+\cosh(1+i)
+&=\cosh(1)\cos(1)+i\sinh(1)\sin(1) \\
+&\approx 0.834+0.989i.
 \end{aligned}
 ```
 
@@ -708,16 +734,21 @@ We compute this by the Cartesian form,
 
 Lastly, we look at the powers of complex numbers: $w(z)=z^c$ for $c$ complex.
 
-This function can be written as a combination of exponential and logarithm,
+Using the multivalued logarithm gives all values of the complex power,
 ```{math}
-w(z)=e^{c\ln z}
+z^c=e^{c\ln z},\qquad z\ne 0,
 ```
-and naturally with the principal value
+and choosing the principal logarithm gives the principal value
 ```{math}
 z^c = e^{c\Ln z}
 ```
 
-Since both $e^z$ and $\ln z$ are analytic, so is their composition $z^c$, and one can infer that $(z^c)'=cz^{c-1}$.
+Where the logarithm is analytic, its composition with the exponential is analytic too. The familiar derivative rule follows:
+```{math}
+\frac{d}{dz}z^c=cz^{c-1}.
+```
+
+&clubs; More precisely, choose an analytic logarithm branch $L$ on a domain $D$ that avoids $0$. Then $f(z)=e^{cL(z)}$ is analytic on $D$ and $f'(z)=c e^{(c-1)L(z)}$. Both powers in the derivative rule use the same branch. For the principal branch, $D=\mathbb{C}\setminus(-\infty,0]$.
 
 **Example 1**
 
