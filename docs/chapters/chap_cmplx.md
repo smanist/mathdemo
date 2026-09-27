@@ -269,43 +269,45 @@ Next, we turn to functions of complex numbers, typically denoted $f(z)$ or $w(z)
 ### Continuity
 
 #### Definition
-First we extend the concept of limit to complex functions.  From the $\epsilon-\delta$ language, formally, we can state the limit as follows.
-
-If for all $z$, when $|z-z_o|\leq \delta$,
-```{math}
-|f(z)-l|\leq \epsilon
-```
-then
+First we extend the idea of a limit to complex functions. If $f(z)$ approaches a value $l$ as $z$ gets closer to $z_o$, we write
 ```{math}
 \lim_{z\rightarrow z_o} f(z) = l
 ```
+The distance $|z-z_o|$ tells us how close $z$ is to $z_o$ on the complex plane. We can make $f(z)$ as close to $l$ as we wish by taking $z$ close enough to $z_o$.
 
-The above statement justs says that, if as $z$ approaches $z_o$, $f(z)$ approaches $f(z_o)$, then the limit of $f(z)$ is just $f(z_o)$.  Based on the limit we can define the continuity:
+A complex function $f$ is **continuous** at $z_o$ when its value there is defined and agrees with the value approached from nearby points:
+```{math}
+\lim_{z\rightarrow z_o}f(z)=f(z_o).
+```
 
-A complex function $f$ is continuous at $z=z_o$, if $f(z_o)$ is **defined** and the limit $\lim_{z\rightarrow z_o} f(z)$ **exists**.
+&clubs; Formally, $\lim_{z\to z_o}f(z)=l$ means that for every $\epsilon>0$ there is a $\delta>0$ such that, for every $z$ in the domain of $f$,
+```{math}
+0<|z-z_o|<\delta\quad\Longrightarrow\quad |f(z)-l|<\epsilon.
+```
+The point $z_o$ must be a limit point of the domain. The condition excludes $z_o$ itself, so $f(z_o)$ need not be defined for the limit to exist.
 
 #### Problem
-This definition of continuity seems *naive* right?  The catch here, however, is: what does $|z-z_o|\leq \delta$ represent?  Since $z$ is on a complex plane, and $|z-z_o|$ represents the distance between $z$ and $z_o$, the inequality means a *disk* centered at $z_o$ with a radius $\delta$.  This means $z$ can approach $z_o$ in *many* different ways.
+What does it mean to approach a point on the complex plane? Points close to $z_o$ fill a small *disk* around it, so $z$ can approach $z_o$ along *many* different paths. For a limit to exist, $f(z)$ must approach the same value along all of them.
 
 **Example 1**
 
-Does $f(z) = e^{-z^2}$ remains continuous as $z\rightarrow\infty$?
+Does $f(z) = e^{-z^2}$ approach one limit as $|z|\rightarrow\infty$?
 
 If $z$ moves along the real axis, then $e^{-z^2}=e^{-|z|^2}$ and as $|z|\rightarrow\infty$, $f(z)\rightarrow 0$.  This seems intuitive.
 
-If $z$ moves along the imaginary axis, then $e^{-z^2}=e^{-(i|z|)^2}=e^{|z|^2}$ and as $|z|\rightarrow\infty$, $f(z)\rightarrow \infty$!  This means $f(z) = e^{-z^2}$ is undefined and hence not continuous as $z\rightarrow\pm i\infty$.
+If $z$ moves along the imaginary axis, then $e^{-z^2}=e^{-(i|z|)^2}=e^{|z|^2}$, which grows without bound as $|z|\rightarrow\infty$. The two paths have incompatible behavior, so $f$ has no limit as $|z|\rightarrow\infty$.
 
 **Example 2**
 
 Example 1 might appear cheating, as we are involving infinity.  Let's look at one more seemingly innocent function,
 ```{math}
-f(z) = \Im \frac{z}{|z|} = \frac{\Im(z)}{|z|} = \frac{r\sin\theta}{r} = \sin\theta
+f(z) = \Im \frac{z}{|z|} = \frac{\Im(z)}{|z|} = \frac{r\sin\theta}{r} = \sin\theta,\qquad z\ne0
 ```
-Is $f(z)$ continuous at $z=0$?  At least it is defined.
+Is $f(z)$ continuous at $z=0$? It is not defined there, because $|z|=0$.
 
 But if we look at the limit:
 
-If we approach $z=0$ from the positive side of real axis, then $\theta=0$ and $f(z)=0$; if we approach $z=0$ from the positive side of imaginary axis, then $\theta=\pi/2$ and $f(z)=1$.  In fact, $f(z)$ can be any value between -1 and 1, depending on how we approach $z=0$.  This means, the limit $\lim_{z\rightarrow 0}f(z)$ does not exist.  Hence, $f(z)$ is not continuous at $z=0$.
+If we approach $z=0$ from the positive side of the real axis, then $\theta=0$ and $f(z)=0$; if we approach from the positive side of the imaginary axis, then $\theta=\pi/2$ and $f(z)=1$. In fact, $f(z)$ can take any value between $-1$ and $1$, depending on the path. Thus $\lim_{z\rightarrow 0}f(z)$ does not exist, and assigning a value to $f(0)$ would not make the function continuous there.
 
 ![Illustration of Example 2 - Note the drastic change in the middle.](../pics/mma_sin_theta.png)
 
@@ -316,7 +318,7 @@ The reason to reveal the intricacies of the limits and continuity of complex fun
 f'(z) = \lim_{\Delta z\rightarrow 0} \frac{f(z+\Delta z)-f(z)}{\Delta z}
 ```
 
-However, now we know the limit, and hence the derivative, do not always exist, due to the arbitrariness implied in $\Delta z\rightarrow 0$.  In fact, the derivative can only exist when some particular conditions, **Cauchy-Riemann Equations**, are satisfied.
+However, a derivative does not always exist because $\Delta z$ can approach $0$ along many paths. A complex derivative must satisfy the **Cauchy-Riemann equations**.
 
 ![Illustration of paths of convergence](../pics/conv_path.png)
 
@@ -338,8 +340,8 @@ where in the last row we used the definition of partial derivatives of real func
 Second, along the positive imaginary axis, $\Delta z=i\Delta y$, then
 ```{math}
 \begin{aligned}
-w'(z) &= \lim_{\Delta y-\rightarrow 0} \frac{\left[u(x,y+\Delta y)+iv(x,y+\Delta y)\right]-\left[u(x,y)+iv(x,y)\right]}{i\Delta y} \\
-&= \lim_{\Delta y-\rightarrow 0} \left[ \frac{u(x,y+\Delta y) - u(x,y)}{i\Delta y} + \frac{iv(x,y+\Delta y) - iv(x,y)}{i\Delta y} \right] \\
+w'(z) &= \lim_{\Delta y\rightarrow 0} \frac{\left[u(x,y+\Delta y)+iv(x,y+\Delta y)\right]-\left[u(x,y)+iv(x,y)\right]}{i\Delta y} \\
+&= \lim_{\Delta y\rightarrow 0} \left[ \frac{u(x,y+\Delta y) - u(x,y)}{i\Delta y} + \frac{iv(x,y+\Delta y) - iv(x,y)}{i\Delta y} \right] \\
 &= -i\ppf{u}{y} + \ppf{v}{y}
 \end{aligned}
 ```
@@ -365,10 +367,12 @@ Matching the real and imaginary parts respectively, we get,
 ```
 This is called the **Cauchy-Riemann (CR) Equations** in Cartesian form.
 
-It can be shown that, if a complex function satisfies the Cauchy-Riemann Equation, then the limit approaches the same value regardless of which path were taken, and hence the derivative of the complex function exists.  Furthermore, based on above derivation, the derivative can be written as
+We have approached $z$ horizontally and vertically. If these two results disagree, the derivative cannot exist. For the smooth functions in our examples, when the CR equations hold, the result is the same from every direction and the derivative exists. We can then write
 ```{math}
 w'(z) = v_y-iu_y = u_x + iv_x
 ```
+
+&clubs; The CR equations at one point are necessary but are not sufficient on their own. A sufficient condition is that $u$ and $v$ have continuous first partial derivatives in a neighborhood of the point and satisfy the CR equations throughout that neighborhood. Then $w$ is complex differentiable there.
 
 **Example 1**
 
@@ -387,7 +391,7 @@ u_x=2x &= v_y=2x \\
 v_x=2y &= -u_y=2y
 \end{aligned}
 ```
-Both equations check and hence the derivative exists.
+These partial derivatives are continuous everywhere, and both CR equations hold everywhere, so the derivative exists.
 
 Third, we show the derivative in two ways,
 ```{math}
@@ -418,7 +422,7 @@ Next, the polar form for CR equations is presented.  The derivation is similar t
 
 Suppose the function is written in $(r,\theta)$ coordinates,
 ```{math}
-z=re^{i\theta} = u(r,\theta) + iv(r,\theta)
+z=re^{i\theta},\qquad w(z)=u(r,\theta)+iv(r,\theta)
 ```
 and the CR equations are
 ```{math}
@@ -451,7 +455,7 @@ u_r=-\frac{\cos\theta}{r^2} &= \frac{1}{r}v_\theta=-\frac{\cos\theta}{r^2} \\
 v_r=\frac{\sin\theta}{r^2} &= -\frac{1}{r}u_\theta=\frac{\sin\theta}{r^2}
 \end{aligned}
 ```
-Both equations match and so the derivative exists.
+For $r>0$, these partial derivatives are continuous and both equations hold, so the derivative exists.
 
 Lastly, using one form of the derivative,
 ```{math}
