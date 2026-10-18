@@ -19,7 +19,7 @@ So far we have been mostly looking at quantities that are temporally or spatiall
 \mathcal{D}=\{(n\Delta t, A\sin(n\omega \Delta t)) \mid n=1,2,\cdots,1000\}
 ```
 These are plenty of data - 2000 numbers.  But looking at the frequency domain, it is just a sinusoidal function, and we can **compactly** represent $\mathcal{D}$ by two numbers: the frequency $\omega$ and the amplitude $A$.  This is a reduction of data by a factor of 1000!
-+ System diagnostics: Suppose we have an engine, whose shaft operates at 1000 RPM, or approximately 16.67 Hz.  If we measure the vibration level, e.g., the time history of acceleration, we should see a sinusoidal curve at frequency 16.67 Hz.  Suppose we see an additional frequency, say, 23 Hz, in the vibration data, then we would know there is something wrong with the engine.  Modern health monitoring systems of aircraft operate basically under the same principle.
++ System diagnostics: Suppose we have an engine, whose shaft operates at 1000 RPM, or approximately 16.67 Hz.  Its vibration data, e.g., the time history of acceleration, may contain a component at 16.67 Hz.  An unexpected additional frequency, say, 23 Hz, could indicate a fault and prompt further investigation, but it is not by itself proof of a problem.  Modern aircraft health monitoring systems use frequency information as part of their diagnostics.
 
 Formally, in this chapter, we will first look at **periodic functions**.  A function $f$ having a period $p$ means that $f(x+p)=f(x)$, and furthermore $f(x)=f(x+2p)=f(x+3p)=\cdots$.  We will see how this function can be represented as a sum of sinusoidal functions, i.e., the so-called **Fourier Series**,
 ```{math}
@@ -50,6 +50,12 @@ a_n &= \frac{1}{\pi}\int_{-\pi}^\pi f(x)\cos(nx) dx \\
 b_n &= \frac{1}{\pi}\int_{-\pi}^\pi f(x)\sin(nx) dx
 \end{aligned}
 ```
+
+For a piecewise smooth periodic function, the series converges to $f(x)$ at points of continuity.  At a jump, it converges to the midpoint of the one-sided limits,
+```{math}
+\frac{f(x^-)+f(x^+)}{2}.
+```
+The series equalities below are understood in this sense, with limits taken in the periodic extension at period boundaries.  Changing the function's values at finitely many points in a period does not change its Fourier coefficients.
 
 &clubs; For those who are curious how the formula is derived, the key idea is to use the "orthogonality" property of sinusoidal functions, i.e., $\int_{-\pi}^{\pi}\cos(nx)\sin(mx)dx=0$ for any $n,m$, and $\int_{-\pi}^{\pi}\cos(nx)\cos(mx)dx=0$, $\int_{-\pi}^{\pi}\sin(nx)\sin(mx)dx=0$ unless $n=m$.  Subsequently, we can multiply $\sin$'s and $\cos$'s to both sides of {eq}`eq:fsp` and integrate over $[-\pi,\pi]$.  You will see only one term remains.
 
@@ -114,9 +120,9 @@ This is a piecewise function,
 ```{math}
 f(x) = \left\{
 \begin{array}{ll}
-1, &\ x\in[-\pi,-\pi/2] \\
+1, &\ x\in[-\pi,-\pi/2) \\
 0, &\ x\in[-\pi/2,\pi/2] \\
-1, &\ x\in[\pi/2,\pi]
+1, &\ x\in(\pi/2,\pi]
 \end{array}
 \right.
 ```
@@ -182,10 +188,12 @@ a_n = -\frac{2}{n\pi}(-1)^{\frac{n-1}{2}},\quad n=1,3,5,\cdots
 
 + Write down the Fourier series
 
-The Fourier series is therefore
+At points of continuity, the Fourier series is therefore
 ```{math}
 f(x) = \frac{1}{2} + \sum_{n=1,3,5,\cdots} -\frac{2}{n\pi}(-1)^{\frac{n-1}{2}}\cos(nx)
 ```
+
+At $x=\pm\pi/2$ and their periodic copies, the series instead converges to $(0+1)/2=1/2$, regardless of the assigned point values.
 
 Practically, one would be only interested in the first few terms of the Fourier series, that should capture the main characteristics of the function $f(x)$.  These are
 ```{math}
@@ -194,7 +202,7 @@ Practically, one would be only interested in the first few terms of the Fourier 
 
 + As an additional step, we also visualize the Fourier series below.
 
-As one increases the number of terms of approximation, shown in the blue curve, we see the series converges to the function $f(x)$ in black curve.  Also, note the high oscillations near the discontinuity of $f(x)$; this is the so-called Gibbs phenomenon, that is unavoidable for jump discontinuities.  The **hint** for us is to avoid as much as possible applying Fourier series to discontinuous functions.
+As one increases the number of terms of approximation, shown in the blue curve, the series converges to the function $f(x)$ in black at points of continuity and to $1/2$ at each jump.  Also, note the oscillations near the jumps of $f(x)$; this is the so-called Gibbs phenomenon.  The region of oscillation narrows as more terms are included, but the overshoot near each jump does not vanish.  Fourier series remain useful for discontinuous functions, but care is needed when interpreting the approximation near jumps.
 
 :::{container} course-interactive course-interactive-m4-fourier-gibbs
 Interactive example loading...
@@ -225,12 +233,12 @@ The first Fourier coefficient
 ```{math}
 \begin{aligned}
 a_0 &= \frac{1}{2\pi}\int_{-\pi}^\pi \tilde{f}(y) dy \\
-&= \frac{1}{2\pi}\int_{-\pi}^\pi f(x) d\left(\frac{\pi}{L}x\right) \\
+&= \frac{1}{2\pi}\int_{-L}^L f(x) d\left(\frac{\pi}{L}x\right) \\
 &= \frac{1}{2\pi}\int_{-L}^L f(x) \frac{\pi}{L} dx \\
 &= \frac{1}{2L}\int_{-L}^L f(x) dx
 \end{aligned}
 ```
-where the second equality changed $y$ to $x$; the third equality changes $dy$ to $dx$, accompanied by the change in the integral interval; lastly we factored out the constants.
+where the second equality changes $y$ to $x$ and the limits from $\pm\pi$ to $\pm L$; the third equality uses $dy=(\pi/L)dx$; lastly we factored out the constants.
 
 &clubs; Try to perform a similar procedure to $a_n$ and $b_n$.
 
@@ -266,12 +274,12 @@ a_n &= \frac{2}{L}\int_0^L f(x)\cos\left(\frac{n\pi}{L}x\right) dx
 
 **Example**
 
-Let's apply the new formula to the function below
+Let's apply the new formula to the function below, defined on the half-open period $[-1/2,1/2)$ and extended periodically with period 1:
 ```{math}
 f(x) = \left\{
 \begin{array}{ll}
-0, &\ x\in[-1/2,0] \\
-x, &\ x\in[0,1/2]
+0, &\ x\in[-1/2,0) \\
+x, &\ x\in[0,1/2)
 \end{array}
 \right.
 ```
@@ -346,14 +354,16 @@ f(x) = \frac{1}{8} &- \frac{1}{\pi^2}\left[ \cos(2\pi x) + \frac{1}{9}\cos(6\pi 
 \end{aligned}}
 ```
 
+These series equal $f(x)$ at points of continuity.  At the period joins $x=1/2+k$, $k\in\mathbb{Z}$, they converge to the midpoint $(1/2+0)/2=1/4$.
+
 ### Even and odd extension
 
 So far the Fourier series is defined for periodic functions.  We can extend the idea to non-periodic functions defined on a finite interval, e.g., $f(x)$ for $x\in[0,L]$.  For example, we can do a **simple extension** for $f(x)$ as
 ```{math}
 \tilde{f}(x) = \left\{
 \begin{array}{ll}
-0, &\ x\in[-L,0] \\
-f(x), &\ x\in[0,L]
+0, &\ x\in[-L,0) \\
+f(x), &\ x\in[0,L)
 \end{array}
 \right.
 ```
@@ -363,8 +373,9 @@ Alternatively, we can also do an **odd extension**, again with a period of $2L$,
 ```{math}
 \tilde{f}(x) = \left\{
 \begin{array}{ll}
--f(-x), &\ x\in[-L,0] \\
-f(x), &\ x\in[0,L]
+-f(-x), &\ x\in(-L,0) \\
+0, &\ x\in\{-L,0\} \\
+f(x), &\ x\in(0,L)
 \end{array}
 \right.
 ```
@@ -373,11 +384,13 @@ Lastly, there is also **even extension**, with a period of $2L$,
 ```{math}
 \tilde{f}(x) = \left\{
 \begin{array}{ll}
-f(-x), &\ x\in[-L,0] \\
-f(x), &\ x\in[0,L]
+f(-x), &\ x\in[-L,0) \\
+f(x), &\ x\in[0,L)
 \end{array}
 \right.
 ```
+
+Each definition specifies one half-open period $[-L,L)$, which is then repeated.  The odd extension takes value zero at $0$ and at the period joins $\pm L$ to preserve odd symmetry.  Thus it agrees with the original $f$ on $0<x<L$, but may change its endpoint values.  These point values do not affect the Fourier coefficients; at jumps, the series converges to the midpoint of the one-sided limits.
 
 The question is, which extension should we choose?
 
@@ -439,12 +452,14 @@ The first few terms of the Cosine series are
 \boxed{f(x) = \frac{\pi}{2} + \frac{4}{\pi}\left[ \cos(x) + \frac{1}{9}\cos(3x) + \frac{1}{25}\cos(5x) + \frac{1}{49}\cos(7x) + \cdots \right]}
 ```
 
-As a comparison, also consider the odd extension of the function.  Following the same procedure as above, we would arrive at a Sine series,
+As a comparison, also consider the odd extension of the function.  Following the same procedure as above, we would arrive at a Sine series that equals the original function on the open half-interval $0<x<\pi$,
 ```{math}
 f(x) = 2\left[ \sin(x) + \frac{1}{2}\sin(2x) + \frac{1}{3}\sin(3x) + \frac{1}{4}\sin(4x) + \frac{1}{5}\sin(5x) \cdots \right]
 ```
 
-Comparing the two series, note how the magnitudes of coefficients decay as $n$ increases.  In even extension, the 7th term would have a coefficient $\frac{1}{121}$, that is less than 1\% of the first term and negligible.  In the odd extension, however, even the 10th term is still 10\% the size of the first term.  The comparison means the Cosine series would converge much faster than the Sine series.  The reason is clear: the odd extension results in a jump discontinuity in this example, which is undesirable.
+At $x=0$, the Sine series is zero, the midpoint of the odd extension's jump from $-\pi$ to $\pi$; it does not reproduce the original value $f(0)=\pi$.  At $x=\pi$, it agrees with $f(\pi)=0$.
+
+Comparing the two series, note how the magnitudes of coefficients decay as $n$ increases.  In the even extension, the $n=11$ cosine harmonic (the sixth nonconstant term) has a coefficient $1/121$ times that of the $n=1$ harmonic, less than 1\%.  In the odd extension, however, the $n=10$ sine harmonic still has a coefficient 10\% the size of the $n=1$ harmonic.  The faster coefficient decay makes the Cosine series converge much faster in this example.  The odd extension has a jump at zero, so its Sine series also has Gibbs oscillations near the jump.
 
 The above discussion can be verified visually in a plotted comparison. Explore how many terms in even extension makes the Cosine series indistinguishable from the extended function, and how about the odd extension?
 
@@ -537,27 +552,44 @@ The special case is recovered by setting $x=\pi$,
 
 #### A non-rigorous derivation of Fourier transform
 
-Next, having the Euler formula in hand and looking back at the Fourier integral, the first thing we can do is
+Using Euler's formula, define a temporary combined coefficient
 ```{math}
 \begin{aligned}
-A(\omega) - i B(\omega) &= \frac{1}{\pi}\int_{-\infty}^\infty f(x)\left[ \cos(\omega x) - i\sin(\omega x) \right] \\
-&= \frac{1}{\pi} \int_{-\infty}^\infty f(x) \exp(-i\omega x) dx \\
-&\equiv \hat{f}(\omega)
+H(\omega) &= A(\omega) - i B(\omega) \\
+&= \frac{1}{\pi}\int_{-\infty}^\infty f(x)\left[ \cos(\omega x) - i\sin(\omega x) \right] dx \\
+&= \frac{1}{\pi} \int_{-\infty}^\infty f(x) \exp(-i\omega x) dx
 \end{aligned}
 ```
 In other words, we can evaluate just one integral to obtain both the $A$ and $B$ functions.
 
-Furthermore, we can also transform $\hat{f}(\omega)$ back to $f(x)$,
+To recover $f(x)$, first expand the product
 ```{math}
 \begin{aligned}
-\hat{f}(\omega)\exp(i\omega x) &= \left[ A(\omega) - i B(\omega) \right] \left[ \cos(\omega x) + i\sin(\omega x) \right] \\
+H(\omega)\exp(i\omega x) &= \left[ A(\omega) - i B(\omega) \right] \left[ \cos(\omega x) + i\sin(\omega x) \right] \\
 &= A(\omega)\cos(\omega x) + B(\omega)\sin(\omega x) + \\
-&\quad i \left[ -A(\omega)\sin(\omega x) + B(\omega)\cos(\omega x) \right]
+&\quad i \left[ A(\omega)\sin(\omega x) - B(\omega)\cos(\omega x) \right]
 \end{aligned}
 ```
-The real part is the integrand of Fourier integral, which would produce $f(x)$; as for the imaginary part, a detailed calculation would show that the two terms cancels out in the integral.
+From their defining integrals, $A$ is even and $B$ is odd as functions of frequency:
+```{math}
+A(-\omega)=A(\omega),\qquad B(-\omega)=-B(\omega)
+```
+Thus, for real-valued $f$, the real part of the product is even in $\omega$, while its imaginary part is odd. Integrating over the full frequency interval $[-R,R]$ cancels the imaginary part and doubles the positive-frequency Fourier integral:
+```{math}
+\frac{1}{2}\int_{-R}^{R} H(\omega)\exp(i\omega x)d\omega
+= \int_0^R \left[A(\omega)\cos(\omega x)+B(\omega)\sin(\omega x)\right]d\omega
+```
+Taking $R\to\infty$ therefore gives
+```{math}
+f(x)=\frac{1}{2}\int_{-\infty}^{\infty} H(\omega)\exp(i\omega x)d\omega
+```
+Here the whole-axis integral is interpreted as a symmetric improper integral when it is not absolutely convergent. Under suitable convergence assumptions, the inversion gives $f(x)$ at points of continuity and the midpoint of the one-sided limits at a jump.
 
-Together, we end up with the Fourier transform,
+To give the forward and inverse transforms the same normalization, define
+```{math}
+\hat{f}(\omega)=\sqrt{\frac{\pi}{2}}\,H(\omega)
+```
+Substituting this rescaling into both integrals gives the symmetric Fourier transform pair,
 ```{math}
 \begin{aligned}
 \text{Fourier transform:}\quad \hat{f}(\omega) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty f(x)\exp(-i\omega x)dx \\
@@ -579,7 +611,7 @@ The main similarity is that, if we replace $s$ with $i\omega$ in Laplace transfo
 However, there are still two key differences.
 
 + The integral intervals are different.  Laplace is for $[0,\infty]$ and Fourier is for $[-\infty,\infty]$.  So do not get confused!
-+ We already know it is difficult to do inverse Laplace transform.  But it is actually easy to do inverse Fourier transform.  This aspect makes Fourier transform particularly useful in fields such as signal processing.
++ The inverse Fourier transform has nearly the same integral form as the forward transform, which is convenient for analysis and numerical computation.  Evaluating the inverse analytically can still be difficult, and inversion requires suitable assumptions on the function.  Efficient numerical transforms make Fourier methods particularly useful in fields such as signal processing.
 
 #### An example
 
@@ -615,7 +647,7 @@ because $k>0$.  In the last equality, as a convention, the denominator is made r
 
 #### Application in signal processing
 
-The real practical application of Fourier transform would require the Fast Fourier Transform (FFT) algorithm, which is the numerical implementation of Fourier transform in computers.  However, FFT is out of the scope of this course.  Instead, we try to illustrate the idea via an example of signal denoising.
+Practical Fourier analysis of sampled data often uses the Fast Fourier Transform (FFT), an efficient algorithm for computing the discrete Fourier transform (DFT).  The FFT algorithm is out of the scope of this course.  Instead, we illustrate the idea via an example of signal denoising.
 
 Suppose we have a drone with an inertial measurement unit (IMU) to measure its acceleration.  Knowing the acceleration is critical, because by integrating it once and twice we can obtain the velocity and position of the drone, respectively.  Nevertheless, the sensor measurement always comes with noise, which can pollute the velocity and position estimations.  The Fourier transform is one of the simplest approaches to denoise the signal.
 
