@@ -77,7 +77,7 @@ This chapter will focus on the first two types of PDE, i.e., 1D unsteady heat tr
 
 ### Linearity of PDE
 
-Most of the PDEs that we deal with here are **linear**.  This means the unknown function $u$ and its derivatives do not appear in the same term.  For example, terms such as $cu$ and $cu_{xx}$, with constant $c$, are linear, and terms such as $uu_x$ and $u^2$ are nonlinear.  The main implication of linearity is the **superposition of solutions**.
+Most of the PDEs that we deal with here are **linear**.  This means the unknown function $u$ and its derivatives appear only to the first power and are not multiplied together.  Their coefficients may depend on the independent variables, but not on $u$ or its derivatives.  For example, terms such as $cu$ and $cu_{xx}$, with constant $c$, are linear, and terms such as $uu_x$ and $u^2$ are nonlinear.  For a homogeneous linear PDE, the main implication is the **superposition of solutions**: any linear combination of solutions is also a solution.
 
 For example, for a PDE
 ```{math}
@@ -105,11 +105,11 @@ The linearity is one of the critical properties that we leverage to solve the PD
 
 To give a proper definition of a PDE problem, let's first think about what is the "solution to a PDE".
 
-The rule of thumb is, if we have a solution to a PDE, this solution should be **unique**, otherwise it may not have appropriate physical meaning.  For example, in heat transfer, it would be a violation of physics if there are two temperatures at the same point of a heat conductor.
+For example, a fully specified heat-transfer problem should determine a **unique** temperature evolution.  The PDE alone generally does not do so: boundary and initial conditions are also needed to distinguish the evolution for a particular physical setup.
 
 **Equation**
 
-Say we look at the Type 1 PDE, on an interval $x\in[-\pi,\pi]$,
+Say we look at the Type 1 PDE, with $k>0$, on an interval $x\in[-\pi,\pi]$,
 ```{math}
 u_t=ku_{xx}
 ```
@@ -117,24 +117,24 @@ This equation represents the temperature distribution over a 1D domain (e.g., a 
 
 There would be so many different $u$'s that satisfy the PDE, say,
 ```{math}
-\begin{gather*}
+\begin{gathered}
 u_1 = \exp(-kt)\cos(x),\quad u_2 = \exp(-9kt)\cos(3x),\\
 u_3=\exp(-kt)\sin(x),\quad u_4=x^2+2kt,\quad u_5=x^2-\pi^2+2kt,\\
 u_6=c_1u_3+c_2u_5
-\end{gather*}
+\end{gathered}
 ```
 In fact, given the linearity, there is literally infinitely many functions that can satisfy the PDE.
 
 
 **Boundary conditions (BC's)**
 
-To make the solution unique, we can try to incorporate BC's.  The domain is 1D, so we can apply BC's at the two ends, for example,
+To narrow the possible solutions, we can incorporate BC's.  The domain is 1D, so we can apply BC's at the two ends, for example,
 ```{math}
 u(-\pi,t) = 0,\quad u(\pi,t) = 0
 ```
 which means enforcing zero temperature change at the two ends.
 
-With the BC's, we can verify that only $u_3,u_5,u_6$ satisfy the BC's, and $u_1,u_2,u_4$ are eliminated.
+Among the listed candidates, $u_3$ satisfies the BC's, and $u_6=c_1u_3+c_2u_5$ satisfies them only when $c_2=0$.  In particular, $u_5(\pm\pi,t)=2kt$, so $u_5$ fails the zero BC's for $t>0$; $u_1,u_2,u_4$ also fail them.  Arbitrary multiples $c_1u_3$ still satisfy the PDE and BC's, so the BC's alone do not determine a unique solution.
 
 
 **Initial condition (IC)**
@@ -145,7 +145,7 @@ u(x,0) = \sin(x)
 ```
 which specifies the temperature distribution at $t=0$.
 
-With the IC, there is only one solution left, $u_3=\exp(-kt)\sin(x)$.  In fact this is the only possible solution.
+The IC fixes the remaining amplitude: $c_1\sin(x)=\sin(x)$ requires $c_1=1$.  The resulting solution is $u_3=\exp(-kt)\sin(x)$.  For this heat IVP, the PDE together with the BC's and IC determines the unique solution.
 
 In the above example, to pinpoint a unique solution, we needed a combination of the PDE, two BC's, and one IC
 ```{math}
@@ -493,7 +493,7 @@ All that remains to be solved is $B_n$,
 ```{math}
 \begin{aligned}
 B_n &= \frac{2}{a} \int_0^a u_0(x) \sin \left(\frac{n \pi}{a} x\right) d x \quad(a=2 \pi) \\
-&= \frac{8}{n^2 \pi}(-1)^{\frac{n-1}{2}}
+&= \frac{8}{n^2 \pi}\sin\left(\frac{n\pi}{2}\right),\quad n=1,2,3,\cdots
 \end{aligned}
 ```
 
@@ -735,7 +735,7 @@ From the PDE
 ```{math}
 \begin{aligned}
 u_{xx}+u_{yy} &= 0 \\
-(F(x)G(y))_{xx} + (F(x)G(y))_{xx} &= 0 \\
+(F(x)G(y))_{xx} + (F(x)G(y))_{yy} &= 0 \\
 \Rightarrow F(x)G''(y) &= - F''(x)G(y) \\
 \Rightarrow -\frac{G''(y)}{G(y)} &= \frac{F''(x)}{F(x)} \boxed{= -k}
 \end{aligned}

@@ -135,9 +135,9 @@ At this point we have found the full eigenfunction
 u_n(x,t) = F_n(x)G_n(t) = \left[ A_n\cos\left(\frac{cn \pi}{L}t\right) + B_n\sin\left(\frac{cn \pi}{L}t\right) \right] \sin\left(\frac{n \pi}{L}x\right)
 ```
 
-Physically, we can view $F_n(x)$ as **mode shapes** and $G_n(t)$ as the **amplitude**. For example, the first mode ($n=1$) is just a half-Sine wave, and it oscillates at a frequency of $\frac{c\pi}{L}$. Higher-order modes have more waves in the spatial coordinate and oscillate faster at frequencies of $\frac{cn\pi}{L}$.
+Physically, we can view $F_n(x)$ as **mode shapes** and $G_n(t)$ as the **amplitude**. For example, the first mode ($n=1$) is just a half-Sine wave, and it oscillates at an angular frequency of $\frac{c\pi}{L}$. Higher-order modes have more waves in the spatial coordinate and oscillate faster at angular frequencies of $\frac{cn\pi}{L}$.
 
-From the point of view of music, the vibrating string would make a sound, whose base frequency is given by $\frac{c\pi}{L}$, and the higher-order modes produce the harmonics at multiples of the base frequency.
+From the point of view of music, the vibrating string would make a sound, whose base frequency in cycles per unit time is given by $\frac{c}{2L}$, and the higher-order modes produce the harmonics at multiples of the base frequency. Angular frequency is $2\pi$ times the frequency in cycles per unit time.
 
 &clubs; We lumped the unknown coefficients $a_n$ in $F_n(x)$ into $A_n$ and $B_n$.
 
@@ -326,14 +326,14 @@ where $K$ is an integral constant.
 Combining the results from the two IC's, we can solve for $F(x)$ and $G(x)$, which are
 ```{math}
 \begin{aligned}
-F(x) &= \frac{1}{2}f(x) - \frac{1}{2c}\int_\alpha^x g(s)ds + \frac{1}{2}K \\
-G(x) &= \frac{1}{2}f(x) + \frac{1}{2c}\int_\alpha^x g(s)ds - \frac{1}{2}K
+F(x) &= \frac{1}{2}f(x) - \frac{1}{2c}\int_\alpha^x g(s)ds - \frac{K}{2c} \\
+G(x) &= \frac{1}{2}f(x) + \frac{1}{2c}\int_\alpha^x g(s)ds + \frac{K}{2c}
 \end{aligned}
 ```
 
 Lastly, replacing the $x$ in $F(x)$ with $\eta$ and the $x$ in $G(x)$ with $\zeta$, and add up $F(\eta)$ and $G(\zeta)$, we would end up the so-called **d'Alembert solution**,
 ```{math}
-u(x,t) = \frac{1}{2}[f(x+ct)+f(x-ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} g(x) dx
+u(x,t) = \frac{1}{2}[f(x+ct)+f(x-ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} g(s) ds
 ```
 
 We have seen the first part of the solution, that is due to the initial displacement $f(x)$, in our earlier example. Recall that, physically, the part means the wave due to $f(x)$ splits evenly and travel in opposite directions.
@@ -346,7 +346,7 @@ To apply the d'Alembert solution, let's examine two examples.
 
 **Example 1**
 
-Let's consider $f(x)=0.1\sin(\pi x)$ and $g(x)=0$ on $x\in[0,\pi]$. Apply the formula,
+For this example, let $L=1$ with fixed ends $u(0,t)=u(1,t)=0$. Consider $f(x)=0.1\sin(\pi x)$ and $g(x)=0$ on $x\in[0,1]$. Apply the formula,
 ```{math}
 \begin{aligned}
 u(x,t) &= \frac{1}{2}[f(x+ct)+f(x-ct)] \\
@@ -358,25 +358,25 @@ We obtain a solution that describes the harmonic oscillation of a sinusoidal mod
 
 **Example 2, Take 1**
 
-Let's consider our earlier example, $f(x)=0.1x(\pi-x)$ and $g(x)=0$ on $x\in[0,\pi]$. Apply the formula,
+Now return to our earlier example with $L=\pi$, $f(x)=0.1x(\pi-x)$ and $g(x)=0$ on $x\in[0,1]$. Apply the formula,
 ```{math}
 \begin{aligned}
 u(x,t) &= \frac{1}{2}[f(x+ct)+f(x-ct)] \\
 &= \frac{0.1}{2}\left[ \pi(x+ct) - (x+ct)^2 + \pi(x-ct) - (x-ct)^2 \right] \\
-&= 0.1(\pi x - x^2 + c^2t^2)
+&= 0.1(\pi x - x^2 - c^2t^2)
 \end{aligned}
 ```
 Does this solution seem too simple to be true?
 
-If we focus on the string vibration with fixed ends, so $u(0,t)=u(\pi,t)=0$. But the solution would give $u(0,t)=u(\pi,t)=0.1 c^2t^2\neq 0$.
+If we focus on the string vibration with fixed ends, so $u(0,t)=u(\pi,t)=0$. But the solution would give $u(0,t)=u(\pi,t)=-0.1 c^2t^2\neq 0$ for $t>0$.
 
 **Example 2, Take 2**
 
-What is wrong? In fact, to satisfy the BC's, the IC's that we apply should be **extended** to be the appropriate Fourier series. Example 1 worked without the extension because the IC's already satisfy the BC's and are periodic.
+What is wrong? To satisfy the fixed-end BC's, both initial-data functions in the d'Alembert formula should be **extended** as odd, $2L$-periodic functions. In Example 1, $L=1$ and the globally defined sine and zero functions already provide the appropriate extensions. In Example 2, $L=\pi$ and using the same quadratic polynomial outside the original interval does not provide the required reflected data.
 
-In other words, there is no free lunch: The d'Alembert solution does **not** avoid the Fourier series expansion that one would encounter in SoV.
+Fourier sine series provide one way to represent these extensions, as in SoV. One may also define the odd periodic extensions piecewise by reflection without first computing Fourier coefficients.
 
-The correction solution procedure is to perform an odd extension of $f(x)$, which we have already done earlier,
+Here we use the Fourier sine series of the odd, $2\pi$-periodic extension of $f(x)$, which we have already found earlier,
 ```{math}
 f(x) = \sum_{n=1,3,\cdots} \frac{0.8}{n^3\pi}\sin(nx)
 ```
@@ -408,15 +408,15 @@ Define a discriminant
 ```{math}
 \Delta = AC-B^2
 ```
-There are three types of PDE's,
+The sign of this discriminant classifies the principal part and determines the number of real characteristic directions. It does not by itself guarantee separability or an explicit solution. The methods in the table are those used for this module's linear model problems with suitable domains and boundary conditions.
 
-|  | Type | Solution |
+|  | Type | Model example and methods used here |
 | :---: | :---: | :---: |
-| $\Delta<0$ | Hyperbolic | SoV or MoC |
-| $\Delta=0$ | Parabolic | SoV |
-| $\Delta>0$ | Elliptic | SoV |
+| $\Delta<0$ | Hyperbolic | Wave equation: SoV or MoC |
+| $\Delta=0$ | Parabolic | Unsteady heat equation: SoV |
+| $\Delta>0$ | Elliptic | Laplace equation: SoV |
 
-The **hyperbolic** equations are the PDE's that have **two** families of characteristics, and can be solved by either SoV or MoC. This corresponds to wave equations. In fact, for
+The **hyperbolic** equations have **two** real characteristic families. Our linear wave model can be solved by either SoV or MoC. In fact, for
 ```{math}
 u_{tt}-c^2 u_{xx} = 0
 ```
@@ -431,7 +431,7 @@ so
 
 &clubs; One can also verify that $u_{\eta\zeta}$ is hyperbolic too.
 
-The **parabolic** equations are the PDE's that have **one** family of characteristics, and are solved by SoV. This corresponds to unsteady heat transfer equations. In fact, for
+The **parabolic** equations have **one** real characteristic family. Our unsteady heat model is solved by SoV. In fact, for
 ```{math}
 u_t-c^2 u_{xx} = 0
 ```
@@ -444,7 +444,7 @@ where $C$ is zero because there is no $u_{tt}$; $u_t$ does **not** count. So
 \Delta = 0
 ```
 
-The **elliptic** equations are the PDE's that have **zero** characteristics, and are solved by SoV. This corresponds to steady heat transfer equations. In fact, for
+The **elliptic** equations have **zero** real characteristics. Our steady heat model, Laplace's equation on a rectangle, is solved by SoV. In fact, for
 ```{math}
 u_{xx} + u_{yy} = 0
 ```
@@ -467,7 +467,7 @@ By now you should be able to:
   - How many BC's and IC's are needed? What do they mean physically?
   - What are the two families of characteristics in the wave equation?
   - Solve the IVP with: Initial displacement only; Initial velocity only; Both initial displacement and velocity
-  - When do the IC's need to be expanded into Fourier Series first?
+  - What odd periodic extensions of the IC's enforce fixed-end BC's, and how can Fourier sine series represent them?
 + Classify 2nd-order PDE's based on the number of characteristics
   - How to compute the discriminant?
   - What are the hyperbolic, parabolic, and elliptic equations? How many characteristics does each of them have?
